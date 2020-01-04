@@ -1,0 +1,39 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="DesafioAutomacaoApiRest.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="REPORT_NAME" Type="System.String" Scope="User">
+      <Value Profile="(Default)">DesafioAutomacaoApiRest</Value>
+    </Setting>
+    <Setting Name="URL" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://192.168.99.100:8989</Value>
+    </Setting>
+    <Setting Name="TOKEN" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ilB6lN6t1ziuz3MDMG7TnLtVIqF9uk9G</Value>
+    </Setting>
+    <Setting Name="REPORT_SUBSTRING_LENGTH" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">29</Value>
+    </Setting>
+    <Setting Name="DB_URL" Type="System.String" Scope="User">
+      <Value Profile="(Default)">solsrvtstsql.database.windows.net</Value>
+    </Setting>
+    <Setting Name="DB_NAME" Type="System.String" Scope="User">
+      <Value Profile="(Default)">cresqltst</Value>
+    </Setting>
+    <Setting Name="DB_USER" Type="System.String" Scope="User">
+      <Value Profile="(Default)">solusrbs2rd</Value>
+    </Setting>
+    <Setting Name="DB_PASSWORD" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Oof6qHZgRktDl3VP04ZX</Value>
+    </Setting>
+    <Setting Name="DB_CONNECTION_TIMEOUT" Type="System.String" Scope="User">
+      <Value Profile="(Default)">30</Value>
+    </Setting>
+    <Setting Name="AUTHENTICATOR_USER" Type="System.String" Scope="User">
+      <Value Profile="(Default)">usuarioAuthentication</Value>
+    </Setting>
+    <Setting Name="AUTHENTICATOR_PASSWORD" Type="System.String" Scope="User">
+      <Value Profile="(Default)">senhaAuthentication</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
