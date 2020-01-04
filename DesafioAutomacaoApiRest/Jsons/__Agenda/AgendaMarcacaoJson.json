@@ -1,0 +1,17 @@
+{
+  "pacienteId": "$pacienteId",
+  "medicosId": [
+    "$medicoId"
+  ],
+  "dataAgendamento": "$dataAgendamento",
+  "orderProperty": "$orderProperty",
+  "orderType": "$orderType",
+  "orderFirst": $orderFirst,
+  "localAtendimentoId": "$localAtendimentoId",
+  "especialidadesId": [
+    $especialidadesId
+  ],
+  "prestadoresLocalAtendimentoId": [
+    "$prestadoresLocalAtendimentoIds"
+  ]
+}

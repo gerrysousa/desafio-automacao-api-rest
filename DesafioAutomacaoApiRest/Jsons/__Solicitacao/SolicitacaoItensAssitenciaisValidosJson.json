@@ -1,0 +1,6 @@
+{
+  "pacienteId": "$pacienteId",
+  "itensAssistenciais": [
+    "$itensAssistenciais"
+  ]
+}
