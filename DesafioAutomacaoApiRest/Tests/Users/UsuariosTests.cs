@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DesafioAutomacaoApiRest.Tests.Usuarios
+namespace DesafioAutomacaoApiRest.Tests.Users
 {
     class UsuariosTests : TestBase
     {
