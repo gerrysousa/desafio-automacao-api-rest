@@ -7,14 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DesafioAutomacaoApiRest.Requests.Usuarios
+namespace DesafioAutomacaoApiRest.Requests.Users
 {
-    class DeletarUsuarioRequest : RequestBase
+    class GetMyUserInfoRequest : RequestBase
     {
-        public DeletarUsuarioRequest(int idUser)
+        public GetMyUserInfoRequest()
         {
-            requestService = "/api/rest/users/"+ idUser;
-            method = Method.DELETE;
+            requestService = "/api/rest/users/me";
+            method = Method.GET;
 
             headers.Add("Authorization", Global.token);
         }

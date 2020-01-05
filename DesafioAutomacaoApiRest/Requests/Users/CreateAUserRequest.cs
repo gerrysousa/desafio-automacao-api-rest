@@ -8,9 +8,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DesafioAutomacaoApiRest.Requests.Usuarios
+namespace DesafioAutomacaoApiRest.Requests.Users
 {
-    class CadastrarUsuarioRequest : RequestBase
+    class CreateAUserRequest : RequestBase
     {
         #region Parameters
         public string username { get; set; }
@@ -22,7 +22,7 @@ namespace DesafioAutomacaoApiRest.Requests.Usuarios
         public bool @protected { get; set; }
         #endregion
 
-        public CadastrarUsuarioRequest()
+        public CreateAUserRequest()
         {
             requestService = "/api/rest/users/";
             method = Method.POST;
@@ -30,7 +30,7 @@ namespace DesafioAutomacaoApiRest.Requests.Usuarios
             headers.Add("Authorization", Global.token);
         }
 
-        public void SetJsonBody(CadastrarUsuarioRequest cadastrarUsuarioRequest)
+        public void SetJsonBody(CreateAUserRequest cadastrarUsuarioRequest)
         {
             Helpers.JsonSerializer aux = new Helpers.JsonSerializer();
             jsonBody = aux.Serialize(cadastrarUsuarioRequest);

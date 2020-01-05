@@ -1,6 +1,6 @@
 ﻿using DesafioAutomacaoApiRest.Bases;
 using DesafioAutomacaoApiRest.Helpers;
-using DesafioAutomacaoApiRest.Requests.Usuarios;
+using DesafioAutomacaoApiRest.Requests.Users;
 using Newtonsoft.Json;
 using NUnit.Framework;
 using RestSharp;
@@ -28,7 +28,7 @@ namespace DesafioAutomacaoApiRest.Tests.Usuarios
             #endregion
 
             #region Acoes
-            ObterInformacaoMeuUsuarioRequest obterInformacaoMeuUsuarioRequest = new ObterInformacaoMeuUsuarioRequest();
+            GetMyUserInfoRequest obterInformacaoMeuUsuarioRequest = new GetMyUserInfoRequest();
 
             IRestResponse<dynamic> response = obterInformacaoMeuUsuarioRequest.ExecuteRequest();
 
@@ -60,7 +60,7 @@ namespace DesafioAutomacaoApiRest.Tests.Usuarios
         {
 
             #region Parameters
-            CadastrarUsuarioRequest cadastrarUsuarioRequest = new CadastrarUsuarioRequest();
+            CreateAUserRequest cadastrarUsuarioRequest = new CreateAUserRequest();
             AccessLevel accessLevel = new AccessLevel();
 
             string username = "test7";
@@ -115,7 +115,7 @@ namespace DesafioAutomacaoApiRest.Tests.Usuarios
             #endregion
 
             #region Acoes
-            DeletarUsuarioRequest deletarUsuarioRequest = new DeletarUsuarioRequest(id);
+            DeleteAUserRequest deletarUsuarioRequest = new DeleteAUserRequest(id);
 
             IRestResponse<dynamic> response = deletarUsuarioRequest.ExecuteRequest();
             #endregion

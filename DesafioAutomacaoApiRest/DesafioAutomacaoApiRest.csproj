@@ -109,9 +109,9 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="Requests\Usuarios\CadastrarUsuarioRequest.cs" />
-    <Compile Include="Requests\Usuarios\DeletarUsuarioRequest.cs" />
-    <Compile Include="Requests\Usuarios\ObterInformacaoMeuUsuarioRequest.cs" />
+    <Compile Include="Requests\Users\CreateAUserRequest.cs" />
+    <Compile Include="Requests\Users\DeleteAUserRequest.cs" />
+    <Compile Include="Requests\Users\GetMyUserInfoRequest.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="Tests\Usuarios\UsuariosTests.cs" />
   </ItemGroup>
