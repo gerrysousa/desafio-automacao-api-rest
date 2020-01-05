@@ -125,7 +125,7 @@ namespace DesafioAutomacaoApiRest.Helpers
 
     public class Global
     {
-        public static string token = Properties.Settings.Default.TOKEN;        
-
+        public static string token = Properties.Settings.Default.TOKEN;
+        public static string pathProject = GeneralHelpers.ReturnProjectPath();
     }
 }

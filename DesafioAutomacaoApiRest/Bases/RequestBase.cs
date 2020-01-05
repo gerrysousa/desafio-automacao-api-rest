@@ -12,23 +12,18 @@ namespace DesafioAutomacaoApiRest.Bases
     {
         #region Parameters
         protected string jsonBody = null;
-
         protected string url = Properties.Settings.Default.URL;
-
         protected string requestService = null;
-
         protected Method method;
-
         protected bool httpBasicAuthenticator = false;
-
         protected bool ntlmAuthenticator = false;
-        
+
         protected IDictionary<string, string> headers = new Dictionary<string, string>()
         {
             //Dicionário de headeres deve ser iniciado com os headers comuns a todos os métodos da API
             {"Content-Type", "application/json"},
         };
-               
+
         protected IDictionary<string, string> cookies = new Dictionary<string, string>()
         {
             //Dicionário de cookies deve ser iniciado com os headers comuns à todas os métodos da API
@@ -51,7 +46,7 @@ namespace DesafioAutomacaoApiRest.Bases
 
         public void RemoveHeader(string header)
         {
-            headers.Remove(header);           
+            headers.Remove(header);
         }
 
         public void RemoveCookie(string cookie)

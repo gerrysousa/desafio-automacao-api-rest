@@ -95,7 +95,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bases\RequestBase.cs" />
-    <Compile Include="Bases\RequestSoapBase.cs" />
     <Compile Include="Bases\TestBase.cs" />
     <Compile Include="DBSteps\SolicitacaoDBSteps.cs" />
     <Compile Include="Helpers\DBHelpers.cs" />
@@ -113,35 +112,22 @@
     <Compile Include="Requests\Usuarios\CadastrarUsuarioRequest.cs" />
     <Compile Include="Requests\Usuarios\DeletarUsuarioRequest.cs" />
     <Compile Include="Requests\Usuarios\ObterInformacaoMeuUsuarioRequest.cs" />
-    <Compile Include="Requests\__Agenda\__AgendaAgendamentoRequest.cs" />
-    <Compile Include="Requests\__Agenda\__AgendaMarcacoRequest.cs" />
-    <Compile Include="Requests\__SoapRequests\__CapitalCityRequest.cs" />
-    <Compile Include="Requests\__SoapRequests\__CountryCurrencyRequest.cs" />
-    <Compile Include="Requests\__SoapRequests\__CountryNamesGroupedByContinentRequest.cs" />
-    <Compile Include="Requests\__Solicitacao\SolicitacaoItensAssistenciaisValidosRequest.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="Tests\Usuarios\UsuariosTests.cs" />
-    <Compile Include="Tests\__Agenda\__AgendaAgendamentoTests.cs" />
-    <Compile Include="Tests\__Agenda\__AgendaMarcacaoTests.cs" />
-    <Compile Include="Tests\__Soap\__SoapTest.cs" />
-    <Compile Include="Tests\__Solicitacao\__SolicitacaoItensAssitenciaisValidosTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="Jsons\__Agenda\AgendaMarcacaoJson.json" />
-    <None Include="Jsons\__Solicitacao\SolicitacaoItensAssitenciaisValidosJson.json" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <Content Include="Xmls\CapitalCityXML.xml" />
+    <Folder Include="Jsons\" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Queries\atualizaDataDoItemSolicitacaoParaAgora.sql" />
-    <Content Include="Xmls\CountryCurrencyXML.xml" />
-    <Content Include="Xmls\CountryNamesGroupedByContinentXML.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
