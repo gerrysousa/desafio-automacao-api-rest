@@ -109,6 +109,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Requests\Issues\GetAllIssuesRequest.cs" />
     <Compile Include="Requests\Issues\GetAnIssueRequest.cs" />
     <Compile Include="Requests\Users\CreateAUserRequest.cs" />
     <Compile Include="Requests\Users\DeleteAUserRequest.cs" />
