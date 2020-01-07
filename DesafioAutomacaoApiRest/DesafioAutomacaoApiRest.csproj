@@ -124,6 +124,7 @@
     <Compile Include="Requests\Issues\CreateAnIssueRequest.cs" />
     <Compile Include="Requests\Issues\GetAllIssuesRequest.cs" />
     <Compile Include="Requests\Issues\GetAnIssueRequest.cs" />
+    <Compile Include="Requests\Issues\GetIssuesForAProjectRequest.cs" />
     <Compile Include="Requests\Users\CreateAUserRequest.cs" />
     <Compile Include="Requests\Users\DeleteAUserRequest.cs" />
     <Compile Include="Requests\Users\GetMyUserInfoRequest.cs" />

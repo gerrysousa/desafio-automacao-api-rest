@@ -100,6 +100,53 @@ namespace DesafioAutomacaoApiRest.Tests.Issues
         }
 
         [Test]
+        public void Test_ObterProblemasPorProjetoComSucesso()
+        {
+            #region Parameters
+            string statusEsperado = "OK";
+            int idProjeto = 1;
+            
+
+            int idIssue1 = 1;
+            string summary1 = "Descrição simples";
+            string description1 = "Descrição detalhada ssss";
+
+            int idIssue2 = 2;
+            string summary2 = "This is a test issue";
+            string description2 = "This is a test description";
+            #endregion
+
+            #region Acoes
+            GetIssuesForAProjectRequest getIssuesForAProjectRequest = new GetIssuesForAProjectRequest(idProjeto);
+            IRestResponse<dynamic> response = getIssuesForAProjectRequest.ExecuteRequest();
+            #endregion
+
+            #region Asserts
+            int idResposta1 = response.Data["issues"][1]["id"];
+            string summaryResposta1 = response.Data["issues"][1]["summary"];
+            string descriptionResposta1 = response.Data["issues"][1]["description"];
+
+            int idResposta2 = response.Data["issues"][0]["id"];
+            string summaryResposta2 = response.Data["issues"][0]["summary"];
+            string descriptionResposta2 = response.Data["issues"][0]["description"];
+
+            Assert.Multiple(() =>
+            {
+                Assert.AreEqual(statusEsperado, response.StatusCode.ToString());
+
+                Assert.AreEqual(idIssue1, idResposta1);
+                Assert.AreEqual(summary1, summaryResposta1);
+                Assert.AreEqual(description1, descriptionResposta1);
+
+                Assert.AreEqual(idIssue2, idResposta2);
+                Assert.AreEqual(summary2, summaryResposta2);
+                Assert.AreEqual(description2, descriptionResposta2);
+            });
+
+            #endregion
+        }
+
+        [Test]
         public void Test_CadastrarProblemaMinimoInformacoesComSucesso()
         {
             #region Parameters
@@ -220,8 +267,6 @@ namespace DesafioAutomacaoApiRest.Tests.Issues
 
             tag.name = tagsname;
             tags.Add(tag);
-            
-
 
             //montando body
             issue.summary = summary;
@@ -238,7 +283,6 @@ namespace DesafioAutomacaoApiRest.Tests.Issues
             issue.sticky = sticky;
             //issue.custom_fields = customFields;
             issue.tags = tags;
-
 
             createAnIssueRequest.SetJsonBody(issue);
 
@@ -259,5 +303,6 @@ namespace DesafioAutomacaoApiRest.Tests.Issues
 
             #endregion
         }
+
     }
 }
