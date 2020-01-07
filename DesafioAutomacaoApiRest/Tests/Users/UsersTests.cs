@@ -68,7 +68,7 @@ namespace DesafioAutomacaoApiRest.Tests.Users
             string username = "test8";
             string password = "p@ssw0rd";
             string real_name = "Gerry Test1";
-            string email = "test7@example2.com";
+            string email = "test8@example2.com";
             string access_level = "updater";
             bool enabled = true;
             bool @protected = false;

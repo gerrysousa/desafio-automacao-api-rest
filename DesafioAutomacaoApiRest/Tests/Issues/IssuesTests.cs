@@ -145,5 +145,119 @@ namespace DesafioAutomacaoApiRest.Tests.Issues
 
             #endregion
         }
+
+        [Test]
+        public void Test_CadastrarProblemaTodasInformacoesComSucesso()
+        {
+            #region Parameters
+            CreateAnIssueRequest createAnIssueRequest = new CreateAnIssueRequest();
+            Issue issue = new Issue();
+            Category category = new Category();
+            Project project = new Project();
+            Handler handler = new Handler();
+            ViewState viewState = new ViewState();
+            Priority priority = new Priority();
+            Severity severity = new Severity();
+            Reproducibility reproducibility = new Reproducibility();
+            List<CustomField> customFields = new List<CustomField>();
+            List<Tag> tags = new List<Tag>();
+            Tag tag = new Tag();
+            CustomField customField = new CustomField();
+            Field field = new Field();
+
+            string statusEsperado = "Created";//201
+
+            string summary = "Sample REST issue";
+            string description = "Description for sample REST issue.";
+            string additional_information = "More info about the issue";
+            int projectId = 1;
+            string projectName = "Projeto 01";
+            int categoryid = 5;
+            string categoryname = "bugtracker";
+            string handlername = "vboctor";
+            int view_stateid = 10;
+            string view_statename = "public";
+            string priorityname = "normal";
+            string severityname = "trivial";
+            string reproducibilityname = "always";
+            bool sticky = false;
+
+            int custom_fieldsfieldid = 4;
+            string custom_fieldsfieldName = "The City";
+            string custom_fieldsValue = "Seattle";
+
+            string tagsname = "mantishub";
+
+
+            #endregion
+
+            #region Acoes
+
+            project.id = projectId;
+            project.name = projectName;
+
+            category.id = categoryid;
+            category.name = categoryname;
+
+            handler.name = handlername;
+
+            viewState.id = view_stateid;
+            viewState.name = view_statename;
+
+            priority.name = priorityname;
+
+            severity.name = severityname;
+
+            reproducibility.name = reproducibilityname;
+
+            field.id = custom_fieldsfieldid;
+            field.name = custom_fieldsfieldName;
+
+            customField.value = custom_fieldsValue;
+            customField.field = field;
+
+            customFields.Add(customField);
+
+            tag.name = tagsname;
+            tags.Add(tag);
+            
+
+
+            //montando body
+            issue.summary = summary;
+            issue.description = description;
+            issue.additional_information = additional_information;
+            issue.category = category;
+            issue.project = project;
+            issue.category = category;
+            issue.handler = handler;
+            issue.view_state = viewState;
+            issue.priority = priority;
+            issue.severity = severity;
+            issue.reproducibility = reproducibility;
+            issue.sticky = sticky;
+            //issue.custom_fields = customFields;
+            issue.tags = tags;
+
+
+            createAnIssueRequest.SetJsonBody(issue);
+
+            IRestResponse<dynamic> response = createAnIssueRequest.ExecuteRequest();
+            #endregion
+
+            #region Asserts
+
+            Assert.Multiple(() =>
+            {
+                Assert.AreEqual(statusEsperado, response.StatusCode.ToString());
+                Assert.AreEqual(summary, response.Data.issue.summary.ToString());
+                Assert.AreEqual(description, response.Data.issue.description.ToString());
+                Assert.AreEqual(additional_information, response.Data.issue.additional_information.ToString());
+                Assert.AreEqual(projectName, response.Data.issue.project.name.ToString());
+                //Etc
+            });
+
+            #endregion
+        }
     }
 }
