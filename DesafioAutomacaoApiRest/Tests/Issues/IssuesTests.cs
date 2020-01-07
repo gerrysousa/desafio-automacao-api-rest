@@ -1,9 +1,9 @@
 ﻿using DesafioAutomacaoApiRest.Bases;
 using DesafioAutomacaoApiRest.Helpers;
-using DesafioAutomacaoApiRest.Requests.Issues;
-using DesafioAutomacaoApiRest.Requests.Users;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using DesafioAutomacaoApiRest.Pages;
+using DesafioAutomacaoApiRest.Requests.Issues;
 using NUnit.Framework;
 using RestSharp;
 using System;
@@ -94,6 +94,53 @@ namespace DesafioAutomacaoApiRest.Tests.Issues
                 Assert.AreEqual(idIssue2, idResposta2);
                 Assert.AreEqual(summary2, summaryResposta2);
                 Assert.AreEqual(description2, descriptionResposta2);
+            });
+
+            #endregion
+        }
+
+        [Test]
+        public void Test_CadastrarProblemaMinimoInformacoesComSucesso()
+        {
+            #region Parameters
+            CreateAnIssueRequest createAnIssueRequest = new CreateAnIssueRequest();
+            Issue issue = new Issue();
+            Category category = new Category();
+            Project project = new Project();
+
+            string statusEsperado = "Created";//201
+
+            string summary = "This is a test issue";
+            string description = "This is a test description";
+            string categoryName = "General";
+            string projectName = "Projeto 01";
+            #endregion
+
+            #region Acoes
+            category.name = categoryName;
+            project.name = projectName;
+
+            issue.summary = summary;
+            issue.description = description;
+            issue.category = category;
+            issue.project = project;
+
+            createAnIssueRequest.SetJsonBody(issue);
+
+            IRestResponse<dynamic> response = createAnIssueRequest.ExecuteRequest();
+            #endregion
+
+            #region Asserts
+
+            Assert.Multiple(() =>
+            {
+                Assert.AreEqual(statusEsperado, response.StatusCode.ToString());
+                Assert.AreEqual(summary, response.Data.issue.summary.ToString());
+                Assert.AreEqual(description, response.Data.issue.description.ToString());
+
+                Assert.AreEqual(categoryName, response.Data.issue.category.name.ToString());
+                Assert.AreEqual(projectName, response.Data.issue.project.name.ToString());
+                //Etc
             });
 
             #endregion

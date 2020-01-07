@@ -26,6 +26,7 @@ namespace DesafioAutomacaoApiRest.Bases
         public void TearDown()
         {
             ExtentReportHelpers.AddTestResult();
+            ExtentReportHelpers.GenerateReport();
         }
 
         [OneTimeTearDown]

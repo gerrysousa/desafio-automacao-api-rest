@@ -1,5 +1,6 @@
 ﻿using DesafioAutomacaoApiRest.Bases;
 using DesafioAutomacaoApiRest.Helpers;
+using DesafioAutomacaoApiRest.Pages;
 using DesafioAutomacaoApiRest.Requests.Users;
 using Newtonsoft.Json;
 using NUnit.Framework;
@@ -12,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace DesafioAutomacaoApiRest.Tests.Users
 {
-    class UsuariosTests : TestBase
+    class UsersTests : TestBase
     {
         [Test]
         public void Test_ObterInformacoesDoUsuarioComSucesso()
@@ -24,7 +25,7 @@ namespace DesafioAutomacaoApiRest.Tests.Users
             string real_name = "Administrator";
             string email = "root@localhost";
             string language = "english";
-            string status = "OK";
+            string statusEsperado = "OK";
             #endregion
 
             #region Acoes
@@ -44,7 +45,7 @@ namespace DesafioAutomacaoApiRest.Tests.Users
 
             Assert.Multiple(() =>
             {
-                Assert.AreEqual(status, response.StatusCode.ToString());
+                Assert.AreEqual(statusEsperado, response.StatusCode.ToString());
                 Assert.AreEqual(id, resposta_id);
                 Assert.AreEqual(name, resposta_name);
                 Assert.AreEqual(real_name, resposta_real_name);
@@ -53,17 +54,18 @@ namespace DesafioAutomacaoApiRest.Tests.Users
             });
 
             #endregion
-        }       
+        }
 
         [Test]
         public void Test_CadastrarUsuarioComSucesso()
         {
 
             #region Parameters
-            CreateAUserRequest cadastrarUsuarioRequest = new CreateAUserRequest();
+            CreateAUserRequest createAUserRequest = new CreateAUserRequest();
+            User user = new User();
             AccessLevel accessLevel = new AccessLevel();
 
-            string username = "test7";
+            string username = "test8";
             string password = "p@ssw0rd";
             string real_name = "Gerry Test1";
             string email = "test7@example2.com";
@@ -72,31 +74,31 @@ namespace DesafioAutomacaoApiRest.Tests.Users
             bool @protected = false;
 
             //Resultado esperado
-            string status = "Created";//201
+            string statusEsperado = "Created";//201
 
             #endregion
 
             #region Acoes
             accessLevel.name = access_level;
 
-            cadastrarUsuarioRequest.username = username;
-            cadastrarUsuarioRequest.password = password;
-            cadastrarUsuarioRequest.real_name = real_name;
-            cadastrarUsuarioRequest.email = email;
-            cadastrarUsuarioRequest.access_level = accessLevel;
-            cadastrarUsuarioRequest.enabled = enabled;
-            cadastrarUsuarioRequest.@protected = @protected;
+            user.username = username;
+            user.password = password;
+            user.real_name = real_name;
+            user.email = email;
+            user.access_level = accessLevel;
+            user.enabled = enabled;
+            user.@protected = @protected;
 
-            cadastrarUsuarioRequest.SetJsonBody(cadastrarUsuarioRequest);
+            createAUserRequest.SetJsonBody(user);
 
-            IRestResponse<dynamic> response = cadastrarUsuarioRequest.ExecuteRequest();
+            IRestResponse<dynamic> response = createAUserRequest.ExecuteRequest();
             #endregion
 
             #region Asserts
 
             Assert.Multiple(() =>
             {
-                Assert.AreEqual(status, response.StatusCode.ToString());
+                Assert.AreEqual(statusEsperado, response.StatusCode.ToString());
                 Assert.AreEqual(username, response.Data.user.name.ToString());
                 Assert.AreEqual(real_name, response.Data.user.real_name.ToString());
                 Assert.AreEqual(email, response.Data.user.email.ToString());
@@ -111,7 +113,7 @@ namespace DesafioAutomacaoApiRest.Tests.Users
             #region Parameters
             //Resultado esperado
             int id = 6;
-            string status = "NoContent";
+            string statusEsperado = "NoContent";
             #endregion
 
             #region Acoes
@@ -121,63 +123,11 @@ namespace DesafioAutomacaoApiRest.Tests.Users
             #endregion
 
             #region Asserts
-            Assert.AreEqual(status, response.StatusCode.ToString());
+            Assert.AreEqual(statusEsperado, response.StatusCode.ToString());
             #endregion
         }
 
 
-        #region primeiro create
-        /*
-        [Test]
-        public void Test_ObterInformacoesDoUsuario2()
-        {
 
-            #region Parameters
-            CadastrarUsuarioRequest cadastrarUsuarioRequest = new CadastrarUsuarioRequest();
-            AccessLevel accessLevel = new AccessLevel();
-
-            accessLevel.name = "updater";
-            string username = "test2";
-            string password = "p@ssw0rd";
-            string real_name = "Gerry Test1";
-            string email = "test1@example2.com";
-            bool enabled = true;
-            bool @protected = false;
-
-            //Resultado esperado
-            string status = "Created";//201
-            #endregion
-
-            #region Acoes
-
-
-            cadastrarUsuarioRequest.username = username;
-            cadastrarUsuarioRequest.password = password;
-            cadastrarUsuarioRequest.real_name = real_name;
-            cadastrarUsuarioRequest.email = email;
-            cadastrarUsuarioRequest.access_level = accessLevel;
-            cadastrarUsuarioRequest.enabled = enabled;
-            cadastrarUsuarioRequest.@protected = @protected;
-
-            cadastrarUsuarioRequest.SetJsonBody(cadastrarUsuarioRequest);
-
-            IRestResponse<dynamic> response = cadastrarUsuarioRequest.ExecuteRequest();
-            #endregion
-
-            #region Asserts
-
-            Assert.Multiple(() =>
-            {
-                Assert.AreEqual(status, response.StatusCode.ToString());
-                //Assert.AreEqual(username, response.Content);
-                //Assert.AreEqual(real_name, resposta_name);
-                //Assert.AreEqual(email, resposta_real_name);
-            });
-
-            #endregion
-        }
-        */
-
-        #endregion
     }
 }

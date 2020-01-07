@@ -103,20 +103,34 @@
     <Compile Include="Helpers\JsonDeserializer.cs" />
     <Compile Include="Helpers\JsonSerializer.cs" />
     <Compile Include="Helpers\RestSharpHelpers.cs" />
+    <Compile Include="Pages\AccessLevel.cs" />
+    <Compile Include="Pages\Category.cs" />
+    <Compile Include="Pages\CustomField.cs" />
+    <Compile Include="Pages\Field.cs" />
+    <Compile Include="Pages\Handler.cs" />
+    <Compile Include="Pages\Issue.cs" />
+    <Compile Include="Pages\Priority.cs" />
+    <Compile Include="Pages\Project.cs" />
+    <Compile Include="Pages\Reproducibility.cs" />
+    <Compile Include="Pages\Severity.cs" />
+    <Compile Include="Pages\Tag.cs" />
+    <Compile Include="Pages\ViewState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Requests\Issues\CreateAnIssueRequest.cs" />
     <Compile Include="Requests\Issues\GetAllIssuesRequest.cs" />
     <Compile Include="Requests\Issues\GetAnIssueRequest.cs" />
     <Compile Include="Requests\Users\CreateAUserRequest.cs" />
     <Compile Include="Requests\Users\DeleteAUserRequest.cs" />
     <Compile Include="Requests\Users\GetMyUserInfoRequest.cs" />
+    <Compile Include="Pages\User.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="Tests\Issues\IssuesTests.cs" />
-    <Compile Include="Tests\Users\UsuariosTests.cs" />
+    <Compile Include="Tests\Users\UsersTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -126,9 +140,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Jsons\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Queries\atualizaDataDoItemSolicitacaoParaAgora.sql" />
   </ItemGroup>
