@@ -147,6 +147,40 @@ namespace DesafioAutomacaoApiRest.Tests.Issues
         }
 
         [Test]
+        public void Test_ObterInformacoesDeProblemasAssinadosParaMimComSucesso()
+        {
+            #region Parameters
+            string statusEsperado = "OK";
+
+            int idIssue = 2;
+            string summary = "This is a test issue";
+            string description = "This is a test description";
+
+            #endregion
+
+            #region Acoes
+            GetIssuesAssignedToMeRequest getIssuesAssignedToMeRequest = new GetIssuesAssignedToMeRequest();
+            IRestResponse<dynamic> response = getIssuesAssignedToMeRequest.ExecuteRequest();
+            #endregion
+
+            #region Asserts
+            int idResposta = response.Data["issues"][0]["id"];
+            string summaryResposta = response.Data["issues"][0]["summary"];
+            string descriptionResposta = response.Data["issues"][0]["description"];
+
+            Assert.Multiple(() =>
+            {
+                Assert.AreEqual(statusEsperado, response.StatusCode.ToString());
+                Assert.AreEqual(idIssue, idResposta);
+                Assert.AreEqual(summary, summaryResposta);
+                Assert.AreEqual(description, descriptionResposta);
+            });
+
+            #endregion
+        }
+
+        //==========================================================
+        [Test]
         public void Test_CadastrarProblemaMinimoInformacoesComSucesso()
         {
             #region Parameters
