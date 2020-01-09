@@ -179,6 +179,107 @@ namespace DesafioAutomacaoApiRest.Tests.Issues
             #endregion
         }
 
+        [Test]
+        public void Test_ObterInformacoesDeProblemasReportadosPorMimComSucesso()
+        {
+            #region Parameters
+            string statusEsperado = "OK";
+
+            int idIssue = 2;
+            string summary = "This is a test issue";
+            string description = "This is a test description";
+
+            #endregion
+
+            #region Acoes
+            GetIssuesReportedByMeRequest getIssuesReportedByMeRequest = new GetIssuesReportedByMeRequest();
+            IRestResponse<dynamic> response = getIssuesReportedByMeRequest.ExecuteRequest();
+            #endregion
+
+            #region Asserts
+            int idResposta = response.Data["issues"][0]["id"];
+            string summaryResposta = response.Data["issues"][0]["summary"];
+            string descriptionResposta = response.Data["issues"][0]["description"];
+
+            Assert.Multiple(() =>
+            {
+                Assert.AreEqual(statusEsperado, response.StatusCode.ToString());
+                Assert.AreEqual(idIssue, idResposta);
+                Assert.AreEqual(summary, summaryResposta);
+                Assert.AreEqual(description, descriptionResposta);
+            });
+
+            #endregion
+        }
+
+        [Test]
+        public void Test_ObterInformacoesDeProblemasMonitoradosPorMimComSucesso()
+        {
+            #region Parameters
+            string statusEsperado = "OK";
+
+            int idIssue = 2;
+            string summary = "This is a test issue";
+            string description = "This is a test description";
+
+            #endregion
+
+            #region Acoes
+            GetIssuesMonitoredByMeRequest getIssuesMonitoredByMeRequest = new GetIssuesMonitoredByMeRequest();
+            IRestResponse<dynamic> response = getIssuesMonitoredByMeRequest.ExecuteRequest();
+            #endregion
+
+            #region Asserts
+            int idResposta = response.Data["issues"][0]["id"];
+            string summaryResposta = response.Data["issues"][0]["summary"];
+            string descriptionResposta = response.Data["issues"][0]["description"];
+
+            Assert.Multiple(() =>
+            {
+                Assert.AreEqual(statusEsperado, response.StatusCode.ToString());
+                Assert.AreEqual(idIssue, idResposta);
+                Assert.AreEqual(summary, summaryResposta);
+                Assert.AreEqual(description, descriptionResposta);
+            });
+
+            #endregion
+        }
+
+        [Test]
+        public void Test_ObterInformacoesDeProblemasNaoAtribuidosComSucesso()
+        {
+            #region Parameters
+            string statusEsperado = "OK";
+
+            int idIssue = 1;
+            string summary = "Descrição simples";
+            string description = "Descrição detalhada ssss";
+
+            #endregion
+
+            #region Acoes
+            GetUnassignedIssuesRequest getUnassignedIssuesRequest = new GetUnassignedIssuesRequest();
+            IRestResponse<dynamic> response = getUnassignedIssuesRequest.ExecuteRequest();
+            #endregion
+
+            #region Asserts
+            int idResposta = response.Data["issues"][0]["id"];
+            string summaryResposta = response.Data["issues"][0]["summary"];
+            string descriptionResposta = response.Data["issues"][0]["description"];
+
+            Assert.Multiple(() =>
+            {
+                Assert.AreEqual(statusEsperado, response.StatusCode.ToString());
+                Assert.AreEqual(idIssue, idResposta);
+                Assert.AreEqual(summary, summaryResposta);
+                Assert.AreEqual(description, descriptionResposta);
+            });
+
+            #endregion
+        }
+
+
+
         //==========================================================
         [Test]
         public void Test_CadastrarProblemaMinimoInformacoesComSucesso()
