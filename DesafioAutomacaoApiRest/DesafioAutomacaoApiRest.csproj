@@ -122,6 +122,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Requests\Issues\CreateAnIssueRequest.cs" />
+    <Compile Include="Requests\Issues\DeleteAnIssueRequest.cs" />
     <Compile Include="Requests\Issues\GetAllIssuesRequest.cs" />
     <Compile Include="Requests\Issues\GetAnIssueRequest.cs" />
     <Compile Include="Requests\Issues\GetIssuesAssignedToMeRequest.cs" />

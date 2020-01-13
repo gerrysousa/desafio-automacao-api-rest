@@ -439,5 +439,28 @@ namespace DesafioAutomacaoApiRest.Tests.Issues
             #endregion
         }
 
+
+        //=============================================================
+        [Test]
+        public void Test_DeletarUmProblemaComSucesso()
+        {
+            #region Parameters
+            string statusEsperado = "NoContent";//204 No Content
+            int idIssue = 15;
+
+            #endregion
+
+            #region Acoes
+            DeleteAnIssueRequest deleteAnIssueRequest = new DeleteAnIssueRequest(idIssue);
+            IRestResponse<dynamic> response = deleteAnIssueRequest.ExecuteRequest();
+            #endregion
+
+            #region Asserts
+           
+            Assert.AreEqual(statusEsperado, response.StatusCode.ToString());
+
+            #endregion
+        }
+
     }
 }
