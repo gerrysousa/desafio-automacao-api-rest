@@ -132,6 +132,7 @@
     <Compile Include="Requests\Issues\GetIssuesReportedByMeRequest.cs" />
     <Compile Include="Requests\Issues\GetUnassignedIssuesRequest.cs" />
     <Compile Include="Requests\Projects\CreateAProjectRequest.cs" />
+    <Compile Include="Requests\Projects\GetAProjectRequest.cs" />
     <Compile Include="Requests\Users\CreateAUserRequest.cs" />
     <Compile Include="Requests\Users\DeleteAUserRequest.cs" />
     <Compile Include="Requests\Users\GetMyUserInfoRequest.cs" />

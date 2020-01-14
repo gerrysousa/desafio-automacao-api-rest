@@ -7,17 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DesafioAutomacaoApiRest.Requests.Issues
+
+namespace DesafioAutomacaoApiRest.Requests.Projects
 {
-    class GetAnIssueRequest : RequestBase
+    class GetAProjectRequest : RequestBase
     {
-        public GetAnIssueRequest(int idIssue)
+        public GetAProjectRequest(int idProject)
         {
-            requestService = "/api/rest/issues/{issue_id}";
+            requestService = "/api/rest/projects/{project_id}";
             method = Method.GET;
 
             headers.Add("Authorization", Global.token);
-            parameters.Add("issue_id", idIssue.ToString());
+            parameters.Add("project_id", idProject.ToString());
         }
     }
 }

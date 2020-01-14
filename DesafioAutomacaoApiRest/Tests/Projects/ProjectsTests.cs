@@ -142,5 +142,37 @@ namespace DesafioAutomacaoApiRest.Tests.Projects
 
             #endregion
         }
+
+        [Test]
+        public void Test_ObterUmProjetoComSucesso()
+        {
+            #region Parameters
+            string statusEsperado = "OK";
+            int idIssue = 1;
+            string projectName = "Projeto 01";
+            string description = "Descriptions";
+
+            #endregion
+
+            #region Acoes
+            GetAProjectRequest getAProjectRequest = new GetAProjectRequest(idIssue);
+            IRestResponse<dynamic> response = getAProjectRequest.ExecuteRequest();
+            #endregion
+
+            #region Asserts
+            int idResposta = response.Data["projects"][0]["id"];
+            string nomeResposta = response.Data["projects"][0]["name"];
+            string descriptionResposta = response.Data["projects"][0]["description"];
+
+            Assert.Multiple(() =>
+            {
+                Assert.AreEqual(statusEsperado, response.StatusCode.ToString());
+                Assert.AreEqual(idIssue, idResposta);
+                Assert.AreEqual(projectName, nomeResposta);
+                Assert.AreEqual(description, descriptionResposta);
+            });
+
+            #endregion
+        }
     }
 }
