@@ -225,8 +225,6 @@ namespace DesafioAutomacaoApiRest.Tests.Projects
         public void Test_AtualizarUmProjetoComSucesso()
         {
             #region Parameters
-            
-
             Project project = new Project();
             Status status = new Status();
             ViewState viewState = new ViewState();
@@ -254,14 +252,36 @@ namespace DesafioAutomacaoApiRest.Tests.Projects
 
             #region Asserts
 
-            
+
             Assert.Multiple(() =>
             {
                 Assert.AreEqual(statusEsperado, response.StatusCode.ToString());
                 Assert.AreEqual(projectName, response.Data.project.name.ToString());
-               // Assert.AreEqual(projectDescription, response.Data.project.description.ToString());
+                // Assert.AreEqual(projectDescription, response.Data.project.description.ToString());
                 //Etc
             });
+
+            #endregion
+        }
+
+        [Test]
+        public void Test_DeletarUmProjetoComSucesso()
+        {
+            #region Parameters
+            string statusEsperado = "Forbidden";
+            int idProject = 5;
+
+
+            #endregion
+
+            #region Acoes
+            DeleteAProjectRequest deleteAProjectRequest = new DeleteAProjectRequest(idProject);
+            IRestResponse<dynamic> response = deleteAProjectRequest.ExecuteRequest();
+            #endregion
+
+            #region Asserts
+
+            Assert.AreEqual(statusEsperado, response.StatusCode.ToString());
 
             #endregion
         }
