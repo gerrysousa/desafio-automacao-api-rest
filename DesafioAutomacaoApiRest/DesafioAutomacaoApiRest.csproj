@@ -113,6 +113,7 @@
     <Compile Include="Pages\Project.cs" />
     <Compile Include="Pages\Reproducibility.cs" />
     <Compile Include="Pages\Severity.cs" />
+    <Compile Include="Pages\Status.cs" />
     <Compile Include="Pages\Tag.cs" />
     <Compile Include="Pages\ViewState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -130,12 +131,14 @@
     <Compile Include="Requests\Issues\GetIssuesMonitoredByMeRequest.cs" />
     <Compile Include="Requests\Issues\GetIssuesReportedByMeRequest.cs" />
     <Compile Include="Requests\Issues\GetUnassignedIssuesRequest.cs" />
+    <Compile Include="Requests\Projects\CreateAProjectRequest.cs" />
     <Compile Include="Requests\Users\CreateAUserRequest.cs" />
     <Compile Include="Requests\Users\DeleteAUserRequest.cs" />
     <Compile Include="Requests\Users\GetMyUserInfoRequest.cs" />
     <Compile Include="Pages\User.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="Tests\Issues\IssuesTests.cs" />
+    <Compile Include="Tests\Projects\ProjectsTests.cs" />
     <Compile Include="Tests\Users\UsersTests.cs" />
   </ItemGroup>
   <ItemGroup>

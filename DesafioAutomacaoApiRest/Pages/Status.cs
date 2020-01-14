@@ -6,14 +6,10 @@ using System.Threading.Tasks;
 
 namespace DesafioAutomacaoApiRest.Pages
 {
-    class Project
+    class Status
     {
         public int id { get; set; }
         public string name { get; set; }
-        public Status status { get; set; }
-        public string description { get; set; }
-        public bool enabled { get; set; }
-        public string file_path { get; set; }
-        public ViewState view_state { get; set; }
+        public string label { get; set; }
     }
 }
