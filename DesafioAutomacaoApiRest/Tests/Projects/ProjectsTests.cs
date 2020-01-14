@@ -220,5 +220,50 @@ namespace DesafioAutomacaoApiRest.Tests.Projects
 
             #endregion
         }
+
+        [Test]
+        public void Test_AtualizarUmProjetoComSucesso()
+        {
+            #region Parameters
+            
+
+            Project project = new Project();
+            Status status = new Status();
+            ViewState viewState = new ViewState();
+
+            string statusEsperado = "OK";//200 Project with id 2 Updated
+
+            int projectId = 2;
+            string projectName = "Projeto update 2";
+            bool projectEnabled = false;
+
+            #endregion
+
+            #region Acoes
+
+            //montando body
+            project.id = projectId;
+            project.name = projectName;
+            project.enabled = projectEnabled;
+
+            UpdateAProjectRequest updateAProjectRequest = new UpdateAProjectRequest(projectId);
+            updateAProjectRequest.SetJsonBody(project);
+
+            IRestResponse<dynamic> response = updateAProjectRequest.ExecuteRequest();
+            #endregion
+
+            #region Asserts
+
+            
+            Assert.Multiple(() =>
+            {
+                Assert.AreEqual(statusEsperado, response.StatusCode.ToString());
+                Assert.AreEqual(projectName, response.Data.project.name.ToString());
+               // Assert.AreEqual(projectDescription, response.Data.project.description.ToString());
+                //Etc
+            });
+
+            #endregion
+        }
     }
 }
