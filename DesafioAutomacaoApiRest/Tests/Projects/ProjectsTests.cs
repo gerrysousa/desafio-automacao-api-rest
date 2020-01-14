@@ -174,5 +174,51 @@ namespace DesafioAutomacaoApiRest.Tests.Projects
 
             #endregion
         }
+
+        [Test]
+        public void Test_ObterTodosOsProjetosComSucesso()
+        {
+            #region Parameters
+            string statusEsperado = "OK";
+
+            int idIssue = 1;
+            string projectName = "Projeto 01";
+            string description = "Descriptions";
+
+            int idIssue2 = 3;
+            string projectName2 = "Projeto test api 01";
+            string description2 = "Mantis.  Report problems with the actual bug tracker here. (Do not remove this account)";
+
+            #endregion
+
+            #region Acoes
+            GetAllProjectsRequest getAllProjectsRequest = new GetAllProjectsRequest();
+            IRestResponse<dynamic> response = getAllProjectsRequest.ExecuteRequest();
+            #endregion
+
+            #region Asserts
+            int idResposta = response.Data["projects"][0]["id"];
+            string nomeResposta = response.Data["projects"][0]["name"];
+            string descriptionResposta = response.Data["projects"][0]["description"];
+
+            int idResposta2 = response.Data["projects"][1]["id"];
+            string nomeResposta2 = response.Data["projects"][1]["name"];
+            string descriptionResposta2 = response.Data["projects"][1]["description"];
+
+
+            Assert.Multiple(() =>
+            {
+                Assert.AreEqual(statusEsperado, response.StatusCode.ToString());
+                Assert.AreEqual(idIssue, idResposta);
+                Assert.AreEqual(projectName, nomeResposta);
+                Assert.AreEqual(description, descriptionResposta);
+
+                Assert.AreEqual(idIssue2, idResposta2);
+                Assert.AreEqual(projectName2, nomeResposta2);
+                Assert.AreEqual(description2, descriptionResposta2);
+            });
+
+            #endregion
+        }
     }
 }
