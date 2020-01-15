@@ -268,7 +268,7 @@ namespace DesafioAutomacaoApiRest.Tests.Projects
         public void Test_DeletarUmProjetoComSucesso()
         {
             #region Parameters
-            string statusEsperado = "Forbidden";
+            string statusEsperado = "OK"; //Forbidden
             int idProject = 5;
 
 
@@ -283,6 +283,52 @@ namespace DesafioAutomacaoApiRest.Tests.Projects
 
             Assert.AreEqual(statusEsperado, response.StatusCode.ToString());
 
+            #endregion
+        }
+
+        [Test]
+        public void Test_CadastrarUmSubProjetoComSucesso()
+        {
+            #region Parameters
+
+            Project project = new Project();
+            SubProject subProject = new SubProject();
+
+            string statusEsperado = "NoContent";//201  204Subproject '6' added to project '1'
+
+            int projectId = 1;
+            string projectName = "_new4";
+            bool inheritParent = true;
+
+            #region json format
+            /*
+             {
+	            "project": {
+		            "name": "SubProject1"
+	            },
+	            "inherit_parent": true
+            }
+             */
+            #endregion
+
+            #endregion
+
+            #region Acoes
+            AddASubProjectRequest addASubProjectRequest = new AddASubProjectRequest(projectId);
+            project.name = projectName;
+
+            //montando body
+            subProject.project = project;
+            subProject.inherit_parent = inheritParent;
+
+            addASubProjectRequest.SetJsonBody(subProject);
+            IRestResponse<dynamic> response = addASubProjectRequest.ExecuteRequest();
+            #endregion
+
+            #region Asserts
+                        
+            Assert.AreEqual(statusEsperado, response.StatusCode.ToString());
+            
             #endregion
         }
     }

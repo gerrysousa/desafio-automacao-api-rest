@@ -114,6 +114,7 @@
     <Compile Include="Pages\Reproducibility.cs" />
     <Compile Include="Pages\Severity.cs" />
     <Compile Include="Pages\Status.cs" />
+    <Compile Include="Pages\SubProject.cs" />
     <Compile Include="Pages\Tag.cs" />
     <Compile Include="Pages\ViewState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -131,6 +132,7 @@
     <Compile Include="Requests\Issues\GetIssuesMonitoredByMeRequest.cs" />
     <Compile Include="Requests\Issues\GetIssuesReportedByMeRequest.cs" />
     <Compile Include="Requests\Issues\GetUnassignedIssuesRequest.cs" />
+    <Compile Include="Requests\Projects\AddASubProjectRequest.cs" />
     <Compile Include="Requests\Projects\CreateAProjectRequest.cs" />
     <Compile Include="Requests\Projects\DeleteAProjectRequest.cs" />
     <Compile Include="Requests\Projects\GetAllProjectsRequest.cs" />
