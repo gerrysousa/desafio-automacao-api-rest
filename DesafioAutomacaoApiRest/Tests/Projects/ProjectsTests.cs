@@ -331,5 +331,46 @@ namespace DesafioAutomacaoApiRest.Tests.Projects
             
             #endregion
         }
+
+        [Test]
+        public void Test_AtualizarUmSubProjetoComSucesso()
+        {
+            #region Parameters
+            Project project = new Project();
+            Status status = new Status();
+            ViewState viewState = new ViewState();
+            SubProject subProject = new SubProject();
+
+            string statusEsperado = "NoContent";//204Subproject '8' updated
+
+            int projectId = 1;
+            int subProjectId = 8;
+            string projectName = "Sub Projeto update 2";
+            bool inheritParent = true;
+
+            #endregion
+
+            #region Acoes
+
+            //montando body
+            project.name = projectName;
+            project.id = projectId;
+
+            subProject.project = project;
+            subProject.inherit_parent = inheritParent;
+                        
+            UpdateASubProjectRequest updateASubProjectRequest = new UpdateASubProjectRequest(projectId, subProjectId);
+            updateASubProjectRequest.SetJsonBody(subProject);
+
+            IRestResponse<dynamic> response = updateASubProjectRequest.ExecuteRequest();
+            #endregion
+
+            #region Asserts
+
+            Assert.AreEqual(statusEsperado, response.StatusCode.ToString());
+
+
+            #endregion
+        }
     }
 }
