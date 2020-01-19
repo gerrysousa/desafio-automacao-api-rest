@@ -124,6 +124,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Requests\Config\GetConfigurationOptionRequest.cs" />
     <Compile Include="Requests\Issues\CreateAnIssueRequest.cs" />
     <Compile Include="Requests\Issues\DeleteAnIssueRequest.cs" />
     <Compile Include="Requests\Issues\GetAllIssuesRequest.cs" />
@@ -146,6 +147,7 @@
     <Compile Include="Requests\Users\GetMyUserInfoRequest.cs" />
     <Compile Include="Pages\User.cs" />
     <Compile Include="Settings.cs" />
+    <Compile Include="Tests\Configs\ConfigsTests.cs" />
     <Compile Include="Tests\Issues\IssuesTests.cs" />
     <Compile Include="Tests\Projects\ProjectsTests.cs" />
     <Compile Include="Tests\Users\UsersTests.cs" />
