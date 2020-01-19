@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Version = DesafioAutomacaoApiRest.Pages.Version;
 
 namespace DesafioAutomacaoApiRest.Tests.Projects
 {
@@ -369,6 +370,62 @@ namespace DesafioAutomacaoApiRest.Tests.Projects
 
             Assert.AreEqual(statusEsperado, response.StatusCode.ToString());
 
+
+            #endregion
+        }
+
+        [Test]
+        public void Test_DeletarUmSubProjetoComSucesso()
+        {
+            #region Parameters
+            string statusEsperado = "OK"; //Forbidden
+            int idProject = 5;
+
+
+            #endregion
+
+            #region Acoes
+            DeleteAProjectRequest deleteAProjectRequest = new DeleteAProjectRequest(idProject);
+            IRestResponse<dynamic> response = deleteAProjectRequest.ExecuteRequest();
+            #endregion
+
+            #region Asserts
+
+            Assert.AreEqual(statusEsperado, response.StatusCode.ToString());
+
+            #endregion
+        }
+
+        [Test]
+        public void Test_CadastrarUmaVersaoComSucesso()
+        {
+            #region Parameters
+
+            Version version = new Version();
+
+            string statusEsperado = "NoContent";
+
+            int idProject = 2;
+            string versionName = "v1.0.1";
+            bool versionReleased = true;
+            bool versionObsolete = true;
+            #endregion
+
+            #region Acoes
+            AddVersionRequest addVersionRequest = new AddVersionRequest(idProject);
+
+            //montando body
+            version.name = versionName;
+            version.released = versionReleased;
+            version.obsolete = versionObsolete;
+
+            addVersionRequest.SetJsonBody(version);
+            IRestResponse<dynamic> response = addVersionRequest.ExecuteRequest();
+            #endregion
+
+            #region Asserts
+
+            Assert.AreEqual(statusEsperado, response.StatusCode.ToString());
 
             #endregion
         }
