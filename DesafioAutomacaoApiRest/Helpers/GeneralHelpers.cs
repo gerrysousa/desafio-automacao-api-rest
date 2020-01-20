@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -110,6 +111,21 @@ namespace DesafioAutomacaoApiRest.Helpers
             StackFrame sf = st.GetFrame(level);
             return sf.GetMethod().Name;
         }
+
+        public static IEnumerable ReturnCSVData(string csvPath)
+        {
+            using (StreamReader sr = new StreamReader(csvPath, System.Text.Encoding.GetEncoding(1252)))
+            {
+                string line;
+                while ((line = sr.ReadLine()) != null)
+                {
+                    ArrayList result = new ArrayList();
+                    result.AddRange(line.Split(';'));
+                    yield return result;
+                }
+            }
+        }
+
     }
 
     static class Extensions

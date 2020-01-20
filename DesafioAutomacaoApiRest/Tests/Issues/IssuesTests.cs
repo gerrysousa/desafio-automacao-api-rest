@@ -16,6 +16,24 @@ namespace DesafioAutomacaoApiRest.Tests.Issues
 {
     class IssuesTestsTestBase : TestBase
     {
+        #region Objects
+        Issue issue = new Issue();
+        Category category = new Category();
+        Project project = new Project();
+        Handler handler = new Handler();
+        ViewState viewState = new ViewState();
+        Priority priority = new Priority();
+        Severity severity = new Severity();
+        Reproducibility reproducibility = new Reproducibility();
+        List<CustomField> customFields = new List<CustomField>();
+        List<Tag> tags = new List<Tag>();
+        Tag tag = new Tag();
+        CustomField customField = new CustomField();
+        Field field = new Field();
+
+        #endregion
+
+
         [Test]
         public void Test_ObterInformacoesDeUmProblemaComSucesso()
         {
@@ -24,10 +42,6 @@ namespace DesafioAutomacaoApiRest.Tests.Issues
             int idIssue = 1;
             string summary = "Descrição simples";
             string description = "Descrição detalhada ssss";
-
-            //    "issues": [
-            //{
-
 
             #endregion
 
@@ -333,19 +347,6 @@ namespace DesafioAutomacaoApiRest.Tests.Issues
         {
             #region Parameters
             CreateAnIssueRequest createAnIssueRequest = new CreateAnIssueRequest();
-            Issue issue = new Issue();
-            Category category = new Category();
-            Project project = new Project();
-            Handler handler = new Handler();
-            ViewState viewState = new ViewState();
-            Priority priority = new Priority();
-            Severity severity = new Severity();
-            Reproducibility reproducibility = new Reproducibility();
-            List<CustomField> customFields = new List<CustomField>();
-            List<Tag> tags = new List<Tag>();
-            Tag tag = new Tag();
-            CustomField customField = new CustomField();
-            Field field = new Field();
 
             string statusEsperado = "Created";//201
 

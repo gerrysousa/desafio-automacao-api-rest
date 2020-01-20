@@ -148,6 +148,7 @@
     <Compile Include="Pages\User.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="Tests\Configs\ConfigsTests.cs" />
+    <Compile Include="Tests\DDT\DataDrivenTests.cs" />
     <Compile Include="Tests\Issues\IssuesTests.cs" />
     <Compile Include="Tests\Projects\ProjectsTests.cs" />
     <Compile Include="Tests\Users\UsersTests.cs" />
@@ -160,7 +161,9 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Resources\TestData\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="Queries\atualizaDataDoItemSolicitacaoParaAgora.sql" />
   </ItemGroup>

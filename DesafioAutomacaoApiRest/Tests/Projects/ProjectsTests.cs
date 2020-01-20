@@ -17,6 +17,17 @@ namespace DesafioAutomacaoApiRest.Tests.Projects
 {
     class ProjectsTests : TestBase
     {
+        #region Objects
+        Project project = new Project();
+        Status status = new Status();
+        ViewState viewState = new ViewState();
+        SubProject subProject = new SubProject();
+        Version version = new Version();
+
+
+        #endregion
+
+
         [Test]
         public void Test_CadastrarUmProjetoComSucesso()
         {
@@ -206,7 +217,6 @@ namespace DesafioAutomacaoApiRest.Tests.Projects
             string nomeResposta2 = response.Data["projects"][1]["name"];
             string descriptionResposta2 = response.Data["projects"][1]["description"];
 
-
             Assert.Multiple(() =>
             {
                 Assert.AreEqual(statusEsperado, response.StatusCode.ToString());
@@ -218,7 +228,6 @@ namespace DesafioAutomacaoApiRest.Tests.Projects
                 Assert.AreEqual(projectName2, nomeResposta2);
                 Assert.AreEqual(description2, descriptionResposta2);
             });
-
             #endregion
         }
 
@@ -226,10 +235,6 @@ namespace DesafioAutomacaoApiRest.Tests.Projects
         public void Test_AtualizarUmProjetoComSucesso()
         {
             #region Parameters
-            Project project = new Project();
-            Status status = new Status();
-            ViewState viewState = new ViewState();
-
             string statusEsperado = "OK";//200 Project with id 2 Updated
 
             int projectId = 2;
@@ -272,7 +277,6 @@ namespace DesafioAutomacaoApiRest.Tests.Projects
             string statusEsperado = "OK"; //Forbidden
             int idProject = 5;
 
-
             #endregion
 
             #region Acoes
@@ -291,27 +295,11 @@ namespace DesafioAutomacaoApiRest.Tests.Projects
         public void Test_CadastrarUmSubProjetoComSucesso()
         {
             #region Parameters
-
-            Project project = new Project();
-            SubProject subProject = new SubProject();
-
             string statusEsperado = "NoContent";//201  204Subproject '6' added to project '1'
 
             int projectId = 1;
             string projectName = "_new4";
             bool inheritParent = true;
-
-            #region json format
-            /*
-             {
-	            "project": {
-		            "name": "SubProject1"
-	            },
-	            "inherit_parent": true
-            }
-             */
-            #endregion
-
             #endregion
 
             #region Acoes
@@ -327,9 +315,9 @@ namespace DesafioAutomacaoApiRest.Tests.Projects
             #endregion
 
             #region Asserts
-                        
+
             Assert.AreEqual(statusEsperado, response.StatusCode.ToString());
-            
+
             #endregion
         }
 
@@ -337,12 +325,7 @@ namespace DesafioAutomacaoApiRest.Tests.Projects
         public void Test_AtualizarUmSubProjetoComSucesso()
         {
             #region Parameters
-            Project project = new Project();
-            Status status = new Status();
-            ViewState viewState = new ViewState();
-            SubProject subProject = new SubProject();
-
-            string statusEsperado = "NoContent";//204Subproject '8' updated
+           string statusEsperado = "NoContent";//204Subproject '8' updated
 
             int projectId = 1;
             int subProjectId = 8;
@@ -381,7 +364,6 @@ namespace DesafioAutomacaoApiRest.Tests.Projects
             string statusEsperado = "OK"; //Forbidden
             int idProject = 5;
 
-
             #endregion
 
             #region Acoes
@@ -400,9 +382,6 @@ namespace DesafioAutomacaoApiRest.Tests.Projects
         public void Test_CadastrarUmaVersaoComSucesso()
         {
             #region Parameters
-
-            Version version = new Version();
-
             string statusEsperado = "NoContent";
 
             int idProject = 2;
