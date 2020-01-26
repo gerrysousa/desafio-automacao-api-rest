@@ -36,7 +36,7 @@ namespace DesafioAutomacaoApiRest.Tests.DBTests
 
 
         [Test]
-        public void Test_ObterUmProjetoComSucesso()
+        public void Test_ObterUmProjetoAposResetECargaDoBDComSucesso()
         {
             #region Parameters
             string statusEsperado = "OK";

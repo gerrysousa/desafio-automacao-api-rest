@@ -126,6 +126,7 @@
     <Compile Include="Helpers\GeneralHelpers.cs" />
     <Compile Include="Helpers\JsonDeserializer.cs" />
     <Compile Include="Helpers\JsonSerializer.cs" />
+    <Compile Include="Helpers\RegexHelpers.cs" />
     <Compile Include="Helpers\RestSharpHelpers.cs" />
     <Compile Include="Pages\AccessLevel.cs" />
     <Compile Include="Pages\Category.cs" />
@@ -176,6 +177,7 @@
     <Compile Include="Tests\DDT\DataDrivenTests.cs" />
     <Compile Include="Tests\Issues\IssuesTests.cs" />
     <Compile Include="Tests\Projects\ProjectsTests.cs" />
+    <Compile Include="Tests\Regex\ValidRegexTests.cs" />
     <Compile Include="Tests\Users\UsersTests.cs" />
   </ItemGroup>
   <ItemGroup>
