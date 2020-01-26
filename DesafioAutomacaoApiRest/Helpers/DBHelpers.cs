@@ -1,30 +1,33 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
+//using System.Data.SqlClient;
+using MySql.Data.MySqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.SqlClient;
+//using System.Diagnostics;
 
 namespace DesafioAutomacaoApiRest.Helpers
 {
     public class DBHelpers
     {
-        private static SqlConnection GetDBConnection()
+        private static MySqlConnection GetDBConnection()
         {
-            string connectionString = "Data Source=" + Properties.Settings.Default.DB_URL + ";" +
-                                      "Initial Catalog=" + Properties.Settings.Default.DB_NAME + ";" +
-                                      "User ID=" + Properties.Settings.Default.DB_USER + "; " +
-                                      "Password=" + Properties.Settings.Default.DB_PASSWORD + ";";
+            string connectionString = "server="     + Properties.Settings.Default.DB_SERVER + ";" +
+                                      "database="   + Properties.Settings.Default.DB_NAME + ";" +
+                                      "uid="        + Properties.Settings.Default.DB_USER + ";" +
+                                      "pwd="        + Properties.Settings.Default.DB_PASSWORD + ";";
 
-            SqlConnection connection = new SqlConnection(connectionString);
+            MySqlConnection connection = new MySqlConnection(connectionString);
 
             return connection;
         }
 
         public static void ExecuteQuery(string query)
         {
-            using (SqlCommand cmd = new SqlCommand(query, GetDBConnection()))
+            using (MySqlCommand cmd = new MySqlCommand(query, GetDBConnection()))
             {
                 cmd.CommandTimeout = Int32.Parse(Properties.Settings.Default.DB_CONNECTION_TIMEOUT);
                 cmd.Connection.Open();
@@ -38,7 +41,7 @@ namespace DesafioAutomacaoApiRest.Helpers
             DataSet ds = new DataSet();
             List<string> lista = new List<string>();
 
-            using (SqlCommand cmd = new SqlCommand(query, GetDBConnection()))
+            using (MySqlCommand cmd = new MySqlCommand(query, GetDBConnection()))
             {
                 cmd.CommandTimeout = Int32.Parse(Properties.Settings.Default.DB_CONNECTION_TIMEOUT);
                 cmd.Connection.Open();
@@ -71,6 +74,18 @@ namespace DesafioAutomacaoApiRest.Helpers
             }
 
             return lista;
+        }
+
+        public static void ResetBD()
+        {
+            try
+            {
+                System.Diagnostics.Process.Start("c:\\mantis\\resetBD.bat");
+            }
+            catch (Exception ex)
+            {
+                
+            }
         }
     }
 }

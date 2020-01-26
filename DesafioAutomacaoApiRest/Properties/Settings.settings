@@ -9,22 +9,22 @@
       <Value Profile="(Default)">http://192.168.99.100:8989</Value>
     </Setting>
     <Setting Name="TOKEN" Type="System.String" Scope="User">
-      <Value Profile="(Default)">ilB6lN6t1ziuz3MDMG7TnLtVIqF9uk9G</Value>
+      <Value Profile="(Default)">62gHUwBfmIrh2IAMpEvv13u_u4HEpKIU</Value>
     </Setting>
     <Setting Name="REPORT_SUBSTRING_LENGTH" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">29</Value>
     </Setting>
-    <Setting Name="DB_URL" Type="System.String" Scope="User">
-      <Value Profile="(Default)">solsrvtstsql.database.windows.net</Value>
+    <Setting Name="DB_SERVER" Type="System.String" Scope="User">
+      <Value Profile="(Default)">192.168.99.100</Value>
     </Setting>
     <Setting Name="DB_NAME" Type="System.String" Scope="User">
-      <Value Profile="(Default)">cresqltst</Value>
+      <Value Profile="(Default)">bugtracker</Value>
     </Setting>
     <Setting Name="DB_USER" Type="System.String" Scope="User">
-      <Value Profile="(Default)">solusrbs2rd</Value>
+      <Value Profile="(Default)">root</Value>
     </Setting>
     <Setting Name="DB_PASSWORD" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Oof6qHZgRktDl3VP04ZX</Value>
+      <Value Profile="(Default)">root</Value>
     </Setting>
     <Setting Name="DB_CONNECTION_TIMEOUT" Type="System.String" Scope="User">
       <Value Profile="(Default)">30</Value>
@@ -34,6 +34,9 @@
     </Setting>
     <Setting Name="AUTHENTICATOR_PASSWORD" Type="System.String" Scope="User">
       <Value Profile="(Default)">senhaAuthentication</Value>
+    </Setting>
+    <Setting Name="DB_PORT" Type="System.String" Scope="User">
+      <Value Profile="(Default)">3306</Value>
     </Setting>
   </Settings>
 </SettingsFile>

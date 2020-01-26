@@ -116,6 +116,7 @@ namespace DesafioAutomacaoApiRest.Helpers
         {
             using (StreamReader sr = new StreamReader(csvPath, System.Text.Encoding.GetEncoding(1252)))
             {
+                string headerLine = sr.ReadLine();
                 string line;
                 while ((line = sr.ReadLine()) != null)
                 {

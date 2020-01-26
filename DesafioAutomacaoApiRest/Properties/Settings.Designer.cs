@@ -49,7 +49,7 @@ namespace DesafioAutomacaoApiRest.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("ilB6lN6t1ziuz3MDMG7TnLtVIqF9uk9G")]
+        [global::System.Configuration.DefaultSettingValueAttribute("62gHUwBfmIrh2IAMpEvv13u_u4HEpKIU")]
         public string TOKEN {
             get {
                 return ((string)(this["TOKEN"]));
@@ -73,19 +73,19 @@ namespace DesafioAutomacaoApiRest.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("solsrvtstsql.database.windows.net")]
-        public string DB_URL {
+        [global::System.Configuration.DefaultSettingValueAttribute("192.168.99.100")]
+        public string DB_SERVER {
             get {
-                return ((string)(this["DB_URL"]));
+                return ((string)(this["DB_SERVER"]));
             }
             set {
-                this["DB_URL"] = value;
+                this["DB_SERVER"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("cresqltst")]
+        [global::System.Configuration.DefaultSettingValueAttribute("bugtracker")]
         public string DB_NAME {
             get {
                 return ((string)(this["DB_NAME"]));
@@ -97,7 +97,7 @@ namespace DesafioAutomacaoApiRest.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("solusrbs2rd")]
+        [global::System.Configuration.DefaultSettingValueAttribute("root")]
         public string DB_USER {
             get {
                 return ((string)(this["DB_USER"]));
@@ -109,7 +109,7 @@ namespace DesafioAutomacaoApiRest.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Oof6qHZgRktDl3VP04ZX")]
+        [global::System.Configuration.DefaultSettingValueAttribute("root")]
         public string DB_PASSWORD {
             get {
                 return ((string)(this["DB_PASSWORD"]));
@@ -152,6 +152,18 @@ namespace DesafioAutomacaoApiRest.Properties {
             }
             set {
                 this["AUTHENTICATOR_PASSWORD"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("3306")]
+        public string DB_PORT {
+            get {
+                return ((string)(this["DB_PORT"]));
+            }
+            set {
+                this["DB_PORT"] = value;
             }
         }
     }
