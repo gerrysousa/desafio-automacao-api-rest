@@ -178,6 +178,7 @@
     <Compile Include="Tests\Issues\IssuesTests.cs" />
     <Compile Include="Tests\Projects\ProjectsTests.cs" />
     <Compile Include="Tests\Regex\ValidRegexTests.cs" />
+    <Compile Include="Tests\TestesComNodeScript\ScriptNodeTests.cs" />
     <Compile Include="Tests\Users\UsersTests.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -127,6 +127,28 @@ namespace DesafioAutomacaoApiRest.Helpers
             }
         }
 
+        public static string RetornaDataStringExecutarComandoNodeJS()
+        {
+            string resultado;
+            string argument = @"C:\workspace\desafio-automacao-api-rest\DesafioAutomacaoApiRest\Resources\ScriptTest.js";
+            ProcessStartInfo start = new ProcessStartInfo();
+            start.FileName = @"C:\Program Files\nodejs\node.exe";
+            start.Arguments = argument;
+            start.UseShellExecute = false;
+            start.RedirectStandardOutput = true;
+            using (Process process = Process.Start(start))
+            {
+                using (StreamReader reader = process.StandardOutput)
+                {
+                    string result = reader.ReadToEnd();
+                    resultado = result.Remove(14);
+                    Console.Write(result);
+                }
+            }
+
+            return resultado;
+        }
+
     }
 
     static class Extensions
