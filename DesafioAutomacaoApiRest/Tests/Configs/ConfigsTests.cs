@@ -10,6 +10,7 @@ using DesafioAutomacaoApiRest.Requests.Config;
 
 namespace DesafioAutomacaoApiRest.Tests.Configs
 {
+    [Parallelizable(ParallelScope.All)]
     class ConfigsTests : TestBase
     {
         [Test]

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+[assembly: LevelOfParallelism(2)]
 namespace DesafioAutomacaoApiRest.Bases
 {
     public class TestBase

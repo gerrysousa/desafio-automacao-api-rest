@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 
 namespace DesafioAutomacaoApiRest.Tests.Issues
 {
+    [Parallelizable(ParallelScope.All)]
     class IssuesTestsTestBase : TestBase
     {
         #region Objects

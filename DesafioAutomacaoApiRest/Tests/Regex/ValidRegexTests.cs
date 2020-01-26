@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 
 namespace DesafioAutomacaoApiRest.Tests.Regex
 {
+    [Parallelizable(ParallelScope.All)]
     class ValidRegexTests : TestBase
     {
         [Test]

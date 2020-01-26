@@ -15,6 +15,7 @@ using Version = DesafioAutomacaoApiRest.Pages.Version;
 
 namespace DesafioAutomacaoApiRest.Tests.Projects
 {
+    [Parallelizable(ParallelScope.All)]
     class ProjectsTests : TestBase
     {
         #region Objects

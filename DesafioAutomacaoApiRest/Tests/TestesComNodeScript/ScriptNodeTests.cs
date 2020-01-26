@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 
 namespace DesafioAutomacaoApiRest.Tests.TestesComNodeScript
 {
+    [Parallelizable(ParallelScope.All)]
     class ScriptNodeTests : TestBase
     {
         [Test]
