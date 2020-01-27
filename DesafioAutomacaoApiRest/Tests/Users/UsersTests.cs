@@ -25,7 +25,7 @@ namespace DesafioAutomacaoApiRest.Tests.Users
             //Resultado esperado
             int id = 1;
             string name = "administrator";
-            string real_name = "Administrator";
+            string real_name = "Gerry";
             string email = "root@localhost";
             string language = "english";
             string statusEsperado = "OK";

@@ -76,15 +76,34 @@ namespace DesafioAutomacaoApiRest.Helpers
             return lista;
         }
 
-        public static void ResetBD()
+        public static void ResetBD2()
         {
             try
             {
-                System.Diagnostics.Process.Start("c:\\mantis\\resetBD.bat");
+                System.Diagnostics.Process.Start("c:\\mantis\\resetBD.bat").WaitForExit();
             }
             catch (Exception ex)
             {
                 
+            }
+        }
+
+        public static void ResetBD()
+        {
+            //string constring = "server=localhost;user=root;pwd=qwerty;database=test;";
+            string file = "C:\\mantis\\mantis_base.sql";
+            using (MySqlConnection conn = GetDBConnection())
+            {
+                using (MySqlCommand cmd = new MySqlCommand())
+                {
+                    using (MySqlBackup mb = new MySqlBackup(cmd))
+                    {
+                        cmd.Connection = conn;
+                        conn.Open();
+                        mb.ImportFromFile(file);
+                        conn.Close();
+                    }
+                }
             }
         }
     }
