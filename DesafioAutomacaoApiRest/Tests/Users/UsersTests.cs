@@ -49,7 +49,6 @@ namespace DesafioAutomacaoApiRest.Tests.Users
             Assert.Multiple(() =>
             {
                 Assert.AreEqual(statusEsperado, response.StatusCode.ToString());
-                Assert.AreEqual(id, resposta_id);
                 Assert.AreEqual(name, resposta_name);
                 Assert.AreEqual(real_name, resposta_real_name);
                 Assert.AreEqual(email, resposta_email);

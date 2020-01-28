@@ -12,10 +12,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Version = DesafioAutomacaoApiRest.Pages.Version;
+using DesafioAutomacaoApiRest.DBSteps;
 
 namespace DesafioAutomacaoApiRest.Tests.Projects
 {
-    [Parallelizable(ParallelScope.All)]
+    //[Parallelizable(ParallelScope.All)]
     class ProjectsTests : TestBase
     {
         #region Objects
@@ -25,6 +26,12 @@ namespace DesafioAutomacaoApiRest.Tests.Projects
         SubProject subProject = new SubProject();
         Version version = new Version();
 
+
+        [SetUp]
+        public void SetUp1()
+        {
+            DBHelpers.ResetBD();
+        }
 
         #endregion
 
@@ -38,9 +45,9 @@ namespace DesafioAutomacaoApiRest.Tests.Projects
             Status status = new Status();
             ViewState viewState = new ViewState();
 
-            string statusEsperado = "Created";//201
+            string statusEsperado = "Created";
 
-            int projectId = 1;
+            //int projectId = 1;
             string projectName = "Projeto test api 01";
             string projectDescription = "Mantis.  Report problems with the actual bug tracker here. (Do not remove this account)";
             bool projectEnabled = true;
@@ -53,28 +60,6 @@ namespace DesafioAutomacaoApiRest.Tests.Projects
             int viewStateId = 10;
             string viewStateName = "public";
             string viewStateLabel = "public";
-
-            #region json format
-            /*
-             {
-               "id": 1,
-               "name": "_new2",
-               "status": {
-                  "id": 10,
-                  "name": "development",
-                  "label": "development"
-                },
-                "description": "Mantis.  Report problems with the actual bug tracker here. (Do not remove this account)",
-                "enabled": true,
-                "file_path": "/tmp/",
-                "view_state": {
-                  "id": 10,
-                  "name": "public",
-                  "label": "public"
-                }
-            }
-             */
-            #endregion
 
             #endregion
 
@@ -89,7 +74,7 @@ namespace DesafioAutomacaoApiRest.Tests.Projects
             viewState.label = viewStateLabel;
 
             //montando body
-            project.id = projectId;
+           // project.id = projectId;
             project.name = projectName;
             project.description = projectDescription;
             project.enabled = projectEnabled;
@@ -103,47 +88,6 @@ namespace DesafioAutomacaoApiRest.Tests.Projects
             #endregion
 
             #region Asserts
-
-            #region json result
-            /*
-             {
-                "project": {
-                    "id": 2,
-                    "name": "_new2",
-                    "status": {
-                        "id": 10,
-                        "name": "development",
-                        "label": "development"
-                    },
-                    "description": "Mantis.  Report problems with the actual bug tracker here. (Do not remove this account)",
-                    "enabled": true,
-                    "view_state": {
-                        "id": 10,
-                        "name": "public",
-                        "label": "public"
-                    },
-                    "access_level": {
-                        "id": 90,
-                        "name": "administrator",
-                        "label": "administrator"
-                    },
-                    "custom_fields": [],
-                    "versions": [],
-                    "categories": [
-                        {
-                            "id": 1,
-                            "name": "General",
-                            "project": {
-                                "id": 0,
-                                "name": null
-                            }
-                        }
-                    ]
-                }
-            }
-             */
-            #endregion
-
 
             Assert.Multiple(() =>
             {
@@ -160,10 +104,12 @@ namespace DesafioAutomacaoApiRest.Tests.Projects
         public void Test_ObterUmProjetoComSucesso()
         {
             #region Parameters
+            SetupCenariosHelpers.CadastrarUmProjeto("Projeto 01");
+
             string statusEsperado = "OK";
             int idIssue = 1;
             string projectName = "Projeto 01";
-            string description = "Descriptions";
+            string description = projectName + " descrição";
 
             #endregion
 
@@ -180,7 +126,6 @@ namespace DesafioAutomacaoApiRest.Tests.Projects
             Assert.Multiple(() =>
             {
                 Assert.AreEqual(statusEsperado, response.StatusCode.ToString());
-                Assert.AreEqual(idIssue, idResposta);
                 Assert.AreEqual(projectName, nomeResposta);
                 Assert.AreEqual(description, descriptionResposta);
             });
@@ -194,14 +139,14 @@ namespace DesafioAutomacaoApiRest.Tests.Projects
             #region Parameters
             string statusEsperado = "OK";
 
-            int idIssue = 1;
-            string projectName = "Projeto 01";
-            string description = "Descriptions";
+            string projectName1 = "Projeto 01";
+            string description1 = projectName1 + " descrição";
 
-            int idIssue2 = 3;
-            string projectName2 = "Projeto test api 01";
-            string description2 = "Mantis.  Report problems with the actual bug tracker here. (Do not remove this account)";
+            string projectName2 = "Projeto 02";
+            string description2 = projectName2 + " descrição";
 
+            SetupCenariosHelpers.CadastrarUmProjeto(projectName1);
+            SetupCenariosHelpers.CadastrarUmProjeto(projectName2);
             #endregion
 
             #region Acoes
@@ -221,11 +166,9 @@ namespace DesafioAutomacaoApiRest.Tests.Projects
             Assert.Multiple(() =>
             {
                 Assert.AreEqual(statusEsperado, response.StatusCode.ToString());
-                Assert.AreEqual(idIssue, idResposta);
-                Assert.AreEqual(projectName, nomeResposta);
-                Assert.AreEqual(description, descriptionResposta);
+                Assert.AreEqual(projectName1, nomeResposta);
+                Assert.AreEqual(description1, descriptionResposta);
 
-                Assert.AreEqual(idIssue2, idResposta2);
                 Assert.AreEqual(projectName2, nomeResposta2);
                 Assert.AreEqual(description2, descriptionResposta2);
             });
@@ -236,19 +179,20 @@ namespace DesafioAutomacaoApiRest.Tests.Projects
         public void Test_AtualizarUmProjetoComSucesso()
         {
             #region Parameters
-            string statusEsperado = "OK";//200 Project with id 2 Updated
+            SetupCenariosHelpers.CadastrarUmProjeto("Projeto 01");
 
-            int projectId = 2;
-            string projectName = "Projeto update 2";
+            string statusEsperado = "OK";
+
+            int projectId = 1;
+            string projectNameUpdate = "Projeto 01 Updated";
             bool projectEnabled = false;
-
             #endregion
 
             #region Acoes
 
             //montando body
             project.id = projectId;
-            project.name = projectName;
+            project.name = projectNameUpdate;
             project.enabled = projectEnabled;
 
             UpdateAProjectRequest updateAProjectRequest = new UpdateAProjectRequest(projectId);
@@ -258,16 +202,13 @@ namespace DesafioAutomacaoApiRest.Tests.Projects
             #endregion
 
             #region Asserts
-
-
             Assert.Multiple(() =>
-            {
-                Assert.AreEqual(statusEsperado, response.StatusCode.ToString());
-                Assert.AreEqual(projectName, response.Data.project.name.ToString());
+                        {
+                            Assert.AreEqual(statusEsperado, response.StatusCode.ToString());
+                            Assert.AreEqual(projectNameUpdate, response.Data.project.name.ToString());
                 // Assert.AreEqual(projectDescription, response.Data.project.description.ToString());
                 //Etc
             });
-
             #endregion
         }
 
@@ -275,8 +216,10 @@ namespace DesafioAutomacaoApiRest.Tests.Projects
         public void Test_DeletarUmProjetoComSucesso()
         {
             #region Parameters
+            SetupCenariosHelpers.CadastrarUmProjeto("Projeto 01");
+
             string statusEsperado = "OK"; //Forbidden
-            int idProject = 5;
+            int idProject = 1;
 
             #endregion
 
@@ -296,10 +239,13 @@ namespace DesafioAutomacaoApiRest.Tests.Projects
         public void Test_CadastrarUmSubProjetoComSucesso()
         {
             #region Parameters
+            SetupCenariosHelpers.CadastrarUmProjeto("Projeto 01");
+            SetupCenariosHelpers.CadastrarUmProjeto("Sub Projeto 01");
+
             string statusEsperado = "NoContent";//201  204Subproject '6' added to project '1'
 
             int projectId = 1;
-            string projectName = "_new4";
+            string projectName = "Sub Projeto 01";
             bool inheritParent = true;
             #endregion
 
@@ -326,17 +272,20 @@ namespace DesafioAutomacaoApiRest.Tests.Projects
         public void Test_AtualizarUmSubProjetoComSucesso()
         {
             #region Parameters
-           string statusEsperado = "NoContent";//204Subproject '8' updated
+            SetupCenariosHelpers.CadastrarUmProjeto("Projeto 01");
+            SetupCenariosHelpers.CadastrarUmProjeto("Sub Projeto 01");
+            SetupCenariosHelpers.CadastrarUmSubProjeto("Sub Projeto 01");
+
+            string statusEsperado = "NoContent";
 
             int projectId = 1;
-            int subProjectId = 8;
+            int subProjectId = 2;
             string projectName = "Sub Projeto update 2";
             bool inheritParent = true;
 
             #endregion
 
             #region Acoes
-
             //montando body
             project.name = projectName;
             project.id = projectId;
@@ -362,8 +311,12 @@ namespace DesafioAutomacaoApiRest.Tests.Projects
         public void Test_DeletarUmSubProjetoComSucesso()
         {
             #region Parameters
-            string statusEsperado = "OK"; //Forbidden
-            int idProject = 5;
+            SetupCenariosHelpers.CadastrarUmProjeto("Projeto 01");
+            SetupCenariosHelpers.CadastrarUmProjeto("Sub Projeto 01");
+            SetupCenariosHelpers.CadastrarUmSubProjeto("Sub Projeto 01");
+
+            string statusEsperado = "OK";
+            int idProject = 2;
 
             #endregion
 

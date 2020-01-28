@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DesafioAutomacaoApiRest.DBSteps;
 
 [assembly: LevelOfParallelism(2)]
 namespace DesafioAutomacaoApiRest.Bases
@@ -14,6 +15,7 @@ namespace DesafioAutomacaoApiRest.Bases
         [OneTimeSetUp]
         public void OneTimeSetUp()
         {
+            DBHelpers.ResetBD();
             ExtentReportHelpers.CreateReport();
         }
 

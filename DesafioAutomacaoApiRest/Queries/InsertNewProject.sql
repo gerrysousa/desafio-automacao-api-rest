@@ -1,2 +1,2 @@
 INSERT INTO mantis_project_table (id, name, status, enabled, view_state, access_min, file_path, description, category_id, inherit_global) VALUES
-                                (2, 'Projeto de teste DB', 10, 1, 10, 10, '', 'descricao', 1, 1); 	
+                                (1, '$projectName', 10, 1, 10, 10, '', '$projectDescription', 1, 1); 	

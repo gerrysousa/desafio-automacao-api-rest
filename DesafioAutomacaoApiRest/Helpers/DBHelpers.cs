@@ -76,21 +76,8 @@ namespace DesafioAutomacaoApiRest.Helpers
             return lista;
         }
 
-        public static void ResetBD2()
-        {
-            try
-            {
-                System.Diagnostics.Process.Start("c:\\mantis\\resetBD.bat").WaitForExit();
-            }
-            catch (Exception ex)
-            {
-                
-            }
-        }
-
         public static void ResetBD()
         {
-            //string constring = "server=localhost;user=root;pwd=qwerty;database=test;";
             string file = "C:\\mantis\\mantis_base.sql";
             using (MySqlConnection conn = GetDBConnection())
             {
@@ -104,6 +91,19 @@ namespace DesafioAutomacaoApiRest.Helpers
                         conn.Close();
                     }
                 }
+            }
+        }
+
+
+        public static void ResetBD2()
+        {
+            try
+            {
+                System.Diagnostics.Process.Start("c:\\mantis\\resetBD.bat").WaitForExit();
+            }
+            catch (Exception ex)
+            {
+
             }
         }
     }

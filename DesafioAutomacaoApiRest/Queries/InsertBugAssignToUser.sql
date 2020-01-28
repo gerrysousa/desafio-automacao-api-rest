@@ -1,0 +1,1 @@
+UPDATE `bugtracker`.`mantis_bug_table` SET `handler_id` = '1' WHERE (`id` = '1');

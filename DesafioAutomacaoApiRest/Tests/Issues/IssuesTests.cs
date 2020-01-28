@@ -11,10 +11,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DesafioAutomacaoApiRest.DBSteps;
 
 namespace DesafioAutomacaoApiRest.Tests.Issues
 {
-    [Parallelizable(ParallelScope.All)]
+    //[Parallelizable(ParallelScope.All)]
     class IssuesTestsTestBase : TestBase
     {
         #region Objects
@@ -41,8 +42,8 @@ namespace DesafioAutomacaoApiRest.Tests.Issues
             #region Parameters
             string statusEsperado = "OK";
             int idIssue = 1;
-            string summary = "Descrição simples";
-            string description = "Descrição detalhada ssss";
+            string summary = "This is a test issue";
+            string description = "This is a test description";
 
             #endregion
 
@@ -59,7 +60,6 @@ namespace DesafioAutomacaoApiRest.Tests.Issues
             Assert.Multiple(() =>
             {
                 Assert.AreEqual(statusEsperado, response.StatusCode.ToString());
-                Assert.AreEqual(idIssue, idResposta);
                 Assert.AreEqual(summary, summaryResposta);
                 Assert.AreEqual(description, descriptionResposta);
             });
@@ -75,13 +75,13 @@ namespace DesafioAutomacaoApiRest.Tests.Issues
             int pageSize = 10;
             int page = 1;
 
-            int idIssue1 = 1;
-            string summary1 = "Descrição simples";
-            string description1 = "Descrição detalhada ssss";
+            string summary1 = "This is a test issue No Assigned";
+            string description1 = "This is a test description No Assigned";
 
-            int idIssue2 = 2;
             string summary2 = "This is a test issue";
             string description2 = "This is a test description";
+
+            
             #endregion
 
             #region Acoes
@@ -90,23 +90,19 @@ namespace DesafioAutomacaoApiRest.Tests.Issues
             #endregion
 
             #region Asserts
-            int idResposta1 = response.Data["issues"][1]["id"];
-            string summaryResposta1 = response.Data["issues"][1]["summary"];
-            string descriptionResposta1 = response.Data["issues"][1]["description"];
+            string summaryResposta1 = response.Data["issues"][0]["summary"];
+            string descriptionResposta1 = response.Data["issues"][0]["description"];
 
-            int idResposta2 = response.Data["issues"][0]["id"];
-            string summaryResposta2 = response.Data["issues"][0]["summary"];
-            string descriptionResposta2 = response.Data["issues"][0]["description"];
+            string summaryResposta2 = response.Data["issues"][1]["summary"];
+            string descriptionResposta2 = response.Data["issues"][1]["description"];
 
             Assert.Multiple(() =>
             {
                 Assert.AreEqual(statusEsperado, response.StatusCode.ToString());
 
-                Assert.AreEqual(idIssue1, idResposta1);
                 Assert.AreEqual(summary1, summaryResposta1);
                 Assert.AreEqual(description1, descriptionResposta1);
 
-                Assert.AreEqual(idIssue2, idResposta2);
                 Assert.AreEqual(summary2, summaryResposta2);
                 Assert.AreEqual(description2, descriptionResposta2);
             });
@@ -121,12 +117,9 @@ namespace DesafioAutomacaoApiRest.Tests.Issues
             string statusEsperado = "OK";
             int idProjeto = 1;
             
+            string summary1 = "This is a test issue No Assigned";
+            string description1 = "This is a test description No Assigned";
 
-            int idIssue1 = 1;
-            string summary1 = "Descrição simples";
-            string description1 = "Descrição detalhada ssss";
-
-            int idIssue2 = 2;
             string summary2 = "This is a test issue";
             string description2 = "This is a test description";
             #endregion
@@ -137,23 +130,19 @@ namespace DesafioAutomacaoApiRest.Tests.Issues
             #endregion
 
             #region Asserts
-            int idResposta1 = response.Data["issues"][1]["id"];
-            string summaryResposta1 = response.Data["issues"][1]["summary"];
-            string descriptionResposta1 = response.Data["issues"][1]["description"];
+            string summaryResposta1 = response.Data["issues"][0]["summary"];
+            string descriptionResposta1 = response.Data["issues"][0]["description"];
 
-            int idResposta2 = response.Data["issues"][0]["id"];
-            string summaryResposta2 = response.Data["issues"][0]["summary"];
-            string descriptionResposta2 = response.Data["issues"][0]["description"];
+            string summaryResposta2 = response.Data["issues"][1]["summary"];
+            string descriptionResposta2 = response.Data["issues"][1]["description"];
 
             Assert.Multiple(() =>
             {
                 Assert.AreEqual(statusEsperado, response.StatusCode.ToString());
 
-                Assert.AreEqual(idIssue1, idResposta1);
                 Assert.AreEqual(summary1, summaryResposta1);
                 Assert.AreEqual(description1, descriptionResposta1);
 
-                Assert.AreEqual(idIssue2, idResposta2);
                 Assert.AreEqual(summary2, summaryResposta2);
                 Assert.AreEqual(description2, descriptionResposta2);
             });
@@ -165,9 +154,11 @@ namespace DesafioAutomacaoApiRest.Tests.Issues
         public void Test_ObterInformacoesDeProblemasAssinadosParaMimComSucesso()
         {
             #region Parameters
+            IssuesDBSteps.InserirAssinarBugParaUser01DB();
+
             string statusEsperado = "OK";
 
-            int idIssue = 2;
+            int idIssue = 1;
             string summary = "This is a test issue";
             string description = "This is a test description";
 
@@ -186,7 +177,6 @@ namespace DesafioAutomacaoApiRest.Tests.Issues
             Assert.Multiple(() =>
             {
                 Assert.AreEqual(statusEsperado, response.StatusCode.ToString());
-                Assert.AreEqual(idIssue, idResposta);
                 Assert.AreEqual(summary, summaryResposta);
                 Assert.AreEqual(description, descriptionResposta);
             });
@@ -200,9 +190,8 @@ namespace DesafioAutomacaoApiRest.Tests.Issues
             #region Parameters
             string statusEsperado = "OK";
 
-            int idIssue = 2;
-            string summary = "This is a test issue";
-            string description = "This is a test description";
+            string summary = "This is a test issue No Assigned";
+            string description = "This is a test description No Assigned";
 
             #endregion
 
@@ -219,7 +208,7 @@ namespace DesafioAutomacaoApiRest.Tests.Issues
             Assert.Multiple(() =>
             {
                 Assert.AreEqual(statusEsperado, response.StatusCode.ToString());
-                Assert.AreEqual(idIssue, idResposta);
+               
                 Assert.AreEqual(summary, summaryResposta);
                 Assert.AreEqual(description, descriptionResposta);
             });
@@ -231,9 +220,11 @@ namespace DesafioAutomacaoApiRest.Tests.Issues
         public void Test_ObterInformacoesDeProblemasMonitoradosPorMimComSucesso()
         {
             #region Parameters
+
+            IssuesDBSteps.InserirMonitorBug01DB();
+
             string statusEsperado = "OK";
 
-            int idIssue = 2;
             string summary = "This is a test issue";
             string description = "This is a test description";
 
@@ -252,7 +243,6 @@ namespace DesafioAutomacaoApiRest.Tests.Issues
             Assert.Multiple(() =>
             {
                 Assert.AreEqual(statusEsperado, response.StatusCode.ToString());
-                Assert.AreEqual(idIssue, idResposta);
                 Assert.AreEqual(summary, summaryResposta);
                 Assert.AreEqual(description, descriptionResposta);
             });
@@ -266,33 +256,48 @@ namespace DesafioAutomacaoApiRest.Tests.Issues
             #region Parameters
             string statusEsperado = "OK";
 
-            int idIssue = 1;
-            string summary = "Descrição simples";
-            string description = "Descrição detalhada ssss";
+            string summary = "This is a test issue No Assigned";
+            string description = "This is a test description No Assigned";
+            string categoryName = "General";
+            string projectName = "Projeto 01";
 
             #endregion
 
             #region Acoes
+            CreateAnIssueRequest createAnIssueRequest = new CreateAnIssueRequest();
+            Issue issue = new Issue();
+            Category category = new Category();
+            Project project = new Project();
+            category.name = categoryName;
+            project.name = projectName;
+
+            issue.summary = summary;
+            issue.description = description;
+            issue.category = category;
+            issue.project = project;
+
+            createAnIssueRequest.SetJsonBody(issue);
+
+            IRestResponse<dynamic> response1 = createAnIssueRequest.ExecuteRequest();
+
+
             GetUnassignedIssuesRequest getUnassignedIssuesRequest = new GetUnassignedIssuesRequest();
             IRestResponse<dynamic> response = getUnassignedIssuesRequest.ExecuteRequest();
             #endregion
 
             #region Asserts
-            int idResposta = response.Data["issues"][0]["id"];
             string summaryResposta = response.Data["issues"][0]["summary"];
             string descriptionResposta = response.Data["issues"][0]["description"];
 
             Assert.Multiple(() =>
             {
                 Assert.AreEqual(statusEsperado, response.StatusCode.ToString());
-                Assert.AreEqual(idIssue, idResposta);
                 Assert.AreEqual(summary, summaryResposta);
                 Assert.AreEqual(description, descriptionResposta);
             });
 
             #endregion
         }
-
 
 
         //=============================================================
@@ -448,7 +453,7 @@ namespace DesafioAutomacaoApiRest.Tests.Issues
         {
             #region Parameters
             string statusEsperado = "NoContent";//204 No Content
-            int idIssue = 15;
+            int idIssue = 2;
 
             #endregion
 

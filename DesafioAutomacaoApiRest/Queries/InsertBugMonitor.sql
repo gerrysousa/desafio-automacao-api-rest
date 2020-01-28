@@ -1,0 +1,1 @@
+INSERT INTO `bugtracker`.`mantis_bug_monitor_table` (`user_id`, `bug_id`) VALUES ('1', '1');	
