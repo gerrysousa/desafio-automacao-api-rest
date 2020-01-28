@@ -17,10 +17,16 @@ namespace DesafioAutomacaoApiRest.Tests.TestesComNodeScript
     [Parallelizable(ParallelScope.All)]
     class ScriptNodeTests : TestBase
     {
+        [SetUp]
+        public void SetUp1()
+        {
+            DBHelpers.ResetBD();
+            SetupCenariosHelpers.CadastrarUmProjeto("Projeto 01");
+        }
+
         [Test]
         public void Test_CadastrarUsuarioComSucessoUsandoComandoNodeJS()
         {
-
             #region Parameters
             CreateAUserRequest createAUserRequest = new CreateAUserRequest();
             User user = new User();

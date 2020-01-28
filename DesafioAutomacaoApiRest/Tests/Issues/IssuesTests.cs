@@ -34,6 +34,13 @@ namespace DesafioAutomacaoApiRest.Tests.Issues
         Field field = new Field();
 
         #endregion
+        
+        [SetUp]
+        public void SetUp1()
+        {
+            DBHelpers.ResetBD();
+            SetupCenariosHelpers.CadastrarUmProjeto("Projeto 01");
+        }
 
 
         [Test]
@@ -43,8 +50,9 @@ namespace DesafioAutomacaoApiRest.Tests.Issues
             string statusEsperado = "OK";
             int idIssue = 1;
             string summary = "This is a test issue";
-            string description = "This is a test description";
+            string description = "This is a test issue description";
 
+            SetupCenariosHelpers.CadastrarUmBug(summary, "Projeto 01");
             #endregion
 
             #region Acoes
@@ -75,13 +83,15 @@ namespace DesafioAutomacaoApiRest.Tests.Issues
             int pageSize = 10;
             int page = 1;
 
-            string summary1 = "This is a test issue No Assigned";
-            string description1 = "This is a test description No Assigned";
+            string summary1 = "Issue No Assigned 01";
+            string description1 = "Issue No Assigned 01 description";
 
-            string summary2 = "This is a test issue";
-            string description2 = "This is a test description";
+            string summary2 = "Issue No Assigned 02";
+            string description2 = "Issue No Assigned 02 description";
 
-            
+            SetupCenariosHelpers.CadastrarUmBug(summary1, "Projeto 01");
+            SetupCenariosHelpers.CadastrarUmBug(summary2, "Projeto 01");
+
             #endregion
 
             #region Acoes
@@ -90,11 +100,11 @@ namespace DesafioAutomacaoApiRest.Tests.Issues
             #endregion
 
             #region Asserts
-            string summaryResposta1 = response.Data["issues"][0]["summary"];
-            string descriptionResposta1 = response.Data["issues"][0]["description"];
+            string summaryResposta1 = response.Data["issues"][1]["summary"];
+            string descriptionResposta1 = response.Data["issues"][1]["description"];
 
-            string summaryResposta2 = response.Data["issues"][1]["summary"];
-            string descriptionResposta2 = response.Data["issues"][1]["description"];
+            string summaryResposta2 = response.Data["issues"][0]["summary"];
+            string descriptionResposta2 = response.Data["issues"][0]["description"];
 
             Assert.Multiple(() =>
             {
@@ -116,12 +126,17 @@ namespace DesafioAutomacaoApiRest.Tests.Issues
             #region Parameters
             string statusEsperado = "OK";
             int idProjeto = 1;
-            
-            string summary1 = "This is a test issue No Assigned";
-            string description1 = "This is a test description No Assigned";
 
-            string summary2 = "This is a test issue";
-            string description2 = "This is a test description";
+            string summary1 = "Issue No Assigned 01";
+            string description1 = "Issue No Assigned 01 description";
+
+            string summary2 = "Issue No Assigned 02";
+            string description2 = "Issue No Assigned 02 description";
+
+            SetupCenariosHelpers.CadastrarUmBug(summary1, "Projeto 01");
+            SetupCenariosHelpers.CadastrarUmBug(summary2, "Projeto 01");
+
+
             #endregion
 
             #region Acoes
@@ -154,13 +169,13 @@ namespace DesafioAutomacaoApiRest.Tests.Issues
         public void Test_ObterInformacoesDeProblemasAssinadosParaMimComSucesso()
         {
             #region Parameters
+            SetupCenariosHelpers.CadastrarUmBug("Bug obter info","Projeto 01");
             IssuesDBSteps.InserirAssinarBugParaUser01DB();
 
             string statusEsperado = "OK";
 
-            int idIssue = 1;
-            string summary = "This is a test issue";
-            string description = "This is a test description";
+            string summary = "Bug obter info";
+            string description = "Bug obter info description";
 
             #endregion
 
@@ -191,8 +206,9 @@ namespace DesafioAutomacaoApiRest.Tests.Issues
             string statusEsperado = "OK";
 
             string summary = "This is a test issue No Assigned";
-            string description = "This is a test description No Assigned";
+            string description = "This is a test issue No Assigned description";
 
+            SetupCenariosHelpers.CadastrarUmBug(summary, "Projeto 01");
             #endregion
 
             #region Acoes
@@ -220,14 +236,13 @@ namespace DesafioAutomacaoApiRest.Tests.Issues
         public void Test_ObterInformacoesDeProblemasMonitoradosPorMimComSucesso()
         {
             #region Parameters
-
-            IssuesDBSteps.InserirMonitorBug01DB();
-
             string statusEsperado = "OK";
 
             string summary = "This is a test issue";
-            string description = "This is a test description";
+            string description = "This is a test issue description";
 
+            SetupCenariosHelpers.CadastrarUmBug(summary, "Projeto 01");
+            IssuesDBSteps.InserirMonitorBug01DB();
             #endregion
 
             #region Acoes
@@ -452,8 +467,10 @@ namespace DesafioAutomacaoApiRest.Tests.Issues
         public void Test_DeletarUmProblemaComSucesso()
         {
             #region Parameters
+            //SetupCenariosHelpers.CadastrarUmProjeto("Projeto 01");
+            SetupCenariosHelpers.CadastrarUmBug("Bug 01", "Projeto 01");
             string statusEsperado = "NoContent";//204 No Content
-            int idIssue = 2;
+            int idIssue = 1;
 
             #endregion
 

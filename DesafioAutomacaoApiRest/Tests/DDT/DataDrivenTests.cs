@@ -41,6 +41,12 @@ namespace DesafioAutomacaoApiRest.Tests.DDT
         }
         #endregion
 
+       [SetUp]
+       public void SetUp1()
+       {
+          //DBHelpers.ResetBD();
+           SetupCenariosHelpers.CadastrarUmProjeto("Projeto 01");
+        }
 
         [Test, TestCaseSource("CadastrarProblemasProvider")]
         public void Test_CadastrarProblemaMinimoInformacoesComSucessoDDT(ArrayList testData)
@@ -100,7 +106,7 @@ namespace DesafioAutomacaoApiRest.Tests.DDT
             string statusName = testData[6].ToString();
             string statusLabel = testData[7].ToString(); ;
 
-            int viewStateId= Convert.ToInt32(testData[8]);
+            int viewStateId = Convert.ToInt32(testData[8]);
             string viewStateName = testData[9].ToString();
             string viewStateLabel = testData[10].ToString();
 
@@ -132,10 +138,10 @@ namespace DesafioAutomacaoApiRest.Tests.DDT
 
             #region Asserts
             Assert.Multiple(() =>
-                    {
-                        Assert.AreEqual(statusEsperado, response.StatusCode.ToString());
-                        Assert.AreEqual(projectName, response.Data.project.name.ToString());
-                        Assert.AreEqual(projectDescription, response.Data.project.description.ToString());
+            {
+                Assert.AreEqual(statusEsperado, response.StatusCode.ToString());
+                Assert.AreEqual(projectName, response.Data.project.name.ToString());
+                Assert.AreEqual(projectDescription, response.Data.project.description.ToString());
                 //Etc
             });
 

@@ -1,5 +1,6 @@
 ﻿using DesafioAutomacaoApiRest.DBSteps;
 using DesafioAutomacaoApiRest.Pages;
+using DesafioAutomacaoApiRest.Requests.Issues;
 using DesafioAutomacaoApiRest.Requests.Projects;
 using DesafioAutomacaoApiRest.Requests.Users;
 using RestSharp;
@@ -83,7 +84,7 @@ namespace DesafioAutomacaoApiRest.Helpers
             user.email = loginUsuario+ "@email.com";
             user.access_level = accessLevel;
             user.enabled = true;
-            user.@protected = true;
+            user.@protected = false;
 
             createAUserRequest.SetJsonBody(user);
             createAUserRequest.ExecuteRequest();
@@ -104,6 +105,32 @@ namespace DesafioAutomacaoApiRest.Helpers
 
             addASubProjectRequest.SetJsonBody(subProject);
             IRestResponse<dynamic> response = addASubProjectRequest.ExecuteRequest();
+        }
+
+        public static void CadastrarUmBug(string sumarioBug, string projetoNome)
+        {
+            CreateAnIssueRequest createAnIssueRequest = new CreateAnIssueRequest();
+            Issue issue = new Issue();
+            Category category = new Category();
+            Project project = new Project();
+
+            string summary = sumarioBug;
+            string description = sumarioBug + " description";
+            string categoryName = "General";
+            string projectName = projetoNome;
+
+            category.name = categoryName;
+            project.name = projectName;
+
+            issue.summary = summary;
+            issue.description = description;
+            issue.category = category;
+            issue.project = project;
+
+            createAnIssueRequest.SetJsonBody(issue);
+
+            //IRestResponse<dynamic> response = 
+            createAnIssueRequest.ExecuteRequest();
         }
 
     }

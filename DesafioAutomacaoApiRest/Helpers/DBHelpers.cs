@@ -93,18 +93,6 @@ namespace DesafioAutomacaoApiRest.Helpers
                 }
             }
         }
-
-
-        public static void ResetBD2()
-        {
-            try
-            {
-                System.Diagnostics.Process.Start("c:\\mantis\\resetBD.bat").WaitForExit();
-            }
-            catch (Exception ex)
-            {
-
-            }
-        }
+        
     }
 }
