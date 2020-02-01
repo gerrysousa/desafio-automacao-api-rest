@@ -34,14 +34,6 @@ namespace DesafioAutomacaoApiRest.Tests.Issues
         Field field = new Field();
 
         #endregion
-        
-        [SetUp]
-        public void SetUp1()
-        {
-            DBHelpers.ResetBD();
-            SetupCenariosHelpers.CadastrarUmProjeto("Projeto 01");
-        }
-
 
         [Test]
         public void Test_ObterInformacoesDeUmProblemaComSucesso()
@@ -49,10 +41,9 @@ namespace DesafioAutomacaoApiRest.Tests.Issues
             #region Parameters
             string statusEsperado = "OK";
             int idIssue = 1;
-            string summary = "This is a test issue";
-            string description = "This is a test issue description";
+            string summary = "Sumary Issue 01 Default";
+            string description = "Sumary Issue 01 Default description";
 
-            SetupCenariosHelpers.CadastrarUmBug(summary, "Projeto 01");
             #endregion
 
             #region Acoes
@@ -61,6 +52,14 @@ namespace DesafioAutomacaoApiRest.Tests.Issues
             #endregion
 
             #region Asserts
+
+            //Array teste = response.Data;
+            Helpers.JsonDeserializer aux = new Helpers.JsonDeserializer();
+            //jsonBody = aux.Deserialize(issue);
+            
+            JArray a = JArray.Parse(response.Data.issues.ToString());
+
+
             int idResposta = response.Data["issues"][0]["id"];
             string summaryResposta = response.Data["issues"][0]["summary"];
             string descriptionResposta = response.Data["issues"][0]["description"];
@@ -88,9 +87,6 @@ namespace DesafioAutomacaoApiRest.Tests.Issues
 
             string summary2 = "Issue No Assigned 02";
             string description2 = "Issue No Assigned 02 description";
-
-            SetupCenariosHelpers.CadastrarUmBug(summary1, "Projeto 01");
-            SetupCenariosHelpers.CadastrarUmBug(summary2, "Projeto 01");
 
             #endregion
 
@@ -132,11 +128,6 @@ namespace DesafioAutomacaoApiRest.Tests.Issues
 
             string summary2 = "Issue No Assigned 02";
             string description2 = "Issue No Assigned 02 description";
-
-            SetupCenariosHelpers.CadastrarUmBug(summary1, "Projeto 01");
-            SetupCenariosHelpers.CadastrarUmBug(summary2, "Projeto 01");
-
-
             #endregion
 
             #region Acoes
@@ -174,8 +165,8 @@ namespace DesafioAutomacaoApiRest.Tests.Issues
 
             string statusEsperado = "OK";
 
-            string summary = "Bug obter info";
-            string description = "Bug obter info description";
+            string summary = "Summary Issue 04 Assigned to me";
+            string description = "Summary Issue 04 Assigned to me description";
 
             #endregion
 
@@ -205,7 +196,7 @@ namespace DesafioAutomacaoApiRest.Tests.Issues
             #region Parameters
             string statusEsperado = "OK";
 
-            string summary = "This is a test issue No Assigned";
+            string summary = "Description for sample REST issue.";
             string description = "This is a test issue No Assigned description";
 
             SetupCenariosHelpers.CadastrarUmBug(summary, "Projeto 01");
@@ -238,8 +229,8 @@ namespace DesafioAutomacaoApiRest.Tests.Issues
             #region Parameters
             string statusEsperado = "OK";
 
-            string summary = "This is a test issue";
-            string description = "This is a test issue description";
+            string summary = "Sumary Issue 03 Monitored by me";
+            string description = "Sumary Issue 03 Monitored by me description";
 
             SetupCenariosHelpers.CadastrarUmBug(summary, "Projeto 01");
             IssuesDBSteps.InserirMonitorBug01DB();
@@ -271,10 +262,10 @@ namespace DesafioAutomacaoApiRest.Tests.Issues
             #region Parameters
             string statusEsperado = "OK";
 
-            string summary = "This is a test issue No Assigned";
-            string description = "This is a test description No Assigned";
+            string summary = "Sample REST issue";
+            string description = "Description for sample REST issue.";
             string categoryName = "General";
-            string projectName = "Projeto 01";
+            string projectName = "Project 03 Update";
 
             #endregion
 
@@ -330,7 +321,7 @@ namespace DesafioAutomacaoApiRest.Tests.Issues
             string summary = "This is a test issue";
             string description = "This is a test description";
             string categoryName = "General";
-            string projectName = "Projeto 01";
+            string projectName = "Project 03 Update";
             #endregion
 
             #region Acoes
@@ -374,8 +365,8 @@ namespace DesafioAutomacaoApiRest.Tests.Issues
             string summary = "Sample REST issue";
             string description = "Description for sample REST issue.";
             string additional_information = "More info about the issue";
-            int projectId = 1;
-            string projectName = "Projeto 01";
+            int projectId = 3;
+            string projectName = "Project 03 Update";
             int categoryid = 5;
             string categoryname = "bugtracker";
             string handlername = "vboctor";

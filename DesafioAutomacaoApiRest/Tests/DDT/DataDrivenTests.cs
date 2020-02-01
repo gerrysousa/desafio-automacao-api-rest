@@ -41,12 +41,6 @@ namespace DesafioAutomacaoApiRest.Tests.DDT
         }
         #endregion
 
-       [SetUp]
-       public void SetUp1()
-       {
-          //DBHelpers.ResetBD();
-           SetupCenariosHelpers.CadastrarUmProjeto("Projeto 01");
-        }
 
         [Test, TestCaseSource("CadastrarProblemasProvider")]
         public void Test_CadastrarProblemaMinimoInformacoesComSucessoDDT(ArrayList testData)

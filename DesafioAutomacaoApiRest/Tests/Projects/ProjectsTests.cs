@@ -26,13 +26,6 @@ namespace DesafioAutomacaoApiRest.Tests.Projects
         SubProject subProject = new SubProject();
         Version version = new Version();
 
-
-        [SetUp]
-        public void SetUp1()
-        {
-            DBHelpers.ResetBD();
-        }
-
         #endregion
 
 

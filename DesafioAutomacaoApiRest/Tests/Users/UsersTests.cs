@@ -18,12 +18,6 @@ namespace DesafioAutomacaoApiRest.Tests.Users
     [Parallelizable(ParallelScope.All)]
     class UsersTests : TestBase
     {
-        [SetUp]
-        public void SetUp1()
-        {
-            DBHelpers.ResetBD();
-            SetupCenariosHelpers.CadastrarUmProjeto("Projeto 01");
-        }
 
         [Test]
         public void Test_ObterInformacoesDoUsuarioComSucesso()

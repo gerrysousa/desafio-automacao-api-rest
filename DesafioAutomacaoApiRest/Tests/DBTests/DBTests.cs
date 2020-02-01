@@ -22,18 +22,14 @@ namespace DesafioAutomacaoApiRest.Tests.DBTests
         Status status = new Status();
         ViewState viewState = new ViewState();
         SubProject subProject = new SubProject();
-        // Version version = new Version();
-
 
         #endregion
 
         [SetUp]
         public void BeforeTest()
         {
-            DBHelpers.ResetBD();
             ProjetosDBSteps.InsertNewProject("Projeto de teste DB");
         }
-
 
 
         [Test]
@@ -41,8 +37,9 @@ namespace DesafioAutomacaoApiRest.Tests.DBTests
         {
             #region Parameters
             string statusEsperado = "OK";
-            int idIssue = 1;
+            int idIssue = 8;
             string projectName = "Projeto de teste DB";
+            string description = "Projeto de teste DB description";
 
             #endregion
 
@@ -61,7 +58,7 @@ namespace DesafioAutomacaoApiRest.Tests.DBTests
             {
                 Assert.AreEqual(statusEsperado, response.StatusCode.ToString());
                 Assert.AreEqual(projectName, nomeResposta);
-                //Assert.AreEqual(description, descriptionResposta);
+                Assert.AreEqual(description, descriptionResposta);
             });
 
             #endregion

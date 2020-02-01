@@ -2,7 +2,7 @@
 --
 -- Host: localhost    Database: bugtracker
 -- ------------------------------------------------------
--- Server version	5.5.5-10.3.13-MariaDB-1:10.3.13+maria~bionic
+-- Server version	5.5.5-10.4.11-MariaDB-1:10.4.11+maria~bionic
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -31,7 +31,7 @@ CREATE TABLE `mantis_api_token_table` (
   `date_used` int(10) unsigned NOT NULL DEFAULT 1,
   PRIMARY KEY (`id`),
   UNIQUE KEY `idx_user_id_name` (`user_id`,`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,6 +40,7 @@ CREATE TABLE `mantis_api_token_table` (
 
 LOCK TABLES `mantis_api_token_table` WRITE;
 /*!40000 ALTER TABLE `mantis_api_token_table` DISABLE KEYS */;
+INSERT INTO `mantis_api_token_table` VALUES (1,1,'myAPIToken','2c1d09ccefc1cb7ac79a6f94e87ca627809685266e6bc09ac2bccdb4e505ff16',1579998783,1580522470);
 /*!40000 ALTER TABLE `mantis_api_token_table` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -98,7 +99,7 @@ CREATE TABLE `mantis_bug_history_table` (
   KEY `idx_bug_history_bug_id` (`bug_id`),
   KEY `idx_history_user_id` (`user_id`),
   KEY `idx_bug_history_date_modified` (`date_modified`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -107,6 +108,7 @@ CREATE TABLE `mantis_bug_history_table` (
 
 LOCK TABLES `mantis_bug_history_table` WRITE;
 /*!40000 ALTER TABLE `mantis_bug_history_table` DISABLE KEYS */;
+INSERT INTO `mantis_bug_history_table` VALUES (1,1,1,'','','',1,1580521831),(2,1,2,'','','',1,1580521912),(3,1,3,'','','',1,1580522094),(4,1,3,'','1','',12,1580522100),(5,1,4,'','','',1,1580522196),(6,1,4,'handler_id','0','1',0,1580522216),(7,1,4,'status','10','50',0,1580522216),(8,1,5,'','','',1,1580522430),(9,1,6,'','','',1,1580522734),(10,1,6,'','0000001','',2,1580522907),(11,1,6,'','0000001','2',3,1580522942);
 /*!40000 ALTER TABLE `mantis_bug_history_table` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -131,6 +133,7 @@ CREATE TABLE `mantis_bug_monitor_table` (
 
 LOCK TABLES `mantis_bug_monitor_table` WRITE;
 /*!40000 ALTER TABLE `mantis_bug_monitor_table` DISABLE KEYS */;
+INSERT INTO `mantis_bug_monitor_table` VALUES (1,3);
 /*!40000 ALTER TABLE `mantis_bug_monitor_table` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -179,7 +182,7 @@ CREATE TABLE `mantis_bug_revision_table` (
   PRIMARY KEY (`id`),
   KEY `idx_bug_rev_type` (`type`),
   KEY `idx_bug_rev_id_time` (`bug_id`,`timestamp`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -188,6 +191,7 @@ CREATE TABLE `mantis_bug_revision_table` (
 
 LOCK TABLES `mantis_bug_revision_table` WRITE;
 /*!40000 ALTER TABLE `mantis_bug_revision_table` DISABLE KEYS */;
+INSERT INTO `mantis_bug_revision_table` VALUES (1,6,1,1,4,'Note description',1580522907),(2,6,1,1,4,'Note Issue 06 With Note to Delete\n\n',1580522942);
 /*!40000 ALTER TABLE `mantis_bug_revision_table` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -233,7 +237,7 @@ CREATE TABLE `mantis_bug_table` (
   KEY `idx_bug_fixed_in_version` (`fixed_in_version`),
   KEY `idx_bug_status` (`status`),
   KEY `idx_project` (`project_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -242,6 +246,7 @@ CREATE TABLE `mantis_bug_table` (
 
 LOCK TABLES `mantis_bug_table` WRITE;
 /*!40000 ALTER TABLE `mantis_bug_table` DISABLE KEYS */;
+INSERT INTO `mantis_bug_table` VALUES (1,1,1,0,0,30,50,70,10,10,10,10,1,'','','','','','',0,10,'Sumary Issue 01 Default',0,0,'',1,1580521831,1,1580521831),(2,1,1,0,0,30,50,70,10,10,10,10,2,'','','','','','',0,10,'Sumary Issue 02 Delete',0,0,'',1,1580521912,1,1580521912),(3,1,1,0,0,30,50,70,10,10,10,10,3,'','','','','','',0,10,'Sumary Issue 03 Monitored by me',0,0,'',1,1580522094,1,1580522100),(4,1,1,1,0,30,50,70,50,10,10,10,4,'','','','','','',0,10,'Summary Issue 04 Assigned to me',0,0,'',1,1580522196,1,1580522216),(5,1,1,0,0,30,50,70,10,10,10,10,5,'','','','','','',0,10,'Summary Issue 05 Update',0,0,'',1,1580522430,1,1580522430),(6,1,1,0,0,30,50,70,10,10,10,10,6,'','','','','','',0,10,'Summary Issue 06 With Note to Delete',0,0,'',1,1580522734,1,1580522942);
 /*!40000 ALTER TABLE `mantis_bug_table` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -284,7 +289,7 @@ CREATE TABLE `mantis_bug_text_table` (
   `steps_to_reproduce` longtext NOT NULL,
   `additional_information` longtext NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -293,6 +298,7 @@ CREATE TABLE `mantis_bug_text_table` (
 
 LOCK TABLES `mantis_bug_text_table` WRITE;
 /*!40000 ALTER TABLE `mantis_bug_text_table` DISABLE KEYS */;
+INSERT INTO `mantis_bug_text_table` VALUES (1,'Sumary Issue 01 Default description','',''),(2,'Sumary Issue 02 Delete description','',''),(3,'Sumary Issue 03 Monitored by me description','',''),(4,'Summary Issue 04 Assigned to me description','',''),(5,'Summary Issue 05 Update description','',''),(6,'Summary Issue 06 With Note to Delete description','','');
 /*!40000 ALTER TABLE `mantis_bug_text_table` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -317,7 +323,7 @@ CREATE TABLE `mantis_bugnote_table` (
   PRIMARY KEY (`id`),
   KEY `idx_bug` (`bug_id`),
   KEY `idx_last_mod` (`last_modified`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -326,6 +332,7 @@ CREATE TABLE `mantis_bugnote_table` (
 
 LOCK TABLES `mantis_bugnote_table` WRITE;
 /*!40000 ALTER TABLE `mantis_bugnote_table` DISABLE KEYS */;
+INSERT INTO `mantis_bugnote_table` VALUES (1,6,1,1,10,0,'',0,1580522942,1580522907);
 /*!40000 ALTER TABLE `mantis_bugnote_table` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -340,7 +347,7 @@ CREATE TABLE `mantis_bugnote_text_table` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `note` longtext NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -349,6 +356,7 @@ CREATE TABLE `mantis_bugnote_text_table` (
 
 LOCK TABLES `mantis_bugnote_text_table` WRITE;
 /*!40000 ALTER TABLE `mantis_bugnote_text_table` DISABLE KEYS */;
+INSERT INTO `mantis_bugnote_text_table` VALUES (1,'Note Issue 06 With Note to Delete\n\n');
 /*!40000 ALTER TABLE `mantis_bugnote_text_table` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -514,7 +522,7 @@ CREATE TABLE `mantis_email_table` (
   `body` longtext NOT NULL,
   `submitted` int(10) unsigned NOT NULL DEFAULT 1,
   PRIMARY KEY (`email_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -523,6 +531,7 @@ CREATE TABLE `mantis_email_table` (
 
 LOCK TABLES `mantis_email_table` WRITE;
 /*!40000 ALTER TABLE `mantis_email_table` DISABLE KEYS */;
+INSERT INTO `mantis_email_table` VALUES (1,'user01@teste.com','[MantisBT] Account registration','a:3:{s:7:\"headers\";a:0:{}s:7:\"charset\";s:5:\"utf-8\";s:8:\"hostname\";s:14:\"192.168.99.100\";}','The user administrator has created an account for you with username \"user01\". In order to complete your registration, visit the following URL (make sure it is entered as the single line) and set your own access password:\n\nhttp://192.168.99.100:8989/verify.php?id=2&confirm_hash=r3U7LtemS8TKePuEBlr0L2XyxTm0BlQslw312H5MDxTEIFEH4LmGToYNSCIpqxnYjMc2kjCDnRgn94ypWeoJ\n\nIf you did not request any registration, ignore this message and nothing will happen.\n\nDo not reply to this message',1580521155),(2,'user02@teste.com','[MantisBT] Account registration','a:3:{s:7:\"headers\";a:0:{}s:7:\"charset\";s:5:\"utf-8\";s:8:\"hostname\";s:14:\"192.168.99.100\";}','The user administrator has created an account for you with username \"user02\". In order to complete your registration, visit the following URL (make sure it is entered as the single line) and set your own access password:\n\nhttp://192.168.99.100:8989/verify.php?id=3&confirm_hash=9SFeacE3z1CxvUlZAr6OZAhd3YDqUB4-qorhPMMJGrFhLweZG39MOt0LJ-LPIgf5Fb_7f2PqmqhDm77rkAsm\n\nIf you did not request any registration, ignore this message and nothing will happen.\n\nDo not reply to this message',1580521258),(3,'user03@teste.com','[MantisBT] Account registration','a:3:{s:7:\"headers\";a:0:{}s:7:\"charset\";s:5:\"utf-8\";s:8:\"hostname\";s:14:\"192.168.99.100\";}','The user administrator has created an account for you with username \"user03\". In order to complete your registration, visit the following URL (make sure it is entered as the single line) and set your own access password:\n\nhttp://192.168.99.100:8989/verify.php?id=4&confirm_hash=Ks5qSEsctS84MfCGshNWPTdDW1oo318AtE1mgLZVdASEksPXrSoBKCUYMFJu8b07dV0eEbEvT4x5WeGK80qe\n\nIf you did not request any registration, ignore this message and nothing will happen.\n\nDo not reply to this message',1580521302);
 /*!40000 ALTER TABLE `mantis_email_table` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -665,6 +674,7 @@ CREATE TABLE `mantis_project_hierarchy_table` (
 
 LOCK TABLES `mantis_project_hierarchy_table` WRITE;
 /*!40000 ALTER TABLE `mantis_project_hierarchy_table` DISABLE KEYS */;
+INSERT INTO `mantis_project_hierarchy_table` VALUES (5,2,1),(6,2,1),(7,2,1);
 /*!40000 ALTER TABLE `mantis_project_hierarchy_table` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -689,7 +699,7 @@ CREATE TABLE `mantis_project_table` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `idx_project_name` (`name`),
   KEY `idx_project_view` (`view_state`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -698,6 +708,7 @@ CREATE TABLE `mantis_project_table` (
 
 LOCK TABLES `mantis_project_table` WRITE;
 /*!40000 ALTER TABLE `mantis_project_table` DISABLE KEYS */;
+INSERT INTO `mantis_project_table` VALUES (1,'Project 01 Default',10,1,10,10,'','Project 01 Default description',1,1),(2,'Project 02 With A Sub-project',10,1,10,10,'','Project 02 With A Sub-project description',1,1),(3,'Project 03 Update',10,1,10,10,'','Project 03 Update description',1,1),(4,'Project 04 Delete',10,1,10,10,'','Project 04 Delete description',1,1),(5,'Sub-project 01 from Project 02',10,1,10,10,'','Sub-project 01 from Project 02 description',1,1),(6,'Sub-project 02 from Project 02 Update',10,1,10,10,'','Sub-project 02 from Project 02 Update description',1,1),(7,'Sub-project 03 from Project 02 Delete',10,1,10,10,'','Sub-project 03 from Project 02 Delete description',1,1);
 /*!40000 ALTER TABLE `mantis_project_table` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -743,7 +754,7 @@ CREATE TABLE `mantis_project_version_table` (
   `date_order` int(10) unsigned NOT NULL DEFAULT 1,
   PRIMARY KEY (`id`),
   UNIQUE KEY `idx_project_version` (`project_id`,`version`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -752,6 +763,7 @@ CREATE TABLE `mantis_project_version_table` (
 
 LOCK TABLES `mantis_project_version_table` WRITE;
 /*!40000 ALTER TABLE `mantis_project_version_table` DISABLE KEYS */;
+INSERT INTO `mantis_project_version_table` VALUES (1,1,'v1.0.0','',0,0,1580520781);
 /*!40000 ALTER TABLE `mantis_project_version_table` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -831,7 +843,7 @@ CREATE TABLE `mantis_tokens_table` (
   `expiry` int(10) unsigned NOT NULL DEFAULT 1,
   PRIMARY KEY (`id`),
   KEY `idx_typeowner` (`type`,`owner`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -840,7 +852,7 @@ CREATE TABLE `mantis_tokens_table` (
 
 LOCK TABLES `mantis_tokens_table` WRITE;
 /*!40000 ALTER TABLE `mantis_tokens_table` DISABLE KEYS */;
-INSERT INTO `mantis_tokens_table` VALUES (1,1,4,'1',1554061749,1554062113);
+INSERT INTO `mantis_tokens_table` VALUES (5,2,7,'r3U7LtemS8TKePuEBlr0L2XyxTm0BlQslw312H5MDxTEIFEH4LmGToYNSCIpqxnYjMc2kjCDnRgn94ypWeoJ',1580521155,1581125955),(6,3,7,'9SFeacE3z1CxvUlZAr6OZAhd3YDqUB4-qorhPMMJGrFhLweZG39MOt0LJ-LPIgf5Fb_7f2PqmqhDm77rkAsm',1580521258,1581126058),(7,4,7,'Ks5qSEsctS84MfCGshNWPTdDW1oo318AtE1mgLZVdASEksPXrSoBKCUYMFJu8b07dV0eEbEvT4x5WeGK80qe',1580521302,1581126102),(8,1,3,'6,5,4,3,2',1580521831,1580609342);
 /*!40000 ALTER TABLE `mantis_tokens_table` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -972,7 +984,7 @@ CREATE TABLE `mantis_user_table` (
   KEY `idx_enable` (`enabled`),
   KEY `idx_access` (`access_level`),
   KEY `idx_email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -981,7 +993,7 @@ CREATE TABLE `mantis_user_table` (
 
 LOCK TABLES `mantis_user_table` WRITE;
 /*!40000 ALTER TABLE `mantis_user_table` DISABLE KEYS */;
-INSERT INTO `mantis_user_table` VALUES (1,'administrator','Gerry','root@localhost','200ceb26807d6bf99fd6f4f0d1ca54d4',1,0,90,5,0,0,'79vLJSXxqEkW-2uRl3RBWxNyPIrAXTYqJ6WrpKAp7pkB3LNBr85Ovv1PSzUgFdsO',1554061813,1554061696);
+INSERT INTO `mantis_user_table` VALUES (1,'administrator','Gerry','root@localhost','200ceb26807d6bf99fd6f4f0d1ca54d4',1,0,90,8,0,0,'79vLJSXxqEkW-2uRl3RBWxNyPIrAXTYqJ6WrpKAp7pkB3LNBr85Ovv1PSzUgFdsO',1580522960,1554061696),(2,'user01','User 01 Default','user01@teste.com','9dcbec4050d78bb0182d418ba9e6b5f6',1,0,70,0,0,0,'7GW1d98L-KlaxL4WRwVcRba2qOPTLCuHaG-Dc5zG_MpHBMJkHhebk7QTirexGz0X',1580521155,1580521155),(3,'user02','User 02 Update','user02@teste.com','182138a1859b7f784ae1b464571f0268',1,0,25,0,0,0,'UnYDBoa8SmBnLDsDn09plh3KPpmmb00dTI22RNDMJVjv3lS8WQfBUuchOX0nKDNy',1580521258,1580521258),(4,'user03','User 03 Delete','user03@teste.com','a29b561e0ae3cacf8ae82eec8bfd359b',1,0,70,0,0,0,'BOno6SmAZJ89pIgmj6vc8UgcxIdtMXiE7dsQeuK16_b4tKLrtdUh-beXEJSjIaAZ',1580521302,1580521302);
 /*!40000 ALTER TABLE `mantis_user_table` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -994,14 +1006,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
---
--- Dumping data for table `mantis_api_token_table`
---
-
-LOCK TABLES `mantis_api_token_table` WRITE;
-/*!40000 ALTER TABLE `mantis_api_token_table` DISABLE KEYS */;
-INSERT INTO `mantis_api_token_table` VALUES (1,1,'myAPIToken','2c1d09ccefc1cb7ac79a6f94e87ca627809685266e6bc09ac2bccdb4e505ff16',1579998783, 1);
-/*!40000 ALTER TABLE `mantis_api_token_table` ENABLE KEYS */;
-UNLOCK TABLES;
-
--- Dump completed on 2019-03-31 16:50:47
+-- Dump completed on 2020-01-31 23:10:33
