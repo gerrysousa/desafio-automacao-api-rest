@@ -15,8 +15,6 @@ namespace DesafioAutomacaoApiRest.Requests.Users
         {
             requestService = "/api/rest/users/me";
             method = Method.GET;
-
-            headers.Add("Authorization", Global.token);
         }
     }
 }

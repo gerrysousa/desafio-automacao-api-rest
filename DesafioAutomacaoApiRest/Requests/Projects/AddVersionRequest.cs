@@ -19,7 +19,6 @@ namespace DesafioAutomacaoApiRest.Requests.Projects
             requestService = "/api/rest/projects/{project_id}/versions/";
             method = Method.POST;
 
-            headers.Add("Authorization", Global.token);
             parameters.Add("project_id", idProject.ToString());
         }
 

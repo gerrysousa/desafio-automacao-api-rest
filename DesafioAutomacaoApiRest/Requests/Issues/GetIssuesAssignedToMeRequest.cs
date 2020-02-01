@@ -15,8 +15,6 @@ namespace DesafioAutomacaoApiRest.Requests.Issues
         {
             requestService = "/api/rest/issues?filter_id=assigned";
             method = Method.GET;
-
-            headers.Add("Authorization", Global.token);
         }
     }
 }

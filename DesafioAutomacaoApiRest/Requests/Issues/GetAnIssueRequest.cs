@@ -16,7 +16,6 @@ namespace DesafioAutomacaoApiRest.Requests.Issues
             requestService = "/api/rest/issues/{issue_id}";
             method = Method.GET;
 
-            headers.Add("Authorization", Global.token);
             parameters.Add("issue_id", idIssue.ToString());
         }
     }

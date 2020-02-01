@@ -16,7 +16,6 @@ namespace DesafioAutomacaoApiRest.Requests.Projects
             requestService = "/api/rest/projects/{project_id}";
             method = Method.DELETE;
 
-            headers.Add("Authorization", Global.token);
             parameters.Add("project_id", idProject.ToString());
         }
     }

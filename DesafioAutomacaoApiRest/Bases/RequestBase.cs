@@ -21,7 +21,7 @@ namespace DesafioAutomacaoApiRest.Bases
         protected IDictionary<string, string> headers = new Dictionary<string, string>()
         {
             //Dicionário de headeres deve ser iniciado com os headers comuns a todos os métodos da API
-            {"Content-Type", "application/json"},
+            {"Content-Type", "application/json"},{"Authorization", Global.token }            
         };
 
         protected IDictionary<string, string> cookies = new Dictionary<string, string>()

@@ -17,8 +17,6 @@ namespace DesafioAutomacaoApiRest.Requests.Users
         {
             requestService = "/api/rest/users/";
             method = Method.POST;
-
-            headers.Add("Authorization", Global.token);
         }
 
         public void SetJsonBody(User user)

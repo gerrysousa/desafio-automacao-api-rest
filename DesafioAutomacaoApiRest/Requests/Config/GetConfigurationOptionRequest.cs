@@ -16,7 +16,6 @@ namespace DesafioAutomacaoApiRest.Requests.Config
             requestService = "/api/rest/config?option="+ optionParametro;
             method = Method.GET;
 
-            headers.Add("Authorization", Global.token);
             parameters.Add("option", optionParametro);
         }
     }

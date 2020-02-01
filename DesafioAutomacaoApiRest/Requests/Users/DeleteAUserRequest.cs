@@ -15,8 +15,6 @@ namespace DesafioAutomacaoApiRest.Requests.Users
         {
             requestService = "/api/rest/users/"+ idUser;
             method = Method.DELETE;
-
-            headers.Add("Authorization", Global.token);
         }
     }
 }

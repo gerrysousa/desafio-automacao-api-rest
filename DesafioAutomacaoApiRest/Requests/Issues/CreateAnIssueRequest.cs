@@ -17,8 +17,6 @@ namespace DesafioAutomacaoApiRest.Requests.Issues
         {
             requestService = "/api/rest/issues/";
             method = Method.POST;
-
-            headers.Add("Authorization", Global.token);
         }
 
         public void SetJsonBody(Issue issue)

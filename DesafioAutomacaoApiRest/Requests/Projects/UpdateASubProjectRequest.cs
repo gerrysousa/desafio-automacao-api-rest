@@ -18,7 +18,6 @@ namespace DesafioAutomacaoApiRest.Requests.Projects
             requestService = "/api/rest/projects/{project_id}/subprojects/{subproject_id}";
             method = Method.PATCH;
 
-            headers.Add("Authorization", Global.token);
             parameters.Add("project_id", idProject.ToString());
             parameters.Add("subproject_id", idSubProject.ToString());
         }
