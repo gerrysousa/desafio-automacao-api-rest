@@ -115,7 +115,7 @@ namespace DesafioAutomacaoApiRest.Tests.Users
         {
             #region Parameters
             //Resultado esperado
-            int id = 2;
+            int id = 4;
             string statusEsperado = "NoContent";
             #endregion
 
@@ -195,7 +195,7 @@ namespace DesafioAutomacaoApiRest.Tests.Users
             string username = "user01";
             string password = "p@ssw0rd";
             string real_name = "Gerry Test1";
-            string email = "test8@example2.com";
+            string email = "user01111@example2.com";
             string access_level = "updater";
             bool enabled = true;
             bool @protected = false;
@@ -247,7 +247,7 @@ namespace DesafioAutomacaoApiRest.Tests.Users
             string username = "usernamenValido";
             string password = "p@ssw0rd";
             string real_name = "Gerry Test1";
-            string email = "user01@teste.com";
+            string email = "user02@teste.com";
             string access_level = "updater";
             bool enabled = true;
             bool @protected = false;
@@ -255,7 +255,7 @@ namespace DesafioAutomacaoApiRest.Tests.Users
             //Resultado esperado
             string statusEsperado = "BadRequest";
 
-            string mensagemEsperada = "Email 'user01@teste.com' already used.";
+            string mensagemEsperada = "Email 'user02@teste.com' already used.";
             string codigoEsperado = "813";
             string localizadorEsperado = "That email is already being used. Please go back and select another one.";
 

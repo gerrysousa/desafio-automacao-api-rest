@@ -389,7 +389,6 @@ namespace DesafioAutomacaoApiRest.Tests.Projects
             string statusEsperado = "BadRequest";
 
             int idProject = 1;
-            //string versionName = "v1.0.0";
             bool versionReleased = true;
             bool versionObsolete = true;
 
@@ -403,7 +402,6 @@ namespace DesafioAutomacaoApiRest.Tests.Projects
             AddVersionRequest addVersionRequest = new AddVersionRequest(idProject);
 
             //montando body
-            //version.name = versionName;
             version.released = versionReleased;
             version.obsolete = versionObsolete;
 
