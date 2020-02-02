@@ -379,8 +379,47 @@ namespace DesafioAutomacaoApiRest.Tests.Projects
                 Assert.AreEqual(localizadorEsperado, response.Data.localized.ToString());
                 //Etc
             });
-           
+            #endregion
+        }
 
+        [Test]
+        public void Test_CadastrarUmaVersaoSemNome()
+        {
+            #region Parameters
+            string statusEsperado = "BadRequest";
+
+            int idProject = 1;
+            //string versionName = "v1.0.0";
+            bool versionReleased = true;
+            bool versionObsolete = true;
+
+            string mensagemEsperada = "Invalid version name";
+            string codigoEsperado = "11";
+            string localizadorEsperado = "A necessary field \"name\" was empty. Please recheck your inputs.";
+
+            #endregion
+
+            #region Acoes
+            AddVersionRequest addVersionRequest = new AddVersionRequest(idProject);
+
+            //montando body
+            //version.name = versionName;
+            version.released = versionReleased;
+            version.obsolete = versionObsolete;
+
+            addVersionRequest.SetJsonBody(version);
+            IRestResponse<dynamic> response = addVersionRequest.ExecuteRequest();
+            #endregion
+
+            #region Asserts
+            Assert.Multiple(() =>
+            {
+                Assert.AreEqual(statusEsperado, response.StatusCode.ToString());
+                Assert.AreEqual(mensagemEsperada, response.Data.message.ToString());
+                Assert.AreEqual(codigoEsperado, response.Data.code.ToString());
+                Assert.AreEqual(localizadorEsperado, response.Data.localized.ToString());
+                //Etc
+            });
             #endregion
         }
     }
