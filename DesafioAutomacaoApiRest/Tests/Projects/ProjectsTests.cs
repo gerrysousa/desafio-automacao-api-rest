@@ -41,8 +41,8 @@ namespace DesafioAutomacaoApiRest.Tests.Projects
             string statusEsperado = "Created";
 
             //int projectId = 1;
-            string projectName = "Projeto test api 01";
-            string projectDescription = "Mantis.  Report problems with the actual bug tracker here. (Do not remove this account)";
+            string projectName = "Projeto Post Create 01";
+            string projectDescription = "Projeto Post Create 01 description";
             bool projectEnabled = true;
             string projectFilePath = "/tmp/";
 
@@ -97,17 +97,15 @@ namespace DesafioAutomacaoApiRest.Tests.Projects
         public void Test_ObterUmProjetoComSucesso()
         {
             #region Parameters
-            SetupCenariosHelpers.CadastrarUmProjeto("Projeto 01");
-
             string statusEsperado = "OK";
-            int idIssue = 1;
-            string projectName = "Projeto 01";
-            string description = projectName + " descrição";
+            int projectId = 1;
+            string projectName = "Project 01 Default";
+            string description = "Project 01 Default description";
 
             #endregion
 
             #region Acoes
-            GetAProjectRequest getAProjectRequest = new GetAProjectRequest(idIssue);
+            GetAProjectRequest getAProjectRequest = new GetAProjectRequest(projectId);
             IRestResponse<dynamic> response = getAProjectRequest.ExecuteRequest();
             #endregion
 
@@ -132,14 +130,11 @@ namespace DesafioAutomacaoApiRest.Tests.Projects
             #region Parameters
             string statusEsperado = "OK";
 
-            string projectName1 = "Projeto 01";
-            string description1 = projectName1 + " descrição";
+            string projectName1 = "Project 01 Default";
+            string description1 = "Project 01 Default description";
 
-            string projectName2 = "Projeto 02";
-            string description2 = projectName2 + " descrição";
-
-            SetupCenariosHelpers.CadastrarUmProjeto(projectName1);
-            SetupCenariosHelpers.CadastrarUmProjeto(projectName2);
+            string projectName2 = "Projeto Post Create 01";
+            string description2 = "Projeto Post Create 01 description";
             #endregion
 
             #region Acoes
@@ -172,12 +167,10 @@ namespace DesafioAutomacaoApiRest.Tests.Projects
         public void Test_AtualizarUmProjetoComSucesso()
         {
             #region Parameters
-            SetupCenariosHelpers.CadastrarUmProjeto("Projeto 01");
-
             string statusEsperado = "OK";
 
-            int projectId = 1;
-            string projectNameUpdate = "Projeto 01 Updated";
+            int projectId = 3;
+            string projectNameUpdate = "Projeto 03 Updated";
             bool projectEnabled = false;
             #endregion
 
@@ -209,10 +202,8 @@ namespace DesafioAutomacaoApiRest.Tests.Projects
         public void Test_DeletarUmProjetoComSucesso()
         {
             #region Parameters
-            SetupCenariosHelpers.CadastrarUmProjeto("Projeto 01");
-
-            string statusEsperado = "OK"; //Forbidden
-            int idProject = 1;
+            string statusEsperado = "OK"; 
+            int idProject = 4;
 
             #endregion
 
@@ -232,19 +223,20 @@ namespace DesafioAutomacaoApiRest.Tests.Projects
         public void Test_CadastrarUmSubProjetoComSucesso()
         {
             #region Parameters
-            SetupCenariosHelpers.CadastrarUmProjeto("Projeto 01");
-            SetupCenariosHelpers.CadastrarUmProjeto("Sub Projeto 01");
+            string statusEsperado = "NoContent";
 
-            string statusEsperado = "NoContent";//201  204Subproject '6' added to project '1'
-
-            int projectId = 1;
-            string projectName = "Sub Projeto 01";
+            int projectParentId = 2;
+            int subProjectId = 8;
+            string projectName = "Sub-project 04 from Project 02 Create";
             bool inheritParent = true;
             #endregion
 
             #region Acoes
-            AddASubProjectRequest addASubProjectRequest = new AddASubProjectRequest(projectId);
+            AddASubProjectRequest addASubProjectRequest = new AddASubProjectRequest(projectParentId);
+
+            project.id = subProjectId;
             project.name = projectName;
+
 
             //montando body
             subProject.project = project;
@@ -265,15 +257,11 @@ namespace DesafioAutomacaoApiRest.Tests.Projects
         public void Test_AtualizarUmSubProjetoComSucesso()
         {
             #region Parameters
-            SetupCenariosHelpers.CadastrarUmProjeto("Projeto 01");
-            SetupCenariosHelpers.CadastrarUmProjeto("Sub Projeto 01");
-            SetupCenariosHelpers.CadastrarUmSubProjeto("Sub Projeto 01");
-
             string statusEsperado = "NoContent";
 
-            int projectId = 1;
-            int subProjectId = 2;
-            string projectName = "Sub Projeto update 2";
+            int projectId = 2;
+            int subProjectId = 6;
+            string projectName = "Sub-project 02 from Project 02 Updated OK";
             bool inheritParent = true;
 
             #endregion
@@ -304,10 +292,6 @@ namespace DesafioAutomacaoApiRest.Tests.Projects
         public void Test_DeletarUmSubProjetoComSucesso()
         {
             #region Parameters
-            SetupCenariosHelpers.CadastrarUmProjeto("Projeto 01");
-            SetupCenariosHelpers.CadastrarUmProjeto("Sub Projeto 01");
-            SetupCenariosHelpers.CadastrarUmSubProjeto("Sub Projeto 01");
-
             string statusEsperado = "OK";
             int idProject = 2;
 
