@@ -10,9 +10,11 @@ namespace DesafioAutomacaoApiRest.DBSteps
 {
     class ProjetosDBSteps
     {
-        public static void InsertNewProject(string nomeProjeto)
+        public static void InsertNewProject(int idProjeto, string nomeProjeto)
         {
+            string idProjetoString = idProjeto.ToString();
             string query = File.ReadAllText(GeneralHelpers.ReturnProjectPath() + "Queries/InsertNewProject.sql", Encoding.UTF8);
+            query = query.Replace("$idProjeto", idProjetoString);
             query = query.Replace("$projectName", nomeProjeto);
             query = query.Replace("$projectDescription", nomeProjeto+" description");
             DBHelpers.ExecuteQuery(query);

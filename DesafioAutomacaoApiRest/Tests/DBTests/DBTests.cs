@@ -28,7 +28,7 @@ namespace DesafioAutomacaoApiRest.Tests.DBTests
         [SetUp]
         public void BeforeTest()
         {
-            ProjetosDBSteps.InsertNewProject("Projeto de teste DB");
+            ProjetosDBSteps.InsertNewProject(10, "Projeto de teste DB");
         }
 
 
@@ -37,7 +37,7 @@ namespace DesafioAutomacaoApiRest.Tests.DBTests
         {
             #region Parameters
             string statusEsperado = "OK";
-            int idIssue = 8;
+            int idIssue = 10;
             string projectName = "Projeto de teste DB";
             string description = "Projeto de teste DB description";
 
