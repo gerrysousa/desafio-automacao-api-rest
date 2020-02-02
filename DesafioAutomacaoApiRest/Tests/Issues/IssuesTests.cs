@@ -452,6 +452,222 @@ namespace DesafioAutomacaoApiRest.Tests.Issues
             #endregion
         }
 
+        //=====Cenarios de Falha ==============
+        [Test]
+        public void Test_TentarCadastrarProblemaSemInformarOProjetoDoProblema()
+        {
+            #region Parameters
+            CreateAnIssueRequest createAnIssueRequest = new CreateAnIssueRequest();
+            Issue issue = new Issue();
+            Category category = new Category();
+            Project project = new Project();
+
+            string summary = "This is a test issue";
+            string description = "This is a test description";
+            string categoryName = "General";
+           // string projectName = "Project 03 Update";
+
+            string statusEsperado = "BadRequest";
+
+            string mensagemEsperada = "Project not specified";
+            string codigoEsperado = "11";
+            string localizadorEsperado = "A necessary field \"project\" was empty. Please recheck your inputs.";
+
+            #endregion
+
+            #region Acoes
+            category.name = categoryName;
+           // project.name = projectName;
+
+            issue.summary = summary;
+            issue.description = description;
+            issue.category = category;
+            issue.project = project;
+
+            createAnIssueRequest.SetJsonBody(issue);
+
+            IRestResponse<dynamic> response = createAnIssueRequest.ExecuteRequest();
+            #endregion
+
+            #region Asserts
+            Assert.Multiple(() =>
+            {
+                Assert.AreEqual(statusEsperado, response.StatusCode.ToString());
+                Assert.AreEqual(mensagemEsperada, response.Data.message.ToString());
+                Assert.AreEqual(codigoEsperado, response.Data.code.ToString());
+                Assert.AreEqual(localizadorEsperado, response.Data.localized.ToString());
+            });
+            #endregion
+        }
+
+        [Test]
+        public void Test_TentarCadastrarProblemaSemInformarADescricaoDoProblema()
+        {
+            #region Parameters
+            CreateAnIssueRequest createAnIssueRequest = new CreateAnIssueRequest();
+            Issue issue = new Issue();
+            Category category = new Category();
+            Project project = new Project();
+
+            string summary = "This is a test issue";
+            //string description = "This is a test description";
+            string categoryName = "General";
+            string projectName = "Project 03 Update";
+
+            string statusEsperado = "BadRequest";
+
+            string mensagemEsperada = "Description not specified";
+            string codigoEsperado = "11";
+            string localizadorEsperado = "A necessary field \"description\" was empty. Please recheck your inputs.";
+
+            #endregion
+
+            #region Acoes
+            category.name = categoryName;
+            project.name = projectName;
+
+            issue.summary = summary;
+            //issue.description = description;
+            issue.category = category;
+            issue.project = project;
+
+            createAnIssueRequest.SetJsonBody(issue);
+
+            IRestResponse<dynamic> response = createAnIssueRequest.ExecuteRequest();
+            #endregion
+
+            #region Asserts
+            Assert.Multiple(() =>
+            {
+                Assert.AreEqual(statusEsperado, response.StatusCode.ToString());
+                Assert.AreEqual(mensagemEsperada, response.Data.message.ToString());
+                Assert.AreEqual(codigoEsperado, response.Data.code.ToString());
+                Assert.AreEqual(localizadorEsperado, response.Data.localized.ToString());
+            });
+            #endregion
+        }
+
+        [Test]
+        public void Test_TentarCadastrarProblemaSemInformarOResumoDoProblema()
+        {
+            #region Parameters
+            CreateAnIssueRequest createAnIssueRequest = new CreateAnIssueRequest();
+            Issue issue = new Issue();
+            Category category = new Category();
+            Project project = new Project();
+
+            //string summary = "This is a test issue";
+            string description = "This is a test description";
+            string categoryName = "General";
+            string projectName = "Project 03 Update";
+
+            string statusEsperado = "BadRequest";
+
+            string mensagemEsperada = "Summary not specified";
+            string codigoEsperado = "11";
+            string localizadorEsperado = "A necessary field \"summary\" was empty. Please recheck your inputs.";
+
+            #endregion
+
+            #region Acoes
+            category.name = categoryName;
+            project.name = projectName;
+
+            //issue.summary = summary;
+            issue.description = description;
+            issue.category = category;
+            issue.project = project;
+
+            createAnIssueRequest.SetJsonBody(issue);
+
+            IRestResponse<dynamic> response = createAnIssueRequest.ExecuteRequest();
+            #endregion
+
+            #region Asserts
+            Assert.Multiple(() =>
+            {
+                Assert.AreEqual(statusEsperado, response.StatusCode.ToString());
+                Assert.AreEqual(mensagemEsperada, response.Data.message.ToString());
+                Assert.AreEqual(codigoEsperado, response.Data.code.ToString());
+                Assert.AreEqual(localizadorEsperado, response.Data.localized.ToString());
+            });
+            #endregion
+        }
+
+        [Test]
+        public void Test_TentarCadastrarProblemaSemInformarACategoriaDoProblema()
+        {
+            #region Parameters
+            CreateAnIssueRequest createAnIssueRequest = new CreateAnIssueRequest();
+            Issue issue = new Issue();
+            Category category = new Category();
+            Project project = new Project();
+
+            string summary = "This is a test issue";
+            string description = "This is a test description";
+            string projectName = "Project 03 Update";
+
+            string statusEsperado = "BadRequest";
+
+            string mensagemEsperada = "Category field must be supplied.";
+            string codigoEsperado = "11";
+            string localizadorEsperado = "A necessary field \"category\" was empty. Please recheck your inputs.";
+
+            #endregion
+
+            #region Acoes
+            project.name = projectName;
+
+            issue.summary = summary;
+            issue.description = description;
+            issue.project = project;
+
+            createAnIssueRequest.SetJsonBody(issue);
+
+            IRestResponse<dynamic> response = createAnIssueRequest.ExecuteRequest();
+            #endregion
+
+            #region Asserts
+            Assert.Multiple(() =>
+            {
+                Assert.AreEqual(statusEsperado, response.StatusCode.ToString());
+                Assert.AreEqual(mensagemEsperada, response.Data.message.ToString());
+                Assert.AreEqual(codigoEsperado, response.Data.code.ToString());
+                Assert.AreEqual(localizadorEsperado, response.Data.localized.ToString());
+            });
+            #endregion
+        }
+
+        [Test]
+        public void Test_TentarObterInformacoesDeUmProblemaQueNaoExiste()
+        {
+            #region Parameters
+            string statusEsperado = "NotFound";
+            int idIssue = 100;
+
+            string mensagemEsperada = "Issue #100 not found";
+            string codigoEsperado = "1100";
+            string localizadorEsperado = "Issue 100 not found.";
+
+            #endregion
+
+            #region Acoes
+            GetAnIssueRequest getAnIssueRequest = new GetAnIssueRequest(idIssue);
+            IRestResponse<dynamic> response = getAnIssueRequest.ExecuteRequest();
+            #endregion
+
+            #region Asserts
+            Assert.Multiple(() =>
+            {
+                Assert.AreEqual(statusEsperado, response.StatusCode.ToString());
+                Assert.AreEqual(mensagemEsperada, response.Data.message.ToString());
+                Assert.AreEqual(codigoEsperado, response.Data.code.ToString());
+                Assert.AreEqual(localizadorEsperado, response.Data.localized.ToString());
+            });
+
+            #endregion
+        }
+
 
 
     }
