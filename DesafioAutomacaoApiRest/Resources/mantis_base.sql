@@ -708,7 +708,7 @@ CREATE TABLE `mantis_project_table` (
 
 LOCK TABLES `mantis_project_table` WRITE;
 /*!40000 ALTER TABLE `mantis_project_table` DISABLE KEYS */;
-INSERT INTO `mantis_project_table` VALUES (1,'Project 01 Default',10,1,10,10,'','Project 01 Default description',1,1),(2,'Project 02 With A Sub-project',10,1,10,10,'','Project 02 With A Sub-project description',1,1),(3,'Project 03 Update',10,1,10,10,'','Project 03 Update description',1,1),(4,'Project 04 Delete',10,1,10,10,'','Project 04 Delete description',1,1),(5,'Sub-project 01 from Project 02',10,1,10,10,'','Sub-project 01 from Project 02 description',1,1),(6,'Sub-project 02 from Project 02 Update',10,1,10,10,'','Sub-project 02 from Project 02 Update description',1,1),(7,'Sub-project 03 from Project 02 Delete',10,1,10,10,'','Sub-project 03 from Project 02 Delete description',1,1);
+INSERT INTO `mantis_project_table` VALUES (1,'Project 01 Default',10,1,10,10,'','Project 01 Default description',1,1),(2,'Project 02 With A Sub-project',10,1,10,10,'','Project 02 With A Sub-project description',1,1),(3,'Project 03 Update',10,1,10,10,'','Project 03 Update description',1,1),(4,'Project 04 Delete',10,1,10,10,'','Project 04 Delete description',1,1),(5,'Sub-project 01 from Project 02',10,1,10,10,'','Sub-project 01 from Project 02 description',1,1),(6,'Sub-project 02 from Project 02 Update',10,1,10,10,'','Sub-project 02 from Project 02 Update description',1,1),(7,'Sub-project 03 from Project 02 Delete',10,1,10,10,'','Sub-project 03 from Project 02 Delete description',1,1),(8,'Sub-project 04 from Project 02 Create',10,1,10,10,'','Sub-project 04 from Project 02 Delete description',1,1);
 /*!40000 ALTER TABLE `mantis_project_table` ENABLE KEYS */;
 UNLOCK TABLES;
 

@@ -114,7 +114,6 @@ namespace DesafioAutomacaoApiRest.Tests.Users
         public void Test_DeletarUsuarioComSucesso()
         {
             #region Parameters
-            SetupCenariosHelpers.CadastrarUmUsuario("userDelete", "userDelete", "updater");
             //Resultado esperado
             int id = 2;
             string statusEsperado = "NoContent";

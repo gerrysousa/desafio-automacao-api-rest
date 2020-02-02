@@ -82,11 +82,11 @@ namespace DesafioAutomacaoApiRest.Tests.Issues
             int pageSize = 10;
             int page = 1;
 
-            string summary1 = "Issue No Assigned 01";
-            string description1 = "Issue No Assigned 01 description";
+            string summary1 = "This is a test issue";
+            string description1 = "This is a test description";
 
-            string summary2 = "Issue No Assigned 02";
-            string description2 = "Issue No Assigned 02 description";
+            string summary2 = "Sumary Issue 09 Test Post";
+            string description2 = "Sumary Issue 09 Test Post description";
 
             #endregion
 
@@ -123,11 +123,11 @@ namespace DesafioAutomacaoApiRest.Tests.Issues
             string statusEsperado = "OK";
             int idProjeto = 1;
 
-            string summary1 = "Issue No Assigned 01";
-            string description1 = "Issue No Assigned 01 description";
+            string summary1 = "Summary Issue 06 With Note to Delete";
+            string description1 = "Summary Issue 06 With Note to Delete description";
 
-            string summary2 = "Issue No Assigned 02";
-            string description2 = "Issue No Assigned 02 description";
+            string summary2 = "Summary Issue 05 Update";
+            string description2 = "Summary Issue 05 Update description";
             #endregion
 
             #region Acoes
@@ -160,9 +160,6 @@ namespace DesafioAutomacaoApiRest.Tests.Issues
         public void Test_ObterInformacoesDeProblemasAssinadosParaMimComSucesso()
         {
             #region Parameters
-            SetupCenariosHelpers.CadastrarUmBug("Bug obter info","Projeto 01");
-            IssuesDBSteps.InserirAssinarBugParaUser01DB();
-
             string statusEsperado = "OK";
 
             string summary = "Summary Issue 04 Assigned to me";
@@ -196,10 +193,9 @@ namespace DesafioAutomacaoApiRest.Tests.Issues
             #region Parameters
             string statusEsperado = "OK";
 
-            string summary = "Description for sample REST issue.";
-            string description = "This is a test issue No Assigned description";
+            string summary = "Sumary Issue 09 Test Post";
+            string description = "Sumary Issue 09 Test Post description";
 
-            SetupCenariosHelpers.CadastrarUmBug(summary, "Projeto 01");
             #endregion
 
             #region Acoes
@@ -232,8 +228,6 @@ namespace DesafioAutomacaoApiRest.Tests.Issues
             string summary = "Sumary Issue 03 Monitored by me";
             string description = "Sumary Issue 03 Monitored by me description";
 
-            SetupCenariosHelpers.CadastrarUmBug(summary, "Projeto 01");
-            IssuesDBSteps.InserirMonitorBug01DB();
             #endregion
 
             #region Acoes
@@ -262,31 +256,14 @@ namespace DesafioAutomacaoApiRest.Tests.Issues
             #region Parameters
             string statusEsperado = "OK";
 
-            string summary = "Sample REST issue";
-            string description = "Description for sample REST issue.";
+            string summary = "Sumary Issue 09 Test Post";
+            string description = "Sumary Issue 09 Test Post description";
             string categoryName = "General";
             string projectName = "Project 03 Update";
 
             #endregion
 
             #region Acoes
-            CreateAnIssueRequest createAnIssueRequest = new CreateAnIssueRequest();
-            Issue issue = new Issue();
-            Category category = new Category();
-            Project project = new Project();
-            category.name = categoryName;
-            project.name = projectName;
-
-            issue.summary = summary;
-            issue.description = description;
-            issue.category = category;
-            issue.project = project;
-
-            createAnIssueRequest.SetJsonBody(issue);
-
-            IRestResponse<dynamic> response1 = createAnIssueRequest.ExecuteRequest();
-
-
             GetUnassignedIssuesRequest getUnassignedIssuesRequest = new GetUnassignedIssuesRequest();
             IRestResponse<dynamic> response = getUnassignedIssuesRequest.ExecuteRequest();
             #endregion
@@ -362,8 +339,8 @@ namespace DesafioAutomacaoApiRest.Tests.Issues
 
             string statusEsperado = "Created";//201
 
-            string summary = "Sample REST issue";
-            string description = "Description for sample REST issue.";
+            string summary = "Sumary Issue 09 Test Post";
+            string description = "Sumary Issue 09 Test Post description";
             string additional_information = "More info about the issue";
             int projectId = 3;
             string projectName = "Project 03 Update";
@@ -458,10 +435,8 @@ namespace DesafioAutomacaoApiRest.Tests.Issues
         public void Test_DeletarUmProblemaComSucesso()
         {
             #region Parameters
-            //SetupCenariosHelpers.CadastrarUmProjeto("Projeto 01");
-            SetupCenariosHelpers.CadastrarUmBug("Bug 01", "Projeto 01");
-            string statusEsperado = "NoContent";//204 No Content
-            int idIssue = 1;
+            string statusEsperado = "NoContent";
+            int idIssue = 2;
 
             #endregion
 
