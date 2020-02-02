@@ -21,5 +21,6 @@ namespace DesafioAutomacaoApiRest.Objects
         public bool sticky { get; set; }
         public List<CustomField> custom_fields { get; set; }
         public List<Tag> tags { get; set; }
+        public List<File> files { get; set; }
     }
 }

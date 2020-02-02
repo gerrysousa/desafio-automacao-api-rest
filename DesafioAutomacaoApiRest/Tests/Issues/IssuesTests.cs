@@ -32,6 +32,8 @@ namespace DesafioAutomacaoApiRest.Tests.Issues
         Tag tag = new Tag();
         CustomField customField = new CustomField();
         Field field = new Field();
+        List<File> files = new List<File>();
+
 
         #endregion
 
@@ -429,7 +431,62 @@ namespace DesafioAutomacaoApiRest.Tests.Issues
             #endregion
         }
 
+        [Test]
+        public void Test_CadastrarProblemaComAnexosComSucesso()
+        {
+            #region Parameters
+            CreateAnIssueRequest createAnIssueRequest = new CreateAnIssueRequest();
+            Issue issue = new Issue();
+            Category category = new Category();
+            Project project = new Project();
+            File file = new File();
 
+            string statusEsperado = "Created";
+
+            string summary = "Esse report contem um anexo";
+            string description = "Esse report contem um anexo description";
+            string categoryName = "General";
+            string projectName = "Project 03 Update";
+
+            string anexoNome = "test.txt";
+            string anexoConteudo = "VGhpcyBpcyBhIFRFU1QuDQpUaGlzIGlzIGEgVEVTVC4NClRoaXMgaXMgYSBURVNULg0KVGhpcyBpcyBhIFRFU1QuDQpUaGlzIGlzIGEgVEVTVC4=";
+            #endregion
+
+            #region Acoes
+            category.name = categoryName;
+            project.name = projectName;
+
+            file.name =anexoNome;
+            file.content = anexoConteudo;
+
+            files.Add(file);
+
+            issue.summary = summary;
+            issue.description = description;
+            issue.category = category;
+            issue.project = project;
+            issue.files = files;
+
+            createAnIssueRequest.SetJsonBody(issue);
+
+            IRestResponse<dynamic> response = createAnIssueRequest.ExecuteRequest();
+            #endregion
+
+            #region Asserts
+
+            Assert.Multiple(() =>
+            {
+                Assert.AreEqual(statusEsperado, response.StatusCode.ToString());
+                Assert.AreEqual(summary, response.Data.issue.summary.ToString());
+                Assert.AreEqual(description, response.Data.issue.description.ToString());
+
+                Assert.AreEqual(categoryName, response.Data.issue.category.name.ToString());
+                Assert.AreEqual(projectName, response.Data.issue.project.name.ToString());
+                //Etc
+            });
+
+            #endregion
+        }
         //=============================================================
         [Test]
         public void Test_DeletarUmProblemaComSucesso()

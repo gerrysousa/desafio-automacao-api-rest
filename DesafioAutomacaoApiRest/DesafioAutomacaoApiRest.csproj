@@ -137,6 +137,7 @@
     <Compile Include="Objects\Category.cs" />
     <Compile Include="Objects\CustomField.cs" />
     <Compile Include="Objects\Field.cs" />
+    <Compile Include="Objects\File.cs" />
     <Compile Include="Objects\Handler.cs" />
     <Compile Include="Objects\Issue.cs" />
     <Compile Include="Objects\Priority.cs" />
