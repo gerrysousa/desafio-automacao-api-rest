@@ -342,7 +342,7 @@ namespace DesafioAutomacaoApiRest.Tests.Projects
 
         //=======Cenarios de Falha
         [Test]
-        public void Test_CadastrarUmaVersaoQueJaExiste()
+        public void Test_TentarCadastrarUmaVersaoQueJaExiste()
         {
             #region Parameters
             string statusEsperado = "BadRequest";
@@ -383,7 +383,7 @@ namespace DesafioAutomacaoApiRest.Tests.Projects
         }
 
         [Test]
-        public void Test_CadastrarUmaVersaoSemNome()
+        public void Test_TentarCadastrarUmaVersaoSemNome()
         {
             #region Parameters
             string statusEsperado = "BadRequest";
@@ -418,9 +418,42 @@ namespace DesafioAutomacaoApiRest.Tests.Projects
                 Assert.AreEqual(mensagemEsperada, response.Data.message.ToString());
                 Assert.AreEqual(codigoEsperado, response.Data.code.ToString());
                 Assert.AreEqual(localizadorEsperado, response.Data.localized.ToString());
-                //Etc
             });
             #endregion
         }
+
+        [Test]
+        public void Test_TentarObterUmProjetoQueNaoExiste()
+        {
+            #region Parameters
+            string statusEsperado = "NotFound";
+            int projectId = 100;
+
+            string mensagemEsperada = "Project #100 not found";
+            string codigoEsperado = "700";
+            string localizadorEsperado = "Project \"100\" not found.";
+
+            #endregion
+
+            #region Acoes
+            GetAProjectRequest getAProjectRequest = new GetAProjectRequest(projectId);
+            IRestResponse<dynamic> response = getAProjectRequest.ExecuteRequest();
+            #endregion
+
+            #region Asserts
+            Assert.Multiple(() =>
+            {
+                Assert.AreEqual(statusEsperado, response.StatusCode.ToString());
+                Assert.AreEqual(mensagemEsperada, response.Data.message.ToString());
+                Assert.AreEqual(codigoEsperado, response.Data.code.ToString());
+                Assert.AreEqual(localizadorEsperado, response.Data.localized.ToString());
+            });
+            #endregion
+        }
+
+
+
+
+
     }
 }
