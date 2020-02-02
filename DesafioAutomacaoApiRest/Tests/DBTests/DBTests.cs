@@ -1,7 +1,7 @@
 ﻿using DesafioAutomacaoApiRest.Bases;
 using DesafioAutomacaoApiRest.DBSteps;
 using DesafioAutomacaoApiRest.Helpers;
-using DesafioAutomacaoApiRest.Pages;
+using DesafioAutomacaoApiRest.Objects;
 using DesafioAutomacaoApiRest.Requests.Projects;
 using NUnit.Framework;
 using RestSharp;

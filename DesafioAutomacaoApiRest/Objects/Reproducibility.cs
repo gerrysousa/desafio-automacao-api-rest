@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DesafioAutomacaoApiRest.Pages
+namespace DesafioAutomacaoApiRest.Objects
 {
-    class Tag
+    class Reproducibility
     {
         public string name { get; set; }
     }

@@ -1,6 +1,6 @@
 ﻿using DesafioAutomacaoApiRest.Bases;
 using DesafioAutomacaoApiRest.Helpers;
-using DesafioAutomacaoApiRest.Pages;
+using DesafioAutomacaoApiRest.Objects;
 using RestSharp;
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Version = DesafioAutomacaoApiRest.Pages.Version;
+using Version = DesafioAutomacaoApiRest.Objects.Version;
 
 namespace DesafioAutomacaoApiRest.Requests.Projects
 {

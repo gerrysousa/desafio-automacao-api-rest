@@ -2,7 +2,7 @@
 using DesafioAutomacaoApiRest.Helpers;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using DesafioAutomacaoApiRest.Pages;
+using DesafioAutomacaoApiRest.Objects;
 using DesafioAutomacaoApiRest.Requests.Issues;
 using NUnit.Framework;
 using RestSharp;

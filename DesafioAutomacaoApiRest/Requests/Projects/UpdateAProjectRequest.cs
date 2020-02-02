@@ -1,6 +1,6 @@
 ﻿using DesafioAutomacaoApiRest.Bases;
 using DesafioAutomacaoApiRest.Helpers;
-using DesafioAutomacaoApiRest.Pages;
+using DesafioAutomacaoApiRest.Objects;
 using RestSharp;
 using System;
 using System.Collections.Generic;

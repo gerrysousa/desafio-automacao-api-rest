@@ -4,10 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DesafioAutomacaoApiRest.Pages
+namespace DesafioAutomacaoApiRest.Objects
 {
-    class Reproducibility
+    class Version
     {
         public string name { get; set; }
+        public bool released { get; set; }
+        public bool obsolete { get; set; }
     }
 }

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DesafioAutomacaoApiRest.Pages
+namespace DesafioAutomacaoApiRest.Objects
 {
-    class Handler
+    class Tag
     {
         public string name { get; set; }
     }

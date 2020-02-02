@@ -2,7 +2,7 @@
 using DesafioAutomacaoApiRest.Helpers;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using DesafioAutomacaoApiRest.Pages;
+using DesafioAutomacaoApiRest.Objects;
 using DesafioAutomacaoApiRest.Requests.Projects;
 using NUnit.Framework;
 using RestSharp;
@@ -11,7 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Version = DesafioAutomacaoApiRest.Pages.Version;
+using Version = DesafioAutomacaoApiRest.Objects.Version;
 using DesafioAutomacaoApiRest.DBSteps;
 
 namespace DesafioAutomacaoApiRest.Tests.Projects

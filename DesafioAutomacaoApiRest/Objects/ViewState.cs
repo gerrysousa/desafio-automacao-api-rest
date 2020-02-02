@@ -4,10 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DesafioAutomacaoApiRest.Pages
+namespace DesafioAutomacaoApiRest.Objects
 {
-    class Priority
+    class ViewState
     {
+        public int id { get; set; }
         public string name { get; set; }
+        public string label { get; set; }
     }
 }
