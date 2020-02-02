@@ -1,5 +1,5 @@
 ﻿using DesafioAutomacaoApiRest.DBSteps;
-using DesafioAutomacaoApiRest.Pages;
+using DesafioAutomacaoApiRest.Objects;
 using DesafioAutomacaoApiRest.Requests.Issues;
 using DesafioAutomacaoApiRest.Requests.Projects;
 using DesafioAutomacaoApiRest.Requests.Users;
@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Version = DesafioAutomacaoApiRest.Pages.Version;
+using Version = DesafioAutomacaoApiRest.Objects.Version;
 
 namespace DesafioAutomacaoApiRest.Helpers
 {

@@ -133,8 +133,8 @@ namespace DesafioAutomacaoApiRest.Tests.Projects
             string projectName1 = "Project 01 Default";
             string description1 = "Project 01 Default description";
 
-            string projectName2 = "Projeto Post Create 01";
-            string description2 = "Projeto Post Create 01 description";
+            string projectName2 = "Projeto 03 Updated";
+            string description2 = "Project 03 Update description";
             #endregion
 
             #region Acoes

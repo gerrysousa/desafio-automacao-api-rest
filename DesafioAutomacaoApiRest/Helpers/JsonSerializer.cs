@@ -15,7 +15,8 @@ namespace DesafioAutomacaoApiRest.Helpers
 
         public string Serialize(object obj)
         {
-            return JsonConvert.SerializeObject(obj);
+            //return JsonConvert.SerializeObject(obj);
+            return JsonConvert.SerializeObject(obj, Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore, DefaultValueHandling = DefaultValueHandling.Ignore });            
         }
     }
 }
