@@ -339,5 +339,49 @@ namespace DesafioAutomacaoApiRest.Tests.Projects
 
             #endregion
         }
+
+        //=======Cenarios de Falha
+        [Test]
+        public void Test_CadastrarUmaVersaoQueJaExiste()
+        {
+            #region Parameters
+            string statusEsperado = "BadRequest";
+
+            int idProject = 1;
+            string versionName = "v1.0.0";
+            bool versionReleased = true;
+            bool versionObsolete = true;
+
+            string mensagemEsperada = "Version 'v1.0.0' already exists";
+            string codigoEsperado ="1600";
+            string localizadorEsperado = "A version with that name already exists.";
+
+            #endregion
+
+            #region Acoes
+            AddVersionRequest addVersionRequest = new AddVersionRequest(idProject);
+
+            //montando body
+            version.name = versionName;
+            version.released = versionReleased;
+            version.obsolete = versionObsolete;
+
+            addVersionRequest.SetJsonBody(version);
+            IRestResponse<dynamic> response = addVersionRequest.ExecuteRequest();
+            #endregion
+
+            #region Asserts
+            Assert.Multiple(() =>
+            {
+                Assert.AreEqual(statusEsperado, response.StatusCode.ToString());
+                Assert.AreEqual(mensagemEsperada, response.Data.message.ToString());
+                Assert.AreEqual(codigoEsperado, response.Data.code.ToString());
+                Assert.AreEqual(localizadorEsperado, response.Data.localized.ToString());
+                //Etc
+            });
+           
+
+            #endregion
+        }
     }
 }
