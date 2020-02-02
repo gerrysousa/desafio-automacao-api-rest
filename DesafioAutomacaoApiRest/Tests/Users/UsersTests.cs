@@ -130,7 +130,163 @@ namespace DesafioAutomacaoApiRest.Tests.Users
             #endregion
         }
 
+        //===Cenarios de falha===========================
 
+        [Test]
+        public void Test_TentarCadastrarUsuarioSemUsername()
+        {
+            #region Parameters
+            CreateAUserRequest createAUserRequest = new CreateAUserRequest();
+            User user = new User();
+            AccessLevel accessLevel = new AccessLevel();
+
+           // string username = "test8";
+            string password = "p@ssw0rd";
+            string real_name = "Gerry Test1";
+            string email = "test8@example2.com";
+            string access_level = "updater";
+            bool enabled = true;
+            bool @protected = false;
+
+            //Resultado esperado
+            string statusEsperado = "BadRequest";
+
+            string mensagemEsperada = "Invalid username ''";
+            string codigoEsperado = "805";
+            string localizadorEsperado = "The username is invalid. Usernames may only contain Latin letters, numbers, spaces, hyphens, dots, plus signs and underscores.";
+
+            #endregion
+
+            #region Acoes
+            accessLevel.name = access_level;
+
+            //user.username = username;
+            user.password = password;
+            user.real_name = real_name;
+            user.email = email;
+            user.access_level = accessLevel;
+            user.enabled = enabled;
+            user.@protected = @protected;
+
+            createAUserRequest.SetJsonBody(user);
+
+            IRestResponse<dynamic> response = createAUserRequest.ExecuteRequest();
+            #endregion
+
+            #region Asserts
+            Assert.Multiple(() =>
+            {
+                Assert.AreEqual(statusEsperado, response.StatusCode.ToString());
+                Assert.AreEqual(mensagemEsperada, response.Data.message.ToString());
+                Assert.AreEqual(codigoEsperado, response.Data.code.ToString());
+                Assert.AreEqual(localizadorEsperado, response.Data.localized.ToString());
+            });
+            #endregion
+        }
+        
+        [Test]
+        public void Test_TentarCadastrarUsuarioComUsernameQueJaExiste()
+        {
+            #region Parameters
+            CreateAUserRequest createAUserRequest = new CreateAUserRequest();
+            User user = new User();
+            AccessLevel accessLevel = new AccessLevel();
+
+            string username = "user01";
+            string password = "p@ssw0rd";
+            string real_name = "Gerry Test1";
+            string email = "test8@example2.com";
+            string access_level = "updater";
+            bool enabled = true;
+            bool @protected = false;
+
+            //Resultado esperado
+            string statusEsperado = "BadRequest";
+
+            string mensagemEsperada = "Username 'user01' already used.";
+            string codigoEsperado = "800";
+            string localizadorEsperado = "That username is already being used. Please go back and select another one.";
+
+            #endregion
+
+            #region Acoes
+            accessLevel.name = access_level;
+
+            user.username = username;
+            user.password = password;
+            user.real_name = real_name;
+            user.email = email;
+            user.access_level = accessLevel;
+            user.enabled = enabled;
+            user.@protected = @protected;
+
+            createAUserRequest.SetJsonBody(user);
+
+            IRestResponse<dynamic> response = createAUserRequest.ExecuteRequest();
+            #endregion
+
+            #region Asserts
+            Assert.Multiple(() =>
+            {
+                Assert.AreEqual(statusEsperado, response.StatusCode.ToString());
+                Assert.AreEqual(mensagemEsperada, response.Data.message.ToString());
+                Assert.AreEqual(codigoEsperado, response.Data.code.ToString());
+                Assert.AreEqual(localizadorEsperado, response.Data.localized.ToString());
+            });
+            #endregion
+        }
+
+        [Test]
+        public void Test_TentarCadastrarUsuarioComEmailQueJaExiste()
+        {
+            #region Parameters
+            CreateAUserRequest createAUserRequest = new CreateAUserRequest();
+            User user = new User();
+            AccessLevel accessLevel = new AccessLevel();
+
+            string username = "usernamenValido";
+            string password = "p@ssw0rd";
+            string real_name = "Gerry Test1";
+            string email = "user01@teste.com";
+            string access_level = "updater";
+            bool enabled = true;
+            bool @protected = false;
+
+            //Resultado esperado
+            string statusEsperado = "BadRequest";
+
+            string mensagemEsperada = "Email 'user01@teste.com' already used.";
+            string codigoEsperado = "813";
+            string localizadorEsperado = "That email is already being used. Please go back and select another one.";
+
+            #endregion
+
+            #region Acoes
+            accessLevel.name = access_level;
+
+            user.username = username;
+            user.password = password;
+            user.real_name = real_name;
+            user.email = email;
+            user.access_level = accessLevel;
+            user.enabled = enabled;
+            user.@protected = @protected;
+
+            createAUserRequest.SetJsonBody(user);
+
+            IRestResponse<dynamic> response = createAUserRequest.ExecuteRequest();
+            #endregion
+
+            #region Asserts
+            Assert.Multiple(() =>
+            {
+                Assert.AreEqual(statusEsperado, response.StatusCode.ToString());
+                Assert.AreEqual(mensagemEsperada, response.Data.message.ToString());
+                Assert.AreEqual(codigoEsperado, response.Data.code.ToString());
+                Assert.AreEqual(localizadorEsperado, response.Data.localized.ToString());
+            });
+            #endregion
+        }
 
     }
 }
