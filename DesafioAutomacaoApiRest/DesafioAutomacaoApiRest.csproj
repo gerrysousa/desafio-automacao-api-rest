@@ -160,7 +160,6 @@
     <Compile Include="Requests\Config\GetConfigurationOptionRequest.cs" />
     <Compile Include="Requests\Issues\AddAttachmentsToIssueRequest.cs" />
     <Compile Include="Requests\Issues\CreateAnIssueNoteRequest.cs" />
-    <Compile Include="Requests\Issues\CreateAnIssueNoteWithAttachmentRequest.cs" />
     <Compile Include="Requests\Issues\CreateAnIssueRequest.cs" />
     <Compile Include="Requests\Issues\DeleteAnIssueRequest.cs" />
     <Compile Include="Requests\Issues\GetAllIssuesRequest.cs" />
