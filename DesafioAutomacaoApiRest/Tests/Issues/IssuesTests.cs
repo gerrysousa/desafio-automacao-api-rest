@@ -285,6 +285,7 @@ namespace DesafioAutomacaoApiRest.Tests.Issues
         }
 
 
+
         //=============================================================
         [Test]
         public void Test_CadastrarProblemaMinimoInformacoesComSucesso()
@@ -487,6 +488,42 @@ namespace DesafioAutomacaoApiRest.Tests.Issues
 
             #endregion
         }
+
+        [Test]
+        public void Test_AddAnexoAUmProblemaComSucesso()
+        {
+            #region Parameters
+            AddAttachmentsToIssueRequest addAttachmentsToIssueRequest;// = new AddAttachmentsToIssueRequest();
+            File file = new File();
+
+            string statusEsperado = "Created";
+
+            int idIssue = 1;
+            string anexoNome = "test.txt";
+            string anexoConteudo = "VGhpcyBpcyBhIFRFU1QuDQpUaGlzIGlzIGEgVEVTVC4NClRoaXMgaXMgYSBURVNULg0KVGhpcyBpcyBhIFRFU1QuDQpUaGlzIGlzIGEgVEVTVC4=";
+            #endregion
+
+            #region Acoes
+            file.name = anexoNome;
+            file.content = anexoConteudo;
+
+            files.Add(file);
+
+            issue.files = files;
+
+            addAttachmentsToIssueRequest = new AddAttachmentsToIssueRequest(idIssue);
+
+            addAttachmentsToIssueRequest.SetJsonBody(issue);
+
+            IRestResponse<dynamic> response = addAttachmentsToIssueRequest.ExecuteRequest();
+            #endregion
+
+            #region Asserts
+
+            Assert.AreEqual(statusEsperado, response.StatusCode.ToString());
+            #endregion
+        }
+
         //=============================================================
         [Test]
         public void Test_DeletarUmProblemaComSucesso()
