@@ -3,7 +3,7 @@ Projeto para desafio e aprendizado sobre automação de APIs REST
 
 **Regras/Metas**
 
-- [ ]	1) Implementar 50 scripts de testes que manipulem uma aplicação cuja interface é uma API REST. 
+- [x]	1) Implementar 50 scripts de testes que manipulem uma aplicação cuja interface é uma API REST. 
 - [x]	2) Alguns scripts devem ler dados de uma planilha Excel para implementar Data-Driven. 
 - [x]	3) Notem que 50 scripts podem cobrir mais de 50 casos de testes se usarmos Data-Driven. Em outras palavras, implementar 50 CTs usando data-driven não é a mesma coisa que implementar 50 scripts. 
 - [ ]	4) O projeto deve tratar autenticação. Exemplo: OAuth2. 

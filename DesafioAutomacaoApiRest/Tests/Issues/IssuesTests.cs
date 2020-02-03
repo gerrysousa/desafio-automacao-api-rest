@@ -926,6 +926,37 @@ namespace DesafioAutomacaoApiRest.Tests.Issues
         }
 
         [Test]
+        public void Test_TentarDeletaUProblemaQueNaoExiste()
+        {
+            #region Parameters
+            string statusEsperado = "NotFound";
+            int idIssue = 200;
+
+            string mensagemEsperada = "Issue #200 not found";
+            string codigoEsperado = "1100";
+            string localizadorEsperado = "Issue 200 not found.";
+            #endregion
+
+            #region Acoes
+            
+            DeleteAnIssueRequest deleteAnIssueRequest = new DeleteAnIssueRequest(idIssue);
+            IRestResponse<dynamic> response = deleteAnIssueRequest.ExecuteRequest();
+            #endregion
+
+            #region Asserts
+            Assert.Multiple(() =>
+            {
+                Assert.AreEqual(statusEsperado, response.StatusCode.ToString());
+                Assert.AreEqual(mensagemEsperada, response.Data.message.ToString());
+                Assert.AreEqual(codigoEsperado, response.Data.code.ToString());
+                Assert.AreEqual(localizadorEsperado, response.Data.localized.ToString());
+            });
+            #endregion
+
+          
+        }
+
+        [Test]
         public void Test_TentaAddNotasComTempoCronometradoAUmProblema()
         {
             #region Parameters
