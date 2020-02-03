@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace DesafioAutomacaoApiRest.Objects
 {
-    class Note
+    class TimeTracking
     {
-        public string text { get; set; }
-        public ViewState view_state { get; set; }
-        public TimeTracking time_tracking { get; set; }
+        public string duration { get; set; }
     }
 }

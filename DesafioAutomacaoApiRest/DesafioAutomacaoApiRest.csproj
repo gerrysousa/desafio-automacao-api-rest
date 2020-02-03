@@ -148,6 +148,7 @@
     <Compile Include="Objects\Status.cs" />
     <Compile Include="Objects\SubProject.cs" />
     <Compile Include="Objects\Tag.cs" />
+    <Compile Include="Objects\TimeTracking.cs" />
     <Compile Include="Objects\Version.cs" />
     <Compile Include="Objects\ViewState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
