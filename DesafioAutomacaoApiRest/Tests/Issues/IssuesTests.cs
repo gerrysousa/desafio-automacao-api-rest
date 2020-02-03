@@ -33,7 +33,7 @@ namespace DesafioAutomacaoApiRest.Tests.Issues
         CustomField customField = new CustomField();
         Field field = new Field();
         List<File> files = new List<File>();
-
+        File file = new File();
 
         #endregion
 
@@ -559,33 +559,33 @@ namespace DesafioAutomacaoApiRest.Tests.Issues
         }
 
         [Test]
-        public void Test_TentaAddNotasComTempoCronometradoAUmProblema()
+        public void Test_AddNotasComAnexoAUmProblemaComSucesso()
         {
             #region Parameters
             CreateAnIssueNoteRequest createAnIssueNoteRequest;
             Note note = new Note();
-            TimeTracking timeTracking = new TimeTracking();
 
-            string statusEsperado = "Forbidden";
+            string statusEsperado = "Created";
 
             int idIssue = 1;
             string textoNota = "test note";
             string viewStateName = "public";
-            string duracao = "00:15";
-
-            string mensagemEsperada = "time tracking disabled";
-            string codigoEsperado = "13";
-            string localizadorEsperado = "Access Denied.";
-
+            string anexoNome = "test.txt";
+            string anexoConteudo = "VGhpcyBpcyBhIFRFU1QuDQpUaGlzIGlzIGEgVEVTVC4NClRoaXMgaXMgYSBURVNULg0KVGhpcyBpcyBhIFRFU1QuDQpUaGlzIGlzIGEgVEVTVC4=";
             #endregion
 
             #region Acoes
+            file.name = anexoNome;
+            file.content = anexoConteudo;
+
+            files.Add(file);
+
             viewState.name = viewStateName;
-            timeTracking.duration = duracao;
 
             note.text = textoNota;
             note.view_state = viewState;
-            note.time_tracking = timeTracking;
+            note.files = files;
+
 
             createAnIssueNoteRequest = new CreateAnIssueNoteRequest(idIssue);
 
@@ -595,15 +595,13 @@ namespace DesafioAutomacaoApiRest.Tests.Issues
             #endregion
 
             #region Asserts
-            Assert.Multiple(() =>
-            {
-                Assert.AreEqual(statusEsperado, response.StatusCode.ToString());
-                Assert.AreEqual(mensagemEsperada, response.Data.message.ToString());
-                Assert.AreEqual(codigoEsperado, response.Data.code.ToString());
-                Assert.AreEqual(localizadorEsperado, response.Data.localized.ToString());
-            });
+
+            Assert.AreEqual(statusEsperado, response.StatusCode.ToString());
             #endregion
         }
+
+
+        
         //=============================================================
         [Test]
         public void Test_DeletarUmProblemaComSucesso()
@@ -842,7 +840,52 @@ namespace DesafioAutomacaoApiRest.Tests.Issues
             #endregion
         }
 
+        [Test]
+        public void Test_TentaAddNotasComTempoCronometradoAUmProblema()
+        {
+            #region Parameters
+            CreateAnIssueNoteRequest createAnIssueNoteRequest;
+            Note note = new Note();
+            TimeTracking timeTracking = new TimeTracking();
 
+            string statusEsperado = "Forbidden";
+
+            int idIssue = 1;
+            string textoNota = "test note";
+            string viewStateName = "public";
+            string duracao = "00:15";
+
+            string mensagemEsperada = "time tracking disabled";
+            string codigoEsperado = "13";
+            string localizadorEsperado = "Access Denied.";
+
+            #endregion
+
+            #region Acoes
+            viewState.name = viewStateName;
+            timeTracking.duration = duracao;
+
+            note.text = textoNota;
+            note.view_state = viewState;
+            note.time_tracking = timeTracking;
+
+            createAnIssueNoteRequest = new CreateAnIssueNoteRequest(idIssue);
+
+            createAnIssueNoteRequest.SetJsonBody(note);
+
+            IRestResponse<dynamic> response = createAnIssueNoteRequest.ExecuteRequest();
+            #endregion
+
+            #region Asserts
+            Assert.Multiple(() =>
+            {
+                Assert.AreEqual(statusEsperado, response.StatusCode.ToString());
+                Assert.AreEqual(mensagemEsperada, response.Data.message.ToString());
+                Assert.AreEqual(codigoEsperado, response.Data.code.ToString());
+                Assert.AreEqual(localizadorEsperado, response.Data.localized.ToString());
+            });
+            #endregion
+        }
 
     }
 }

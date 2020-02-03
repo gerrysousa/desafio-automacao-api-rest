@@ -11,5 +11,6 @@ namespace DesafioAutomacaoApiRest.Objects
         public string text { get; set; }
         public ViewState view_state { get; set; }
         public TimeTracking time_tracking { get; set; }
+        public List<File> files { get; set; }
     }
 }
