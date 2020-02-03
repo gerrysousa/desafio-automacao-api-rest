@@ -34,6 +34,9 @@ namespace DesafioAutomacaoApiRest.Tests.Issues
         Field field = new Field();
         List<File> files = new List<File>();
         File file = new File();
+        Note note = new Note();
+        Reporter reporter = new Reporter();
+        
 
         #endregion
 
@@ -563,7 +566,7 @@ namespace DesafioAutomacaoApiRest.Tests.Issues
         {
             #region Parameters
             CreateAnIssueNoteRequest createAnIssueNoteRequest;
-            Note note = new Note();
+            
 
             string statusEsperado = "Created";
 
@@ -619,6 +622,42 @@ namespace DesafioAutomacaoApiRest.Tests.Issues
 
             #region Asserts
            
+            Assert.AreEqual(statusEsperado, response.StatusCode.ToString());
+
+            #endregion
+        }
+
+        [Test]
+        public void Test_DeletarUmaNotaDeUmProblemaComSucesso()
+        {
+            #region Parameters
+            DeleteAnIssueNoteRequest deleteAnIssueNoteRequest;
+            string statusEsperado = "OK";
+            int idIssue = 6;
+            int idNota = 1;
+
+            string textoNota = "test note";
+            string viewStateName = "public";
+            string reporteName = "Gerry";
+            #endregion
+
+            #region Acoes
+           
+            viewState.name = viewStateName;
+            reporter.name = reporteName;
+
+            note.text = textoNota;
+            note.view_state = viewState;
+            note.reporter = reporter;
+
+            deleteAnIssueNoteRequest = new DeleteAnIssueNoteRequest(idIssue, idNota);
+            deleteAnIssueNoteRequest.SetJsonBody(note);
+
+            IRestResponse<dynamic> response = deleteAnIssueNoteRequest.ExecuteRequest();
+            #endregion
+
+            #region Asserts
+
             Assert.AreEqual(statusEsperado, response.StatusCode.ToString());
 
             #endregion
