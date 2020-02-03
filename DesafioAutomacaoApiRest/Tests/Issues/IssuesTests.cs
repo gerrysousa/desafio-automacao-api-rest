@@ -15,7 +15,7 @@ using DesafioAutomacaoApiRest.DBSteps;
 
 namespace DesafioAutomacaoApiRest.Tests.Issues
 {
-    //[Parallelizable(ParallelScope.All)]
+    [Parallelizable(ParallelScope.All)]
     class IssuesTestsTestBase : TestBase
     {
         #region Objects
@@ -865,6 +865,52 @@ namespace DesafioAutomacaoApiRest.Tests.Issues
             #region Acoes
             GetAnIssueRequest getAnIssueRequest = new GetAnIssueRequest(idIssue);
             IRestResponse<dynamic> response = getAnIssueRequest.ExecuteRequest();
+            #endregion
+
+            #region Asserts
+            Assert.Multiple(() =>
+            {
+                Assert.AreEqual(statusEsperado, response.StatusCode.ToString());
+                Assert.AreEqual(mensagemEsperada, response.Data.message.ToString());
+                Assert.AreEqual(codigoEsperado, response.Data.code.ToString());
+                Assert.AreEqual(localizadorEsperado, response.Data.localized.ToString());
+            });
+
+            #endregion
+        }
+
+        [Test]
+        public void Test_TentarDeletaUmaNotaQueNaoExiste()
+        {
+            #region Parameters
+            DeleteAnIssueNoteRequest deleteAnIssueNoteRequest;
+            string statusEsperado = "NotFound";
+            int idIssue = 6;
+            int idNota = 100;
+
+            string textoNota = "test note";
+            string viewStateName = "public";
+            string reporteName = "Gerry";
+
+            string mensagemEsperada = "Issue note #100 not found";
+            string codigoEsperado = "600";
+            string localizadorEsperado = "Note not found.";
+            #endregion
+
+                       
+
+            #region Acoes
+            viewState.name = viewStateName;
+            reporter.name = reporteName;
+
+            note.text = textoNota;
+            note.view_state = viewState;
+            note.reporter = reporter;
+
+            deleteAnIssueNoteRequest = new DeleteAnIssueNoteRequest(idIssue, idNota);
+            deleteAnIssueNoteRequest.SetJsonBody(note);
+
+            IRestResponse<dynamic> response = deleteAnIssueNoteRequest.ExecuteRequest();
             #endregion
 
             #region Asserts

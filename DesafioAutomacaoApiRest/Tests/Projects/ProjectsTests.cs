@@ -402,6 +402,7 @@ namespace DesafioAutomacaoApiRest.Tests.Projects
             AddVersionRequest addVersionRequest = new AddVersionRequest(idProject);
 
             //montando body
+            version.name = null;
             version.released = versionReleased;
             version.obsolete = versionObsolete;
 
@@ -450,7 +451,69 @@ namespace DesafioAutomacaoApiRest.Tests.Projects
         }
 
 
+        [Test]
+        public void Test_TentarCadastrarUmProjetoSemNome()
+        {
+            #region Parameters
+            CreateAProjectRequest createAProjectRequest = new CreateAProjectRequest();
+            Project project = new Project();
+            Status status = new Status();
+            ViewState viewState = new ViewState();
 
+            string statusEsperado = "Created";
+
+            //int projectId = 1;
+            string projectName = "Projeto Post Create 01";
+            string projectDescription = "Projeto Post Create 01 description";
+            bool projectEnabled = true;
+            string projectFilePath = "/tmp/";
+
+            int statusId = 10;
+            string statusName = "development";
+            string statusLabel = "development";
+
+            int viewStateId = 10;
+            string viewStateName = "public";
+            string viewStateLabel = "public";
+
+            #endregion
+
+            #region Acoes
+
+            status.id = statusId;
+            status.name = statusName;
+            status.label = statusLabel;
+
+            viewState.id = viewStateId;
+            viewState.name = viewStateName;
+            viewState.label = viewStateLabel;
+
+            //montando body
+            // project.id = projectId;
+            project.name = projectName;
+            project.description = projectDescription;
+            project.enabled = projectEnabled;
+            project.file_path = projectFilePath;
+            project.status = status;
+            project.view_state = viewState;
+
+            createAProjectRequest.SetJsonBody(project);
+
+            IRestResponse<dynamic> response = createAProjectRequest.ExecuteRequest();
+            #endregion
+
+            #region Asserts
+
+            Assert.Multiple(() =>
+            {
+                Assert.AreEqual(statusEsperado, response.StatusCode.ToString());
+                Assert.AreEqual(projectName, response.Data.project.name.ToString());
+                Assert.AreEqual(projectDescription, response.Data.project.description.ToString());
+                //Etc
+            });
+
+            #endregion
+        }
 
 
     }
