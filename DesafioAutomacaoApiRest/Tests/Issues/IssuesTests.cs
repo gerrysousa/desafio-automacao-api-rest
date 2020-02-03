@@ -524,6 +524,40 @@ namespace DesafioAutomacaoApiRest.Tests.Issues
             #endregion
         }
 
+        [Test]
+        public void Test_AddNotasAUmProblemaComSucesso()
+        {
+            #region Parameters
+            CreateAnIssueNoteRequest createAnIssueNoteRequest;
+            Note note = new Note();
+
+            string statusEsperado = "Created";
+
+            int idIssue = 1;
+            string textoNota = "test note";
+            string viewStateName = "public";
+            #endregion
+
+            #region Acoes
+            viewState.name = viewStateName;
+
+            note.text = textoNota;
+            note.view_state = viewState;
+
+
+            createAnIssueNoteRequest = new CreateAnIssueNoteRequest(idIssue);
+
+            createAnIssueNoteRequest.SetJsonBody(note);
+
+            IRestResponse<dynamic> response = createAnIssueNoteRequest.ExecuteRequest();
+            #endregion
+
+            #region Asserts
+
+            Assert.AreEqual(statusEsperado, response.StatusCode.ToString());
+            #endregion
+        }
+
         //=============================================================
         [Test]
         public void Test_DeletarUmProblemaComSucesso()
