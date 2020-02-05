@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 namespace DesafioAutomacaoApiRest.Helpers
 {
     public class GeneralHelpers
-    {       
+    {
         public static string FormatJson(string str)
         {
             string INDENT_STRING = "    ";
@@ -164,7 +164,53 @@ namespace DesafioAutomacaoApiRest.Helpers
 
     public class Global
     {
-        public static string token = Properties.Settings.Default.TOKEN;
-        public static string pathProject = GeneralHelpers.ReturnProjectPath();
+        public static string token;
+        public static string pathProject;
+        public static string url;
+        public static string reportName;
+        public static string dbserver;
+        public static string dbName;
+        public static string dbUserId;
+        public static string dbPassword;
+        public static string dbTimeout;
+        public static int reportSubstringLength;
+        public static string authenticatorUser;
+        public static string authenticatorPassword;
+
+
+        public void Initializer()
+        {
+
+            if (Properties.Settings.Default.ENVIRONMENT=="qa"|| Properties.Settings.Default.ENVIRONMENT == "QA")
+            {
+                url = Properties.Settings.Default.QA_URL;
+                token = Properties.Settings.Default.QA_TOKEN;
+                dbserver = Properties.Settings.Default.QA_DB_SERVER;
+                dbName = Properties.Settings.Default.QA_DB_NAME;
+                dbUserId = Properties.Settings.Default.QA_DB_USER;
+                dbPassword=Properties.Settings.Default.QA_DB_PASSWORD;
+                authenticatorUser = Properties.Settings.Default.QA_AUTHENTICATOR_USER;
+                authenticatorPassword = Properties.Settings.Default.QA_AUTHENTICATOR_PASSWORD;
+            }
+            else
+            {
+                url = Properties.Settings.Default.DEV_URL;
+                token = Properties.Settings.Default.DEV_TOKEN;
+                dbserver = Properties.Settings.Default.DEV_DB_SERVER;
+                dbName = Properties.Settings.Default.DEV_DB_NAME;
+                dbUserId = Properties.Settings.Default.DEV_DB_USER;
+                dbPassword = Properties.Settings.Default.DEV_DB_PASSWORD;
+                authenticatorUser = Properties.Settings.Default.QA_AUTHENTICATOR_USER;
+                authenticatorPassword = Properties.Settings.Default.QA_AUTHENTICATOR_PASSWORD;
+            }
+
+            pathProject = GeneralHelpers.ReturnProjectPath();
+            reportSubstringLength = Properties.Settings.Default.REPORT_SUBSTRING_LENGTH;
+            dbTimeout = Properties.Settings.Default.DB_CONNECTION_TIMEOUT;
+            reportName = Properties.Settings.Default.REPORT_NAME + "_" + DateTime.Now.ToString("dd-MM-yyyy_HH-mm");
+           
+        }
+
+        
     }
 }

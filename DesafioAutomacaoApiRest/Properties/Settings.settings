@@ -5,38 +5,68 @@
     <Setting Name="REPORT_NAME" Type="System.String" Scope="User">
       <Value Profile="(Default)">DesafioAutomacaoApiRest</Value>
     </Setting>
-    <Setting Name="URL" Type="System.String" Scope="User">
+    <Setting Name="QA_URL" Type="System.String" Scope="User">
       <Value Profile="(Default)">http://192.168.99.100:8989</Value>
     </Setting>
-    <Setting Name="TOKEN" Type="System.String" Scope="User">
+    <Setting Name="QA_TOKEN" Type="System.String" Scope="User">
       <Value Profile="(Default)">62gHUwBfmIrh2IAMpEvv13u_u4HEpKIU</Value>
     </Setting>
     <Setting Name="REPORT_SUBSTRING_LENGTH" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">29</Value>
     </Setting>
-    <Setting Name="DB_SERVER" Type="System.String" Scope="User">
+    <Setting Name="QA_DB_SERVER" Type="System.String" Scope="User">
       <Value Profile="(Default)">192.168.99.100</Value>
     </Setting>
-    <Setting Name="DB_NAME" Type="System.String" Scope="User">
+    <Setting Name="QA_DB_NAME" Type="System.String" Scope="User">
       <Value Profile="(Default)">bugtracker</Value>
     </Setting>
-    <Setting Name="DB_USER" Type="System.String" Scope="User">
+    <Setting Name="QA_DB_USER" Type="System.String" Scope="User">
       <Value Profile="(Default)">root</Value>
     </Setting>
-    <Setting Name="DB_PASSWORD" Type="System.String" Scope="User">
+    <Setting Name="QA_DB_PASSWORD" Type="System.String" Scope="User">
       <Value Profile="(Default)">root</Value>
     </Setting>
     <Setting Name="DB_CONNECTION_TIMEOUT" Type="System.String" Scope="User">
       <Value Profile="(Default)">30</Value>
     </Setting>
-    <Setting Name="AUTHENTICATOR_USER" Type="System.String" Scope="User">
+    <Setting Name="QA_AUTHENTICATOR_USER" Type="System.String" Scope="User">
       <Value Profile="(Default)">usuarioAuthentication</Value>
     </Setting>
-    <Setting Name="AUTHENTICATOR_PASSWORD" Type="System.String" Scope="User">
+    <Setting Name="QA_AUTHENTICATOR_PASSWORD" Type="System.String" Scope="User">
       <Value Profile="(Default)">senhaAuthentication</Value>
     </Setting>
-    <Setting Name="DB_PORT" Type="System.String" Scope="User">
+    <Setting Name="QA_DB_PORT" Type="System.String" Scope="User">
       <Value Profile="(Default)">3306</Value>
+    </Setting>
+    <Setting Name="DEV_DB_PORT" Type="System.String" Scope="User">
+      <Value Profile="(Default)">3306</Value>
+    </Setting>
+    <Setting Name="DEV_DB_SERVER" Type="System.String" Scope="User">
+      <Value Profile="(Default)">192.168.99.100</Value>
+    </Setting>
+    <Setting Name="DEV_TOKEN" Type="System.String" Scope="User">
+      <Value Profile="(Default)">62gHUwBfmIrh2IAMpEvv13u_u4HEpKIU</Value>
+    </Setting>
+    <Setting Name="DEV_URL" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://192.168.99.100:8989</Value>
+    </Setting>
+    <Setting Name="DEV_DB_USER" Type="System.String" Scope="User">
+      <Value Profile="(Default)">root</Value>
+    </Setting>
+    <Setting Name="ENVIRONMENT" Type="System.String" Scope="User">
+      <Value Profile="(Default)">qa</Value>
+    </Setting>
+    <Setting Name="DEV_DB_NAME" Type="System.String" Scope="User">
+      <Value Profile="(Default)">bugtracker</Value>
+    </Setting>
+    <Setting Name="DEV_DB_PASSWORD" Type="System.String" Scope="User">
+      <Value Profile="(Default)">root</Value>
+    </Setting>
+    <Setting Name="DEV_AUTHENTICATOR_PASSWORD" Type="System.String" Scope="User">
+      <Value Profile="(Default)">senhaAuthentication</Value>
+    </Setting>
+    <Setting Name="DEV_AUTHENTICATOR_USER" Type="System.String" Scope="User">
+      <Value Profile="(Default)">usuarioAuthentication</Value>
     </Setting>
   </Settings>
 </SettingsFile>

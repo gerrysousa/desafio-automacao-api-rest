@@ -12,11 +12,13 @@ namespace DesafioAutomacaoApiRest.Bases
     {
         #region Parameters
         protected string jsonBody = null;
-        protected string url = Properties.Settings.Default.URL;
+        protected string url = Global.url;
         protected string requestService = null;
         protected Method method;
         protected bool httpBasicAuthenticator = false;
         protected bool ntlmAuthenticator = false;
+
+
 
         protected IDictionary<string, string> headers = new Dictionary<string, string>()
         {

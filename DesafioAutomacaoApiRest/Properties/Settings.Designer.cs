@@ -38,24 +38,24 @@ namespace DesafioAutomacaoApiRest.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("http://192.168.99.100:8989")]
-        public string URL {
+        public string QA_URL {
             get {
-                return ((string)(this["URL"]));
+                return ((string)(this["QA_URL"]));
             }
             set {
-                this["URL"] = value;
+                this["QA_URL"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("62gHUwBfmIrh2IAMpEvv13u_u4HEpKIU")]
-        public string TOKEN {
+        public string QA_TOKEN {
             get {
-                return ((string)(this["TOKEN"]));
+                return ((string)(this["QA_TOKEN"]));
             }
             set {
-                this["TOKEN"] = value;
+                this["QA_TOKEN"] = value;
             }
         }
         
@@ -74,48 +74,48 @@ namespace DesafioAutomacaoApiRest.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("192.168.99.100")]
-        public string DB_SERVER {
+        public string QA_DB_SERVER {
             get {
-                return ((string)(this["DB_SERVER"]));
+                return ((string)(this["QA_DB_SERVER"]));
             }
             set {
-                this["DB_SERVER"] = value;
+                this["QA_DB_SERVER"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("bugtracker")]
-        public string DB_NAME {
+        public string QA_DB_NAME {
             get {
-                return ((string)(this["DB_NAME"]));
+                return ((string)(this["QA_DB_NAME"]));
             }
             set {
-                this["DB_NAME"] = value;
+                this["QA_DB_NAME"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("root")]
-        public string DB_USER {
+        public string QA_DB_USER {
             get {
-                return ((string)(this["DB_USER"]));
+                return ((string)(this["QA_DB_USER"]));
             }
             set {
-                this["DB_USER"] = value;
+                this["QA_DB_USER"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("root")]
-        public string DB_PASSWORD {
+        public string QA_DB_PASSWORD {
             get {
-                return ((string)(this["DB_PASSWORD"]));
+                return ((string)(this["QA_DB_PASSWORD"]));
             }
             set {
-                this["DB_PASSWORD"] = value;
+                this["QA_DB_PASSWORD"] = value;
             }
         }
         
@@ -134,36 +134,156 @@ namespace DesafioAutomacaoApiRest.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("usuarioAuthentication")]
-        public string AUTHENTICATOR_USER {
+        public string QA_AUTHENTICATOR_USER {
             get {
-                return ((string)(this["AUTHENTICATOR_USER"]));
+                return ((string)(this["QA_AUTHENTICATOR_USER"]));
             }
             set {
-                this["AUTHENTICATOR_USER"] = value;
+                this["QA_AUTHENTICATOR_USER"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("senhaAuthentication")]
-        public string AUTHENTICATOR_PASSWORD {
+        public string QA_AUTHENTICATOR_PASSWORD {
             get {
-                return ((string)(this["AUTHENTICATOR_PASSWORD"]));
+                return ((string)(this["QA_AUTHENTICATOR_PASSWORD"]));
             }
             set {
-                this["AUTHENTICATOR_PASSWORD"] = value;
+                this["QA_AUTHENTICATOR_PASSWORD"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("3306")]
-        public string DB_PORT {
+        public string QA_DB_PORT {
             get {
-                return ((string)(this["DB_PORT"]));
+                return ((string)(this["QA_DB_PORT"]));
             }
             set {
-                this["DB_PORT"] = value;
+                this["QA_DB_PORT"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("3306")]
+        public string DEV_DB_PORT {
+            get {
+                return ((string)(this["DEV_DB_PORT"]));
+            }
+            set {
+                this["DEV_DB_PORT"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("192.168.99.100")]
+        public string DEV_DB_SERVER {
+            get {
+                return ((string)(this["DEV_DB_SERVER"]));
+            }
+            set {
+                this["DEV_DB_SERVER"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("62gHUwBfmIrh2IAMpEvv13u_u4HEpKIU")]
+        public string DEV_TOKEN {
+            get {
+                return ((string)(this["DEV_TOKEN"]));
+            }
+            set {
+                this["DEV_TOKEN"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://192.168.99.100:8989")]
+        public string DEV_URL {
+            get {
+                return ((string)(this["DEV_URL"]));
+            }
+            set {
+                this["DEV_URL"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("root")]
+        public string DEV_DB_USER {
+            get {
+                return ((string)(this["DEV_DB_USER"]));
+            }
+            set {
+                this["DEV_DB_USER"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("qa")]
+        public string ENVIRONMENT {
+            get {
+                return ((string)(this["ENVIRONMENT"]));
+            }
+            set {
+                this["ENVIRONMENT"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("bugtracker")]
+        public string DEV_DB_NAME {
+            get {
+                return ((string)(this["DEV_DB_NAME"]));
+            }
+            set {
+                this["DEV_DB_NAME"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("root")]
+        public string DEV_DB_PASSWORD {
+            get {
+                return ((string)(this["DEV_DB_PASSWORD"]));
+            }
+            set {
+                this["DEV_DB_PASSWORD"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("senhaAuthentication")]
+        public string DEV_AUTHENTICATOR_PASSWORD {
+            get {
+                return ((string)(this["DEV_AUTHENTICATOR_PASSWORD"]));
+            }
+            set {
+                this["DEV_AUTHENTICATOR_PASSWORD"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("usuarioAuthentication")]
+        public string DEV_AUTHENTICATOR_USER {
+            get {
+                return ((string)(this["DEV_AUTHENTICATOR_USER"]));
+            }
+            set {
+                this["DEV_AUTHENTICATOR_USER"] = value;
             }
         }
     }

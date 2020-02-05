@@ -20,7 +20,7 @@ namespace DesafioAutomacaoApiRest.Helpers
         public static ExtentReports EXTENT_REPORT = null;
         public static ExtentTest TEST;
 
-        static string reportName = Properties.Settings.Default.REPORT_NAME + "_" + DateTime.Now.ToString("dd-MM-yyyy_HH-mm");
+        static string reportName = Global.reportName; 
 
         static string projectBinDebugPath = AppDomain.CurrentDomain.BaseDirectory;
         static FileInfo fileInfo = new FileInfo(projectBinDebugPath);
@@ -47,7 +47,7 @@ namespace DesafioAutomacaoApiRest.Helpers
         public static void AddTest()
         {
             string testName = TestContext.CurrentContext.Test.MethodName;
-            string testCategory = TestContext.CurrentContext.Test.ClassName.Substring(Properties.Settings.Default.REPORT_SUBSTRING_LENGTH);
+            string testCategory = TestContext.CurrentContext.Test.ClassName.Substring(Global.reportSubstringLength);
 
             TEST = EXTENT_REPORT.CreateTest(testName).AssignCategory(testCategory);
         }
@@ -110,7 +110,7 @@ namespace DesafioAutomacaoApiRest.Helpers
 
             if (httpBasicAuthenticator || ntlmAuthenticator)
             {
-                TEST.Log(Status.Info, "<pre>" + "<b>AUTHENTICATOR: </b>" + "\n" + "<b>USER: </b>"+ Properties.Settings.Default.AUTHENTICATOR_USER + "\n" + "<b>PASSWORD: </b>" + Properties.Settings.Default.AUTHENTICATOR_PASSWORD + "</pre>");
+                TEST.Log(Status.Info, "<pre>" + "<b>AUTHENTICATOR: </b>" + "\n" + "<b>USER: </b>"+ Global.authenticatorUser + "\n" + "<b>PASSWORD: </b>" + Global.authenticatorPassword + "</pre>");
             }
 
             HttpStatusCode statusCode = response.StatusCode;
@@ -158,7 +158,7 @@ namespace DesafioAutomacaoApiRest.Helpers
 
             if (httpBasicAuthenticator || ntlmAuthenticator)
             {
-                TEST.Log(Status.Info, "<pre>" + "<b>AUTHENTICATOR: </b>" + "\n" + "<b>USER: </b>" + Properties.Settings.Default.AUTHENTICATOR_USER + "\n" + "<b>PASSWORD: </b>" + Properties.Settings.Default.AUTHENTICATOR_PASSWORD + "</pre>");
+                TEST.Log(Status.Info, "<pre>" + "<b>AUTHENTICATOR: </b>" + "\n" + "<b>USER: </b>" + Global.authenticatorUser+ "\n" + "<b>PASSWORD: </b>" + Global.authenticatorPassword + "</pre>");
             }
 
             HttpStatusCode statusCode = response.StatusCode;

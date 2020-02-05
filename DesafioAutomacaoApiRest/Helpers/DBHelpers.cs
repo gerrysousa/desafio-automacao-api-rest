@@ -15,10 +15,10 @@ namespace DesafioAutomacaoApiRest.Helpers
     {
         private static MySqlConnection GetDBConnection()
         {
-            string connectionString = "server="     + Properties.Settings.Default.DB_SERVER + ";" +
-                                      "database="   + Properties.Settings.Default.DB_NAME + ";" +
-                                      "uid="        + Properties.Settings.Default.DB_USER + ";" +
-                                      "pwd="        + Properties.Settings.Default.DB_PASSWORD + ";";
+            string connectionString = "server="     + Global.dbserver+ ";" +
+                                      "database="   + Global.dbName+ ";" +
+                                      "uid="        + Global.dbUserId+ ";" +
+                                      "pwd="        + Global.dbPassword+ ";";
 
             MySqlConnection connection = new MySqlConnection(connectionString);
 
@@ -29,7 +29,7 @@ namespace DesafioAutomacaoApiRest.Helpers
         {
             using (MySqlCommand cmd = new MySqlCommand(query, GetDBConnection()))
             {
-                cmd.CommandTimeout = Int32.Parse(Properties.Settings.Default.DB_CONNECTION_TIMEOUT);
+                cmd.CommandTimeout = Int32.Parse(Global.dbTimeout);
                 cmd.Connection.Open();
                 cmd.ExecuteNonQuery();
                 cmd.Connection.Close();
@@ -43,7 +43,7 @@ namespace DesafioAutomacaoApiRest.Helpers
 
             using (MySqlCommand cmd = new MySqlCommand(query, GetDBConnection()))
             {
-                cmd.CommandTimeout = Int32.Parse(Properties.Settings.Default.DB_CONNECTION_TIMEOUT);
+                cmd.CommandTimeout = Int32.Parse(Global.dbTimeout);
                 cmd.Connection.Open();
 
                 DataTable table = new DataTable();

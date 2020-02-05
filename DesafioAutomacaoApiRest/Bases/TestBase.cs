@@ -15,6 +15,7 @@ namespace DesafioAutomacaoApiRest.Bases
         [OneTimeSetUp]
         public void OneTimeSetUp()
         {
+            new Global().Initializer();
             DBHelpers.ResetBD();
             ExtentReportHelpers.CreateReport();
         }
