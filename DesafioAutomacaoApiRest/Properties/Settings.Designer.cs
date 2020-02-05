@@ -181,7 +181,7 @@ namespace DesafioAutomacaoApiRest.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("192.168.99.100")]
+        [global::System.Configuration.DefaultSettingValueAttribute("localhost")]
         public string DEV_DB_SERVER {
             get {
                 return ((string)(this["DEV_DB_SERVER"]));

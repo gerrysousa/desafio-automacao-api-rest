@@ -42,7 +42,7 @@
       <Value Profile="(Default)">3306</Value>
     </Setting>
     <Setting Name="DEV_DB_SERVER" Type="System.String" Scope="User">
-      <Value Profile="(Default)">192.168.99.100</Value>
+      <Value Profile="(Default)">localhost</Value>
     </Setting>
     <Setting Name="DEV_TOKEN" Type="System.String" Scope="User">
       <Value Profile="(Default)">62gHUwBfmIrh2IAMpEvv13u_u4HEpKIU</Value>
