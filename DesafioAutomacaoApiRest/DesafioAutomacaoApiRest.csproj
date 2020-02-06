@@ -158,6 +158,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Requests\Authentication\AuthenticationRequest.cs" />
     <Compile Include="Requests\Config\GetConfigurationOptionRequest.cs" />
     <Compile Include="Requests\Issues\AddAttachmentsToIssueRequest.cs" />
     <Compile Include="Requests\Issues\CreateAnIssueNoteRequest.cs" />
@@ -184,6 +185,7 @@
     <Compile Include="Requests\Users\GetMyUserInfoRequest.cs" />
     <Compile Include="Objects\User.cs" />
     <Compile Include="Settings.cs" />
+    <Compile Include="Tests\Authentication\AuthenticationTests.cs" />
     <Compile Include="Tests\Configs\ConfigsTests.cs" />
     <Compile Include="Tests\DBTests\DBTests.cs" />
     <Compile Include="Tests\DDT\DataDrivenTests.cs" />
@@ -200,10 +202,10 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Include="Resources\TestData\CadastrarProblemas.csv" />
+    <None Include="Resources\TestData\CadastrarProjetos.csv" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\TestData\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Queries\atualizaDataDoItemSolicitacaoParaAgora.sql" />
     <Content Include="Queries\CadastraNovosProjetos.sql" />

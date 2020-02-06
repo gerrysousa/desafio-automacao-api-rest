@@ -133,7 +133,7 @@ namespace DesafioAutomacaoApiRest.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("usuarioAuthentication")]
+        [global::System.Configuration.DefaultSettingValueAttribute("ToolsQA")]
         public string QA_AUTHENTICATOR_USER {
             get {
                 return ((string)(this["QA_AUTHENTICATOR_USER"]));
@@ -145,7 +145,7 @@ namespace DesafioAutomacaoApiRest.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("senhaAuthentication")]
+        [global::System.Configuration.DefaultSettingValueAttribute("TestPassword")]
         public string QA_AUTHENTICATOR_PASSWORD {
             get {
                 return ((string)(this["QA_AUTHENTICATOR_PASSWORD"]));
@@ -265,7 +265,7 @@ namespace DesafioAutomacaoApiRest.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("senhaAuthentication")]
+        [global::System.Configuration.DefaultSettingValueAttribute("TestPassword")]
         public string DEV_AUTHENTICATOR_PASSWORD {
             get {
                 return ((string)(this["DEV_AUTHENTICATOR_PASSWORD"]));
@@ -277,7 +277,7 @@ namespace DesafioAutomacaoApiRest.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("usuarioAuthentication")]
+        [global::System.Configuration.DefaultSettingValueAttribute("ToolsQA")]
         public string DEV_AUTHENTICATOR_USER {
             get {
                 return ((string)(this["DEV_AUTHENTICATOR_USER"]));

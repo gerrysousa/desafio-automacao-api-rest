@@ -19,44 +19,6 @@ namespace DesafioAutomacaoApiRest.Tests.RegexTests
     class ValidRegexTests : TestBase
     {
         [Test]
-        public void Test_EmailValidoComSucesso()
-        {
-            #region Parameters
-            string email = "email@valido.com";
-
-            #endregion
-
-            #region Acoes
-            bool isValidEmail = RegexHelpers.IsValidEmail(email);
-            #endregion
-
-            #region Asserts
-
-            Assert.IsTrue(isValidEmail);
-            
-            #endregion
-        }
-
-        [Test]
-        public void Test_EmailInvalidoComSucesso()
-        {
-            #region Parameters
-            string email = "email@valido";
-
-            #endregion
-
-            #region Acoes
-            bool isValidEmail = RegexHelpers.IsValidEmail(email);
-            #endregion
-
-            #region Asserts
-
-            Assert.IsFalse(isValidEmail);
-
-            #endregion
-        }
-
-        [Test]
         public void Test_ObterInformacoeslDoJsonRespostaUsandoRegexComSucesso()
         {
             #region Parameters
@@ -85,10 +47,10 @@ namespace DesafioAutomacaoApiRest.Tests.RegexTests
             var regexNome = Regex.Match(resposta, @".*""name"": ""(.*?)"",.*");
             var regexNomeReal = Regex.Match(resposta, @".*""real_name"": ""(.*?)"",.*");
             var regexEmail = Regex.Match(resposta, @".*""email"": ""(.*?)"",.*");
-            
+
             //string resposta = emailRespsta.Groups[1].Value;
 
-           
+
             string resposta_name = regexNome.Groups[1].Value;
             string resposta_real_name = regexNomeReal.Groups[1].Value;
             string resposta_email = regexEmail.Groups[1].Value;
@@ -108,13 +70,44 @@ namespace DesafioAutomacaoApiRest.Tests.RegexTests
             #endregion
         }
 
+        [Test]
+        public void Test_EmailValidoComSucesso()
+        {
+            #region Parameters
+            string email = "email@valido.com";
 
+            #endregion
 
-        /*
-         string str = @"""ouioieu"":""Canister"",""price"":""59.0000"",""sku"":""DECC500"",""barcode_gtin sjh""";
-        var m = Regex.Match(str,@".*""price"":""(.*?)"".*");
-        Console.WriteLine(m.Groups[1].Value);
-         */
+            #region Acoes
+            bool isValidEmail = RegexHelpers.IsValidEmail(email);
+            #endregion
+
+            #region Asserts
+
+            Assert.IsTrue(isValidEmail);
+
+            #endregion
+        }
+
+        [Test]
+        public void Test_EmailInvalidoComSucesso()
+        {
+            #region Parameters
+            string email = "email@valido";
+
+            #endregion
+
+            #region Acoes
+            bool isValidEmail = RegexHelpers.IsValidEmail(email);
+            #endregion
+
+            #region Asserts
+
+            Assert.IsFalse(isValidEmail);
+
+            #endregion
+        }
+
     }
 }
   
