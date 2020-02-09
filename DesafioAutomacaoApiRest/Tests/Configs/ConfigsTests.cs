@@ -9,7 +9,7 @@ using RestSharp;
 using DesafioAutomacaoApiRest.Requests.Config;
 
 namespace DesafioAutomacaoApiRest.Tests.Configs
-{
+{/*
     //[Parallelizable(ParallelScope.All)]
     class ConfigsTests : TestBase
     {
@@ -43,4 +43,5 @@ namespace DesafioAutomacaoApiRest.Tests.Configs
 
 
     }
+    */
 }

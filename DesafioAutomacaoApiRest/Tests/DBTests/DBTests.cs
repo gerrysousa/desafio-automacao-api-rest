@@ -13,7 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace DesafioAutomacaoApiRest.Tests.DBTests
-{
+{/*
     //[Parallelizable(ParallelScope.All)]
     public class DBTests : TestBase
     {
@@ -66,4 +66,5 @@ namespace DesafioAutomacaoApiRest.Tests.DBTests
 
         
     }
+    */
 }

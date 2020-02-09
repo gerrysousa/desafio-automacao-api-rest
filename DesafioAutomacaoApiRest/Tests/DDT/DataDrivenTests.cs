@@ -15,7 +15,7 @@ using System.Collections;
 using DesafioAutomacaoApiRest.Requests.Projects;
 
 namespace DesafioAutomacaoApiRest.Tests.DDT
-{
+{/*
     class DataDrivenTests : TestBase
     {
         #region Objetos
@@ -142,4 +142,5 @@ namespace DesafioAutomacaoApiRest.Tests.DDT
             #endregion
         }
     }
+    */
 }

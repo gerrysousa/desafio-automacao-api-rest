@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 using DesafioAutomacaoApiRest.DBSteps;
 
 namespace DesafioAutomacaoApiRest.Tests.Issues
-{
+{/*
     [Parallelizable(ParallelScope.All)]
     class IssuesTestsTestBase : TestBase
     {
@@ -1004,4 +1004,5 @@ namespace DesafioAutomacaoApiRest.Tests.Issues
         }
 
     }
+    */
 }

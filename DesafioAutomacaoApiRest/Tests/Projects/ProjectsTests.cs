@@ -15,7 +15,7 @@ using Version = DesafioAutomacaoApiRest.Objects.Version;
 using DesafioAutomacaoApiRest.DBSteps;
 
 namespace DesafioAutomacaoApiRest.Tests.Projects
-{
+{/*
     //[Parallelizable(ParallelScope.All)]
     class ProjectsTests : TestBase
     {
@@ -517,4 +517,5 @@ namespace DesafioAutomacaoApiRest.Tests.Projects
 
 
     }
+    */
 }
