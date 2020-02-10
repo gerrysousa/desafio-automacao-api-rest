@@ -16,6 +16,6 @@ Projeto para desafio e aprendizado sobre automação de APIs REST
 - [x]	11) Testes deverão ser agendados pelo Jenkins, CircleCI, TFS ou outra ferramenta de CI que preferir. 
 
 ------------------------------
-Os Relatórios do projeto são montados com o ExtentReport.
-A Testes foram agendados no Azure DevOps (o Arquivo com a configuração se encontra no repositório)
+- Os Relatórios do projeto são montados com o ExtentReport.
+- Os testes foram agendados no Azure DevOps (o Arquivo com a configuração se encontra no repositório (/DesafioAutomacaoApiRest/Resources/Configuracao_Azure_Devops.pdf)
 
