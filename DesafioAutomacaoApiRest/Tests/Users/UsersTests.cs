@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 
 namespace DesafioAutomacaoApiRest.Tests.Users
-{
+{/*
     [Parallelizable(ParallelScope.All)]
     class UsersTests : TestBase
     {
@@ -288,5 +288,5 @@ namespace DesafioAutomacaoApiRest.Tests.Users
             #endregion
         }
 
-    }
+    }*/
 }

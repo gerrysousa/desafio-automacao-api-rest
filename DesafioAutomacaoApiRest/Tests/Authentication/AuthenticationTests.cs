@@ -17,7 +17,7 @@ namespace DesafioAutomacaoApiRest.Tests.Authentication
 {
     class AuthenticationTests : TestBase
     {
-      /*
+      
         [Test]
         public void Test_AcessarUrlComAutenticacaoBasicaComSucesso()
         {            
@@ -50,7 +50,7 @@ namespace DesafioAutomacaoApiRest.Tests.Authentication
                "Username:Password": "ToolsQA:TestPassword",
                "Authentication Type": "Basic"
            }
-           
+           */
             #endregion
         }
 
@@ -78,7 +78,7 @@ namespace DesafioAutomacaoApiRest.Tests.Authentication
                 Assert.AreEqual(StatusID, response.Data.StatusID.ToString());
                 Assert.AreEqual(Status, response.Data.Status.ToString());
             });
-            
+            /*
              Unauthorized
              {
 
@@ -86,11 +86,11 @@ namespace DesafioAutomacaoApiRest.Tests.Authentication
 
             “Status”: “Invalid or expired Authentication key provided”
 
-            }
+            }*/
              
             #endregion
         }
-    */
+    
     }
 }
 
