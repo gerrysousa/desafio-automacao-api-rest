@@ -77,8 +77,8 @@ namespace DesafioAutomacaoApiRest.Helpers
         }
 
         public static void ResetBD()
-        {
-            string file = "C:\\mantis\\mantis_base.sql";
+        {            
+            string file = Global.pathProject+ "Resources\\mantis_base.sql";
             using (MySqlConnection conn = GetDBConnection())
             {
                 using (MySqlCommand cmd = new MySqlCommand())
