@@ -13,7 +13,9 @@ Projeto para desafio e aprendizado sobre automação de APIs REST
 - [x]	8) Implementar pelo menos dois ambientes (desenvolvimento / homologação) 
 - [X]	9) A massa de testes deve ser preparada neste projeto, seja com scripts carregando massa nova no BD ou com restore de banco de dados. (Se usar WireMock ( http://wiremock.org/ ) a massa será tratada implicitamente.)
 - [x]	10) Executar testes em paralelo. Pelo menos duas threads (25 testes cada). 
-- [ ]	11) Testes deverão ser agendados pelo Jenkins, CircleCI, TFS ou outra ferramenta de CI que preferir. 
+- [x]	11) Testes deverão ser agendados pelo Jenkins, CircleCI, TFS ou outra ferramenta de CI que preferir. 
 
 ------------------------------
 Os Relatórios do projeto são montados com o ExtentReport.
+A Testes foram agendados no Azure DevOps (o Arquivo com a configuração se encontra no repositório)
+
