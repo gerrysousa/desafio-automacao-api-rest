@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 
 namespace DesafioAutomacaoApiRest.Tests.Users
-{/*
+{
     [Parallelizable(ParallelScope.All)]
     class UsersTests : TestBase
     {
@@ -109,7 +109,7 @@ namespace DesafioAutomacaoApiRest.Tests.Users
 
             #endregion
         }
-
+/*
         [Test]
         public void Test_DeletarUsuarioComSucesso()
         {
@@ -286,7 +286,7 @@ namespace DesafioAutomacaoApiRest.Tests.Users
                 Assert.AreEqual(localizadorEsperado, response.Data.localized.ToString());
             });
             #endregion
-        }
+        }*/
 
-    }*/
+    }
 }
