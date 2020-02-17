@@ -18,4 +18,6 @@ Projeto para desafio e aprendizado sobre automação de APIs REST
 ------------------------------
 - Os Relatórios do projeto são montados com o ExtentReport.
 - Os testes foram agendados no Azure DevOps (o Arquivo com a configuração se encontra no repositório (/DesafioAutomacaoApiRest/Resources/Configuracao_Azure_Devops.pdf)
+-------------------------------
+- Link com a execução no Azure DevOps: https://dev.azure.com/gerrycon/Projeto%20Testes%20API%20Rest/_build/results?buildId=44&view=ms.vss-test-web.build-test-results-tab
 
